@@ -16,11 +16,11 @@
 
 				<div id="navbar-menu" class="collapse navbar-collapse ">
 					<ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
-						<li><a href="#" class="contact" title="home">HOME</a></li>
-						<li><a href="#" class="contact" title="general">GENERAL INFO</a></li>
-						<li><a href="#" class="contact" title="financial">FINANCIAL INFO</a></li>
-						<li><a href="#" class="contact" title="gallery">EVENT & GALLERY</a></li>
-						<li class="last"><a href="#" class="contact" title="profile">PROFILE</a></li>
+						<li><a href="<?=base_url()?>" class="contact" title="home">HOME</a></li>
+						<li><a href="general" class="contact" title="general">GENERAL INFO</a></li>
+						<li><a href="financial" class="contact" title="financial">FINANCIAL INFO</a></li>
+						<li><a href="gallery" class="contact" title="gallery">EVENT & GALLERY</a></li>
+						<li class="last"><a href="profile" class="contact" title="profile">PROFILE</a></li>
 					</ul>
 				</div>
 

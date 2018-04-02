@@ -7,7 +7,8 @@ class Front extends CI_Controller {
 
         $data['title'] = "Mandiri Bapekis Front Page";
 
-        $component['slider'] = $this->load->view('front/component/slider','',TRUE);
+        $component['banner'] = $this->load->view('front/component/slider','',TRUE);
+        $component['news'] = $this->load->view('front/component/news','',TRUE);
 
         $data['content'] = $this->load->view('front/index',$component,TRUE);
 

@@ -72,7 +72,7 @@ Copyright: (C) 2016
 [Color codes]
 
 # Black (text): #060606
-# Red (headings, links): #f20000
+# Red (headings, links): #ffb500
 
 [Typography]
 
@@ -217,17 +217,17 @@ img {
 
 .gb-list .icon-comment:before {
     content: "\e805";
-    color: #f20000;
+    color: #ffb500;
 }
 
 .gb-list .icon-heart:before {
     content: "\e80a";
-    color: #f20000;
+    color: #ffb500;
 }
 
 .gb-list .icon-eye:before {
     content: "\e80b";
-    color: #f20000;
+    color: #ffb500;
 }
 
 .gb-list {
@@ -239,11 +239,11 @@ img {
 .gb-list li {
     float: left;
     margin-right: 5px;
-    color: #f20000;
+    color: #ffb500;
 }
 
 .gb-list li a {
-    color: #f20000;
+    color: #ffb500;
     letter-spacing: -0.2px;
 }
 
@@ -289,7 +289,7 @@ img {
 .title-white:hover,
 .title-white:active,
 .title-white:focus{
-    color:#f20000;
+    color:#ffb500;
 }
 
 .height100 {
@@ -324,7 +324,7 @@ input {
 }
 
 .red-btn {
-    background: #f20000;
+    background: #ffb500;
     display: inline-block;
     text-align: center;
     font-weight: 600;
@@ -339,7 +339,7 @@ input {
 .red-btn-5:hover,
 .red-btn-form:hover{
     background: #fff;
-    color:#f20000;
+    color:#ffb500;
 }
 
 .person-content h3 {
@@ -462,19 +462,19 @@ iframe{
 }
 
 .navbar-default ul li a:hover {
-    border-bottom: 2px solid #f20000;
+    border-bottom: 2px solid #ffb500;
     padding-bottom: 4px;
 }
 
 .navbar-default ul li.active a {
-    color: #f20000;
+    color: #ffb500;
     background-color: transparent;
-    border-bottom: 2px solid #f20000;
+    border-bottom: 2px solid #ffb500;
     padding-bottom: 4px
 }
 
 .navbar-default ul li.active a:after {
-    color: #f20000;
+    color: #ffb500;
     width: 80%;
     padding-bottom: 4px
 }
@@ -486,7 +486,7 @@ iframe{
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover{
     background-color: transparent;
-    color: #f20000;
+    color: #ffb500;
 }
 
 .last {
@@ -498,7 +498,7 @@ iframe{
 #navbar-menu .nav .open>a:hover,
 #navbar-menu .nav .open>a:active,
 #navbar-menu .nav .open>a:visited{
-    border-color: #f20000;
+    border-color: #ffb500;
 }
 
 .dropdown-menu{
@@ -530,7 +530,7 @@ iframe{
 .navbar-default .navbar-nav>.open>a:hover,
 .navbar-default ul li.active ul a:hover,
 .navbar-default ul li.active ul a:focus{
-    color: #f20000;
+    color: #ffb500;
     background-color: transparent;
 }
 
@@ -554,7 +554,7 @@ iframe{
 }
 
 .navbar-default ul>li>ul a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 /* =======================  6. Footer  ====================== */
@@ -699,7 +699,7 @@ iframe{
 }
 
 .news-h a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .date {
@@ -761,7 +761,7 @@ footer:-ms-input-placeholder {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background-color: #f20000;
+    background-color: #ffb500;
 }
 
 .top-page{
@@ -789,7 +789,7 @@ footer:-ms-input-placeholder {
 }
 
 .icon-up-open-big:hover:before{
-    color:#f20000;
+    color:#ffb500;
 }
 
 /* """"""""""""""""""""""""""""""""""""   7. Homepage   """"""""""""""""""""""""""""""""""  */
@@ -940,6 +940,7 @@ footer:-ms-input-placeholder {
     font-size: 12px;
     width: 60%;
     float: right;
+    text-shadow: -1px -1px 4px #000000;
 }
 
 .slider-info .buttons{
@@ -1062,7 +1063,7 @@ footer:-ms-input-placeholder {
 }
 
 .events-title {
-    background-color: #f20000;
+    background-color: #ffb500;
     color: white;
     font-size: 15px;
     margin-left: -15px;
@@ -1086,12 +1087,12 @@ footer:-ms-input-placeholder {
 
 .icon-clock:before {
     content: "\e800";
-    color: #f20000;
+    color: #ffb500;
 }
 
 .gb-list .icon-location-1:before{
     content: "\e803";
-    color: #f20000;
+    color: #ffb500;
 }
 
 a.white {
@@ -1104,12 +1105,12 @@ a.white {
 
 a.white:hover,
 a.white:active {
-    color: #f20000;
+    color: #ffb500;
 }
 
 /* ===============  7.5. Number  =============== */
 .number {
-    background-color: #f20000;
+    background-color: #ffb500;
     color: #fefefe;
     padding: 65px 0 61px;
     font-size: 52px;
@@ -1653,7 +1654,7 @@ a.white:active {
         border-radius: 50%;
         background-color: #fff;
         padding: 8px 10px;
-        color: #f20000;
+        color: #ffb500;
     }
 
 
@@ -1792,7 +1793,7 @@ a.white:active {
     .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus,
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-        color: #f20000;
+        color: #ffb500;
         background-color: transparent;
         transition: color 0.5s ease-in-out;
     }
@@ -2144,7 +2145,6 @@ a.white:active {
 .banner{
     position: relative;
     height: 481px;
-    background-image: url("http://via.placeholder.com/1920x480");
     background-size: cover;
     background-position: 0 5%;
     background-repeat: no-repeat;
@@ -2267,7 +2267,7 @@ a.white:active {
 }
 
 .carousel-control:focus, .carousel-control:hover {
-    background-color: #f20000;
+    background-color: #ffb500;
 }
 
 #myCarousel .icon-left-open-mini:before {
@@ -2357,7 +2357,7 @@ a.white:active {
 
 .blockquote-cont span{
     font-size: 96px;
-    color: #f20000;
+    color: #ffb500;
     position: absolute;
     top: 0;
     left: 0;
@@ -2405,7 +2405,7 @@ blockquote{
     content:"\e816";
     margin-top: -2px;
     margin-right: 10px;
-    color: #f20000;
+    color: #ffb500;
 }
 
 .link-title h4{
@@ -2433,7 +2433,7 @@ blockquote{
 
 .pagination-1 li.active a,
 .pagination-1 li a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .pagination-1 .icon-right-open-mini:before {
@@ -2472,7 +2472,7 @@ blockquote{
 }
 
 .categories a:hover {
-    color: #f20000;
+    color: #ffb500;
 }
 
 .categories ul li:before {
@@ -2481,7 +2481,7 @@ blockquote{
     position: absolute;
     top: 7px;
     left: -12px;
-    background-color: #f20000;
+    background-color: #ffb500;
     width: 4px;
     height: 4px;
     -moz-border-radius: 50%;
@@ -2584,7 +2584,7 @@ table{
     position: relative;
     bottom: 0;
     left: 8px;
-    background-color: #f20000;
+    background-color: #ffb500;
     width: 3px;
     height: 3px;
     -moz-border-radius: 50%;
@@ -2593,7 +2593,7 @@ table{
 }
 
 .today{
-    background-color: #f20000;
+    background-color: #ffb500;
 }
 
 .calendar .prev,
@@ -2649,7 +2649,7 @@ table{
 
 .tags .active.buttons,
 .tags .buttons:hover{
-    background-color: #f20000;
+    background-color: #ffb500;
 }
 
 /* =============== 9.6. Instagram ================= */
@@ -3029,7 +3029,7 @@ img[alt="children-1"]{
 }
 
 .tags-group a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .post-single strong {
@@ -3069,7 +3069,7 @@ p.about-author-paragraph{
 }
 
 p.about-author-paragraph:hover a{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .about-author-paragraph a{
@@ -3123,7 +3123,7 @@ p.about-author-paragraph:hover a{
 }
 
 .time-reply span a{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .time-reply span a:hover{
@@ -3611,7 +3611,7 @@ p.about-author-paragraph:hover a{
 
 .about-product ul li a:hover,
 .about-product h4 a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .about-product p{
@@ -3624,7 +3624,7 @@ p.about-author-paragraph:hover a{
 }
 
 .about-product h4:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .about-product span{
@@ -3713,12 +3713,12 @@ p.about-author-paragraph:hover a{
 
 .tabs li:hover a{
     color: #fff;
-    background: #f20000;
+    background: #ffb500;
 }
 
 .tabs li.active a{
     color: #fff;
-    background: #f20000;
+    background: #ffb500;
 }
 
 .mb-causes{
@@ -3918,7 +3918,7 @@ p.about-author-paragraph:hover a{
 }
 
 .form-features input[type="submit"]{
-    background: #f20000;
+    background: #ffb500;
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -4267,7 +4267,7 @@ p.about-author-paragraph:hover a{
 .main-contact .icon-instagram:hover:before,
 .main-contact .icon-pinterest:hover:before,
 .main-contact .icon-vimeo:hover:before {
-    color: #f20000;
+    color: #ffb500;
 }
 
 .overlay{
@@ -4377,7 +4377,7 @@ p.about-author-paragraph:hover a{
 }
 
 .form-login .message a:hover {
-    color: #f20000;
+    color: #ffb500;
     text-decoration: none;
 }
 
@@ -4469,7 +4469,7 @@ p.about-author-paragraph:hover a{
 }
 
 .prev-next h3 a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .prev-causes{
@@ -4689,7 +4689,7 @@ p.about-author-paragraph:hover a{
 }
 
 .reviews .time-reply span a:hover{
-    color: #f20000;
+    color: #ffb500;
 }
 
 .reviews .time-reply .name{
