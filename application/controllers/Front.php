@@ -9,6 +9,8 @@ class Front extends CI_Controller {
 
         $component['banner'] = $this->load->view('front/component/slider','',TRUE);
         $component['news'] = $this->load->view('front/component/news','',TRUE);
+        $component['event_latest'] = $this->load->view('front/component/event_latest','',TRUE);
+        $component['event_upcoming'] = $this->load->view('front/component/event_upcoming','',TRUE);
 
         $data['content'] = $this->load->view('front/index',$component,TRUE);
 
