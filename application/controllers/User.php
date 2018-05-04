@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model(array('muser'));
+
+    }
+
     public function login(){
 
         $data['title'] = "Mandiri Bapekis Login Page";
@@ -46,8 +52,8 @@ class User extends CI_Controller {
                 'profile_picture' => $user->profile_picture,
                 'is_employee' => $user->is_employee,
             );
-            $this->session->set_userdata('userdb',$data);
-            $this->muser->insert_user_login_log($data['id']);
+            $this->session->set_userdata('userbapekis',$data);
+            //$this->muser->insert_user_login_log($data['id']);
             
             $last_page = $this->session->userdata('last_page_open');
             if($last_page){
@@ -59,7 +65,7 @@ class User extends CI_Controller {
                     if($page_redirect) redirect($page_redirect[0]->url);
                 }
                 else{
-                   redirect(''); 
+                   redirect('admin'); 
                 }
             }
         }else{
@@ -69,11 +75,14 @@ class User extends CI_Controller {
     }
     
     private function check_login($username, $password){
+         echo "check";
          if(empty($username) || empty($password)){
-             return false;
+            echo "kosong";
+            return false;
          }else{
-             if($this->muser->verify($username, $password)){return true;}
-             else{return false;}
+            echo "isi";
+            if($this->muser->verify($username, $password)){echo "ada"; return true; }
+            else{echo "gak ada"; return false;}
          }
     }
 }

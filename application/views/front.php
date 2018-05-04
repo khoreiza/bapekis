@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/owlcarousel/owl.carousel.min.css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/owlcarousel/owl.theme.default.min.css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/bootstrap-responsive.min.css">
+        
                 
                 <!-- Google fonts Poppins -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -57,11 +58,11 @@
 
             <!--=============================== Menu-Bar ========================-->
             <div id="menuBar-charity">
-                <?=$menu?>
+                <?=(isset($menu)) ? $menu : ""?>
             </div>
 
             <!--=============================== Content ========================-->
-            <?=$content?>
+            <?=(isset($content)) ? $content : ""?>
 
             <!--=============================== Footer ===========================-->
             <div id="footer">
@@ -69,12 +70,18 @@
             </div>
         </div>
 
-        <!-- JS code -->
+
+        <!-- JS code --> 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="<?=base_url()?>assets/template/js/bootstrap.min.js"></script>
+
+        <?php if($this->uri->segment(1) != "admin"){?>
+               
         <script src="<?=base_url()?>assets/template/js/jquery.spincrement.js"></script>
         <script src="<?=base_url()?>assets/template/js/owl.carousel.min.js"></script>
         <script src="<?=base_url()?>assets/template/js/scrollBar.js"></script>
-        <script src="<?=base_url()?>assets/template/js/bootstrap.min.js"></script>
+        
         <script src="<?=base_url()?>assets/template/js/myScript.js"></script>
+        <?php }?>
     </body>
 </html>
