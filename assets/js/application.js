@@ -957,7 +957,7 @@ function show_mysharing_detail(id){
     $(".loading_panel").show();
     $.ajax({
         type: "GET",
-        url: config.base+"mysharing/show_detail",
+        url: config.base+"sharing/show_detail",
         data: {id: id},
         dataType: 'json',
         cache: false,

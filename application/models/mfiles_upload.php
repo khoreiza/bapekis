@@ -56,14 +56,16 @@ class Mfiles_upload extends CI_Model {
     
 	function insert_files_upload_with_full_url($full_url,$modul, $submodul, $atch, $ownership_id){
 		$file_atch['full_url'] = $full_url.$atch['file_name'];
-		$user = $this->session->userdata('userdb');
+		$user = $this->session->userdata('userbapekis');
     	$file_atch['file_name'] = $atch['file_name'];
 		$file_atch['ext'] = $atch['file_ext'];
 		$file_atch['title'] =  $atch['raw_name'];
 		$file_atch['modul'] = $modul;
 		$file_atch['sub_modul'] = $submodul;
-		$file_atch['user_id'] = $user['id'];
-		$file_atch['created'] = date("Y-m-d h:i:s");
+		$file_atch['created_by'] = $user['id'];
+		$file_atch['created_at'] = date("Y-m-d h:i:s");
+        $file_atch['updated_by'] = $user['id'];
+        $file_atch['updated_at'] = date("Y-m-d h:i:s");
 		$file_atch['ownership_id'] = $ownership_id;
 		return $this->insert_files_upload($file_atch);
 	}
@@ -79,7 +81,7 @@ class Mfiles_upload extends CI_Model {
     
     function insert_files_upload_with_full_url_with_param($full_url,$modul, $submodul, $atch, $ownership_id,$program){
 		$file_atch['full_url'] = $full_url.$atch['file_name'];
-		$user = $this->session->userdata('userdb');
+		$user = $this->session->userdata('userbapekis');
     	$file_atch['file_name'] = $atch['file_name'];
 		$file_atch['ext'] = $atch['file_ext'];
         if(isset($program['title']) && $program['title']){
@@ -107,7 +109,7 @@ class Mfiles_upload extends CI_Model {
 	}
 	
     function insert_files_upload_with_param_input($modul, $submodul, $atch, $ownership_id){
-    	$user = $this->session->userdata('userdb');
+    	$user = $this->session->userdata('userbapekis');
     	$file_atch['file_name'] = $atch['file_name'];
 		$file_atch['ext'] = $atch['file_ext'];
 		$file_atch['title'] =  $atch['raw_name'];

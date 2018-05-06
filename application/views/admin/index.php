@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-xs-9">
                                         <h5 class="news_title"><a href="<?=base_url()?>user/management">User Data Management</a></h5>
-                                        <h6>Manage profile information for CISAM user</h6>
+                                        <h6>Manage profile information for BAPEKIS user</h6>
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +65,8 @@
                                         <img src="<?=base_url()?>assets/img/icon/web design - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>news">News Management</a></h5>
-                                        <h6>Manage RM mapping to Customer Data</h6>
+                                        <h5 class="news_title"><a href="<?=base_url()?>sharing">Sharing Management</a></h5>
+                                        <h6>Manage Sharing Data</h6>
                                     </div>
                                 </div>
                             </div>

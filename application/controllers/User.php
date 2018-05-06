@@ -101,12 +101,11 @@ class User extends CI_Controller {
 
         $data['title'] = "User Management Page - CBIC";
 
-
         $data['header'] = $this->load->view('admin/shared/first/header','',TRUE);   
         $data['footer'] = $this->load->view('admin/shared/first/footer','',TRUE);
-        $data['content'] = $this->load->view('data/user',$data,TRUE);
+        $data['content'] = $this->load->view('user/management',$data,TRUE);
 
-        $this->load->view('front',$data);
+        $this->load->view('admin/shared/front',$data);
         
     }
 
@@ -117,7 +116,7 @@ class User extends CI_Controller {
         $data['profile'] = $this->muser->get_user_by_id($id);
 
         $data['status'] = 1;
-        $data['html'] = $this->load->view('data/component/user/_detail',$data,TRUE);
+        $data['html'] = $this->load->view('user/component/management/_detail',$data,TRUE);
         $this->output->set_content_type('application/json')
                      ->set_output(json_encode($data));
         
@@ -127,14 +126,14 @@ class User extends CI_Controller {
     {
         $id = $this->input->get('id');
 
-        $data['pages'] = $this->mfiles_upload->get_db("name","asc","page","","","");
+        //$data['pages'] = $this->mfiles_upload->get_db("name","asc","page","","","");
 
         if($id){
             $data['profile'] = $this->muser->get_user_by_id($id);
         }
 
         $data['status'] = 1;
-        $data['html'] = $this->load->view('data/component/user/_form',$data,TRUE);
+        $data['html'] = $this->load->view('user/component/management/_form',$data,TRUE);
         $this->output->set_content_type('application/json')
                      ->set_output(json_encode($data));
         

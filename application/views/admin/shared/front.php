@@ -159,6 +159,7 @@
     </head>
     
     <body>
+        <div id="modal_finder"></div>
         <div class="page">
             <!--=============================== Header ===========================-->
             <div id="header">

@@ -157,7 +157,7 @@ class Muser extends CI_Model {
         //$this->db->join('cbdept', 'cbdept.id = user.cbdept_id');
         //$this->db->join('cbgroup', 'cbgroup.id = cbdept.cbgroup_id');
         $result = $this->db->get('user');
-        if($result->num_rows==1){
+        if($result){
             return $result->row(0);
         }else{
             return false;

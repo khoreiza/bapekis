@@ -59,7 +59,7 @@ function show_user_form(id){
     $(".loading_panel").show();
     $.ajax({
         type: "GET",
-        url: config.base+"data/user_form",
+        url: config.base+"user/user_form",
         data: {id: id},
         dataType: 'json',
         cache: false,
@@ -80,7 +80,7 @@ function show_user_data_detail(id){
     $(".loading_panel").show();
     $.ajax({
         type: "GET",
-        url: config.base+"data/user_detail",
+        url: config.base+"user/user_detail",
         data: {id: id},
         dataType: 'json',
         cache: false,
