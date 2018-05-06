@@ -1,0 +1,17 @@
+.search_data_tables{
+    width: 180px;
+}
+.product_title_segment{
+    padding: 15px 0 5px 0;
+    text-align: center;
+}
+.product_title_segment.active{
+    background-color: #d2d2d2;
+}
+.product_title_segment.active a{
+    color: black;
+}
+.product_title_segment a:hover{
+    color: black;
+    text-decoration: none;
+}

@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
 
     public function index()
     {
-        //$this->muser->insert_user_access_log("Access CBIC Data Quality Page");
+        $this->muser->insert_user_access_log("Access CBIC Data Quality Page");
         
         $data['title'] = "Admin Page - Bapekis";
 
@@ -30,7 +30,7 @@ class Admin extends CI_Controller {
         $data['footer'] = $this->load->view('admin/shared/first/footer','',TRUE);
         $data['content'] = $this->load->view('admin/index',$data,TRUE);
 
-        $this->load->view('front',$data);
+        $this->load->view('admin/shared/front',$data);
         
     }
 

@@ -53,7 +53,7 @@ class Muser extends CI_Model {
     }
 
     function insert_user_access_log($activity){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         $user_activity['user_id'] = $user['id'];
         $user_activity['activity'] = $activity;
         //$user_activity['datetime'] = date("Y-m-d H:i:s");
@@ -93,7 +93,7 @@ class Muser extends CI_Model {
     }
 
     function get_user_unit(){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         
         $dir = $this->mfiles_upload->get_db("id",'asc','cbdirectorate',array('directorate' => strtoupper($user['directorate'])),'','');
         ($dir) ? $arr_res['dir'] = $dir[0] : $arr_res['dir'] = "";
@@ -105,7 +105,7 @@ class Muser extends CI_Model {
     }
 
     function get_my_profile(){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         return $this->get_user_by_nik($user['nik']);
     }
 
@@ -175,7 +175,7 @@ class Muser extends CI_Model {
     }
 
     function get_user_buc(){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         if(isset(explode("Sector ", $user['dept'])[1])){
             $user_sector = explode("Sector ", $user['dept'])[1];
 
@@ -210,7 +210,7 @@ class Muser extends CI_Model {
     }
 
     function get_user_buc_general(){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         if(isset(explode("Sector ", $user['dept'])[1])){
             $user_sector = explode("Sector ", $user['dept'])[1];
 
@@ -489,7 +489,7 @@ class Muser extends CI_Model {
     }
 
     function get_my_shortcut(){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         $id = $user['id'];
         $this->db->select('user_shortcut.id as idu, user_id, shortcut_id, name, url, icon, description');
         $this->db->join('page','user_shortcut.shortcut_id = page.id');
@@ -600,7 +600,7 @@ class Muser extends CI_Model {
     }
 
     function update_user($user){
-    	$usr = $this->session->userdata('userdb');
+    	$usr = $this->session->userdata('userbapekis');
         $this->db->where('id', $usr['id']);
         return $this->db->update('user', $user);
     }
@@ -731,7 +731,7 @@ class Muser extends CI_Model {
 
 
     function get_user_directorate($arr_where){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         if($arr_where){
             $this->db->where($arr_where);
         }
@@ -745,7 +745,7 @@ class Muser extends CI_Model {
     }
 
     function get_user_all($arr_where){
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
         if($arr_where){
             $this->db->where($arr_where);
         }
@@ -776,7 +776,7 @@ class Muser extends CI_Model {
         $header = array();
         $arr_row_res['valid_row'] = 0;
         $arr_row_res['invalid_row'] = 0;
-        $user = $this->session->userdata('userdb');
+        $user = $this->session->userdata('userbapekis');
 
         $this->muser->shutdown_status();
 
@@ -856,7 +856,7 @@ class Muser extends CI_Model {
                     $this->mfiles_upload->update_db($data,$profile->id,'user');
                 }else{
                     $data['created_at'] = date('Y-m-d H:i:s');
-                    $data['created_by'] = $this->session->userdata('userdb')['id'];
+                    $data['created_by'] = $this->session->userdata('userbapekis')['id'];
 
                     $data['username'] = $arrres[$row][array_search("NIP", $header)];
                     $data['password'] = md5($arrres[$row][array_search("NIP", $header)]);

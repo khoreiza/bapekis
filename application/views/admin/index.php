@@ -1,5 +1,5 @@
 <?php 
-	$user = $this->session->userdata('userdbcisam');
+	$user = $this->session->userdata('userbapekis');
 ?>
 <style type="text/css">
     .menu_cbic_div{
@@ -24,10 +24,10 @@
 <div id="" class="container_broventh container_broventh_small">
     <div class="row">
     	<div>
-            <h2 class="page_title">CISAM Data Quality Page</h2>
-            <p class="broventh_page_description">Page to manage CISAM data. This page is for CISAM Administator only.</p>
+            <h2 class="page_title">BAPEKIS Admin Page</h2>
+            <p class="broventh_page_description">Page to manage Bapekis data. This page is for Bapekis Administator only.</p>
         </div>
-        <div class="col-md-8 column">
+        <div class="col-md-8">
             <div class="broventh_submenu_div" style="margin-top: 0px;">
                 <div class="broventh_submenu_title no_border">
                     <div class="row">
@@ -52,7 +52,7 @@
                                         <img src="<?=base_url()?>assets/img/icon/new contact - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>data/user">User Data Management</a></h5>
+                                        <h5 class="news_title"><a href="<?=base_url()?>user/management">User Data Management</a></h5>
                                         <h6>Manage profile information for CISAM user</h6>
                                     </div>
                                 </div>
@@ -62,10 +62,10 @@
                             <div class="broventh_card" style="border-top-color:<?=array_color_new(1)?>">
                                 <div class="row menu_card">
                                     <div class="col-xs-3 center_text">
-                                        <img src="<?=base_url()?>assets/img/icon/reception - office.png">
+                                        <img src="<?=base_url()?>assets/img/icon/web design - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title">Customer RM Management</h5>
+                                        <h5 class="news_title"><a href="<?=base_url()?>news">News Management</a></h5>
                                         <h6>Manage RM mapping to Customer Data</h6>
                                     </div>
                                 </div>
@@ -75,10 +75,10 @@
                             <div class="broventh_card" style="border-top-color:<?=array_color_new(5)?>">
                                 <div class="row menu_card">
                                     <div class="col-xs-3 center_text">
-                                        <img src="<?=base_url()?>assets/img/icon/hygrometer - office.png">
+                                        <img src="<?=base_url()?>assets/img/icon/calendar - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>data/parser">Data Uploader Page</a></h5>
+                                        <h5 class="news_title"><a href="<?=base_url()?>data/parser">Event Management</a></h5>
                                         <h6>Data parser and uploader menu for CBIC</h6>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                         <img src="<?=base_url()?>assets/img/icon/web design - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title">CISAM Theme Management</h5>
+                                        <h5 class="news_title">BAPEKIS Info</h5>
                                         <h6>Manage CISAM Theme such us logo, color and header</h6>
                                     </div>
                                 </div>
@@ -101,10 +101,10 @@
                             <div class="broventh_card" style="border-top-color:<?=array_color_new(11)?>">
                                 <div class="row menu_card">
                                     <div class="col-xs-3 center_text">
-                                        <img src="<?=base_url()?>assets/img/icon/web design - office.png">
+                                        <img src="<?=base_url()?>assets/img/icon/bar - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>category">Category Management</a></h5>
+                                        <h5 class="news_title"><a href="<?=base_url()?>category">Financial Management</a></h5>
                                         <h6>Manage Category Data</h6>
                                     </div>
                                 </div>
@@ -114,10 +114,10 @@
                             <div class="broventh_card" style="border-top-color:<?=array_color_new(9)?>">
                                 <div class="row menu_card">
                                     <div class="col-xs-3 center_text">
-                                        <img src="<?=base_url()?>assets/img/icon/web design - office.png">
+                                        <img src="<?=base_url()?>assets/img/icon/images - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>data/tutorial">Page & Tutorial</a></h5>
+                                        <h5 class="news_title"><a href="<?=base_url()?>data/tutorial">Banner Picture</a></h5>
                                         <h6>Manage Page & Tutorial Data</h6>
                                     </div>
                                 </div>

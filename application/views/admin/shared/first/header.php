@@ -5,7 +5,6 @@
 	$user = $this->session->userdata('userbapekis'); 
 
 	echo $this->load->view('admin/shared/first/component/header/_css','',TRUE);
-	echo $this->load->view('admin/shared/first/component/header/_sub_menu_sidenav','',TRUE);
 ?>
 
 

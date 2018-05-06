@@ -1,0 +1,34 @@
+/*General*/
+.gradient_numb{
+	color:#007aff;
+	background: -webkit-linear-gradient(#eee,#007aff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+}
+.apple_div{
+	background: -webkit-linear-gradient(#34aadc,#5ac8fa); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#5ac8fa, blue); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(blue,#5ac8fa); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#007aff,#5ac8fa); /* Standard syntax */
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+   border: 0px solid #007aff;
+   border-bottom: 0px solid #007aff;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   /*background-color: #DEF4FE;*/
+   background-color: #e3e3e3;
+}
+
+.btn-link.nav_pipeline{
+	color:#08c;
+}

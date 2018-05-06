@@ -19,13 +19,13 @@
                         </div>
                         <div class="social-link footer-social-link">
                             <ul>
-                                <li><a href="https://www.instagram.com/mandiribapekis2018" class="circle c-4"><i
+                                <li><a href="https://www.instagram.com/mandiribapekis2018" class="circle_sosmed c-4"><i
                                         class="fa fa-instagram"></i></a>
                                 </li>
-                                <li><a href="https://www.facebook.com/mandiri.bapekis.5" class="circle c-2"><i
+                                <li><a href="https://www.facebook.com/mandiri.bapekis.5" class="circle_sosmed c-2"><i
                                         class="icon-facebook "></i></a>
                                 </li>
-                                <li><a href="https://www.twitter.com/mandiribapekis" class="circle c-1"><i
+                                <li><a href="https://www.twitter.com/mandiribapekis" class="circle_sosmed c-1"><i
                                         class="fa fa-twitter"></i></a>
                                 </li>
                             </ul>

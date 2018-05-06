@@ -108,7 +108,7 @@ hr{
 }
 .container_brobot{
 	width:100%; max-width:1320px; margin:0 auto;
-	margin-top: 10px;
+	margin-top: 70px;
 	padding: 5px 20px 20px 20px;
 }
 
@@ -1103,8 +1103,22 @@ body a:hover{
 	color:white;
 }
 
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
 
+#wrap, #fill, #fill_scroll > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
 
+#footer > .container {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
 
 /* Validate CSS
 -------------------------------------------------- */
