@@ -43,9 +43,9 @@ class Mmysharing extends CI_Model {
         if($ua_data){$ua = $ua_data[0]->id;}
         //echo $uid;
         
-        if(!is_user_role($user,"SYSTEM ADMINISTRATOR")){
+        /*if(!is_user_role($user,"SYSTEM ADMINISTRATOR")){
             $this->db->where("(mysharing.created_by = ".$user['id']." OR ((position_allowed LIKE '%$reader%' OR position_allowed LIKE '%all%' OR position_allowed = '') AND (group_allowed LIKE '%$ua%' OR group_allowed LIKE '%all%' OR group_allowed = '') AND (mysharing.user_allowed = '')) OR  mysharing.user_allowed LIKE '%;$uid;%')");
-        }
+        }*/
         
         if($param == "category"){
             $this->db->where('category.category',$category);

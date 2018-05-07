@@ -84,10 +84,10 @@ class Sharing extends CI_Controller {
         $offset = $this->input->get('offset');
         $type = $this->input->get('type');
 
-        $limit = 14;
+        $limit = 12;
 
         if($type == "first_time"){
-            //$limit = 5;
+            $limit = 14;
             $data['first_time'] = true;
             $offset = 0;
         }

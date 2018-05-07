@@ -1,6 +1,6 @@
 <style type="text/css">
     .banner{
-        background-image: url("http://via.placeholder.com/1920x480");
+        background-image: url("<?=base_url()?>assets/img/general/Blur Background.png");
     }
 </style>
 
