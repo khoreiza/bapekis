@@ -32,7 +32,7 @@ class Sharing extends CI_Controller {
         $data['list_of_sharing'] = $this->load->view('sharing/component/index/_sharings',$data,TRUE);
 
 
-        /************* GET CATEGORIES SECTION *************/
+        /************* GET CATEGORIES SECTION WITH PICTURE *************
         $join[0] = array('table' => 'category','in' => 'mysharing.category_id = category.id', 'how' => 'left');
         
         $files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
@@ -42,7 +42,15 @@ class Sharing extends CI_Controller {
         $join[2] = array('table' => $table_max_id, 'in' => 's.max_id = mysharing.id');
 
         $select = "mysharing.*, category.category, files_upload.full_url";
-        $data['categories'] = $this->mfiles_upload->get_db_join('mysharing.id','desc','mysharing','',$select,'','',$join);
+        $data['categories'] = $this->mfiles_upload->get_db_join('mysharing.id','desc','mysharing','',$select,'','',$join);*/
+
+
+
+        /****** CATEGORY *******/
+        $select_cat = 'category, count(category_id) as count, category_id';
+        //$arr_where_cat = array('modul' => 'market', 'sub_modul' => $data['page']);
+        $join[0] = array("table" => "category", "in" => "mysharing.category_id = category.id", "how" => "left");
+        $data['categories'] = $this->mfiles_upload->get_db_join("category","asc","mysharing",'',$select_cat,"",'category_id',$join);
         /************* END of GET CATEGORIES SECTION *************/
         
 
@@ -76,11 +84,12 @@ class Sharing extends CI_Controller {
         $offset = $this->input->get('offset');
         $type = $this->input->get('type');
 
-        $limit = 12;
+        $limit = 14;
 
         if($type == "first_time"){
-            $limit = 5;
+            //$limit = 5;
             $data['first_time'] = true;
+            $offset = 0;
         }
 
         $data['sharings'] = $this->mmysharing->get_detil("all",$limit,$offset,$type);
@@ -278,16 +287,11 @@ class Sharing extends CI_Controller {
         //$sub_modul = $this->input->get('submodul'); 
     	if($id){
             $this->mmysharing->delete_mysharing($id);
-            if($type=='tokosidia'){
-                $this->mfiles_upload->delete_with_files_ownership($id,$type,'attach');
-                $this->mfiles_upload->delete_with_files_ownership($id,$type,'img');
-                $this->mupdates->delete_with_ownership_id("Tokosidia",$id);
-            }
-            else{
-                $this->mfiles_upload->delete_with_files_ownership($id,'my sharing','my sharing');
-                $this->mfiles_upload->delete_with_files_ownership($id,'my sharing','img');
-                $this->mupdates->delete_with_ownership_id("Internal Sharing",$id);
-            }
+            
+            $this->mfiles_upload->delete_with_files_ownership($id,'my sharing','my sharing');
+            $this->mfiles_upload->delete_with_files_ownership($id,'my sharing','img');
+            //$this->mupdates->delete_with_ownership_id("Internal Sharing",$id);
+            
             $json['status'] = true;
         }
         else

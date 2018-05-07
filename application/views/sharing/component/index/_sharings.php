@@ -1,6 +1,5 @@
 <style type="text/css">
     .mysharing_member{
-        border-bottom: 1px solid #f2f2f2;
         margin-bottom: 0px;
     }
 </style>
@@ -11,8 +10,8 @@
     <?php if($sharings){?>
         <div class="row">
             <?php if(isset($first_time) && $first_time){ $sharing = $sharings[0]?>
-                <div class="col-md-6 mysharing_member" id="<?=$sharing->mysharing_id?>" style="padding: 10px 20px 5px 20px;">
-                    <div style="height: 556px; overflow: hidden;">
+                <div class="col-md-9 mysharing_member" id="<?=$sharing->mysharing_id?>" style="padding: 10px 20px 5px 20px;">
+                    <div style="height: 238px; overflow: hidden;">
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-10">
                                 <div class="photo_frame_circle" style="width: 20px; height: 20px; margin: 0px 10px 0 0px; float: left;">
@@ -35,18 +34,19 @@
                                 <?php }?>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div style="width: 100%; height: 325px; overflow: hidden; padding: 0px;" id="<?=$sharing->id?>_banner_sharing_parent">
                                     <img id="<?=$sharing->id?>_banner_sharing" style="width: 100%;" src="<?=base_url().$sharing->full_url?>">
                                 </div>
                                 <script type="text/javascript">
                                     //or however you get a handle to the IMG
-                                    adjust_img_size('<?=$sharing->id?>_banner_sharing');
+                                    //adjust_img_size('<?=$sharing->id?>_banner_sharing');
                                 </script>
                             </div>
-                            <div class="col-md-12" style="margin-top: 10px;">
-                                <span class="category_label"><?=$sharing->category?></span>
+                            <div class="col-md-6" style="margin-top: 0px;">
+                                <span class="category_label"><?=($sharing->category) ? $sharing->category : "UNCATEGORIZED"?></span>
                                 <h3 style="margin-top: 10px;" class="news_title">
                                     <a onclick="show_mysharing_detail(<?=$sharing->mysharing_id?>);"><?=get_long_text_real($sharing->title,90)?></a>
                                 </h3>
@@ -61,7 +61,7 @@
 
             <?php foreach ($sharings as $sharing) {?>
                 <div id="mysharing_<?=$sharing->mysharing_id?>" class="col-md-3 mysharing_member" style="padding: 10px 20px 5px 20px; margin-bottom: 10px;">
-                    <div style="height: 265px; overflow: hidden; ">
+                    <div style="height: 255px; overflow: hidden; ">
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-10">
                                 <div class="photo_frame_circle" style="width: 20px; height: 20px; margin: 0px 10px 0 0px; float: left;">

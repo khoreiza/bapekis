@@ -10,21 +10,16 @@
         overflow: hidden;
     }
     h4{margin:0px;}
-    .news_modul{
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-    }
 </style>
 
 <?php 
-	$user = $this->session->userdata('userbapekis');
+	$user = $this->session->userdata('userbapekis'); $user_disp="";
 ?>
 
 
 <div class="container_broventh container_broventh_small">
     <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e2e2e2">
-        <a href="<?=base_url()?>market" style="font-size: 12px;"><span class="glyphicon glyphicon-menu-left"></span> ADMIN PAGE</a>
-        <h1 class="center_text front_title" style="margin-top: 10px">Bapekis Sharing Management</h1>
+        <h1 class="center_text front_title">CBIC Internal Sharing Page</h1>
         <div class="row" style="margin-top: 40px;">
             <div class="col-md-8" style="padding-top: 15px;">
                 <a style="margin-right: 5px;" onclick="show_sharing_form('','internal');" class="btn btn-broventh btn-circle btn-first"><span class="glyphicon glyphicon-pencil"></span></a> <span>Add New Sharing</span>
@@ -43,44 +38,47 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-9 column" style="padding-right: 20px;">
-            <div id="category_title_div" style="display: none; margin-bottom: 20px;">
-                <div class="right_text"><a href="<?=base_url().$this->uri->uri_string()?>" class="btn btn-circle btn-third btn-broventh">X</a></div>
-                <h2 id="category_title" class="center_text news_title" style=""></h2>
-            </div>
-            <div id="loading_sign" class="center_text"></div>
-            
-            <div id="list_news_section">
-                <div id="list_sharings_div">
-                    <?php /*$list_news_view*/ ?>
-                </div>
-                <?php if($num_sharings >= count($sharings)){?>
-                    <div class="center_text" id="end_of_sharings" style="margin-top: 20px;">
-                        <div class="center_text"><a class="btn btn-broventh btn-fifth" onclick="load_more_sharings()">LOAD MORE</a></div>
-                        <div id="loading"></div>
-                    </div>
-                <?php }?>
-            </div>
-        </div>
-        <div class="col-md-3 column">
-            <div class="broventh_card">
-                <h4 class="news_title center_text">Market Category</h4>
-                <div style="margin-top: 20px">
-                    <?php foreach($categories as $categ){if($categ->count){?>
-                        <a onclick="show_market_category_news(<?=$categ->category_id?>,'<?=$categ->category?>','')">
-                            <div class="row" style="margin-top: 5px;">
-                                <div class="col-xs-10"><?=($categ->category) ? $categ->category : "Others"?></div>
-                                <div class="col-xs-2 right_text">(<?=$categ->count?>)</div>
-                            </div>
-                        </a>
-                    <?php }}?>
-                </div>
-            </div>
-        </div>
+    <div style="margin-bottom: 20px;">
+        <div id="list_of_sharing"></div>
     </div>
-</div>
+    <div id="category_view" style="border-bottom: 1px solid #f2f2f2; padding-bottom: 40px; margin-bottom: 20px;">
+        <div class="center_text">
+            <div style="margin: 20px 0 0px 0;">
+                <span style="font-size: 22px; padding:10px 20px 5px 20px; border-bottom:3px solid <?=array_color_new(10);?>; color:<?=array_color_new(10);?>">CATEGORIES</span>
+            </div>
+        </div>
+        <div class="row" style="width: 100%; max-width: 760px; margin:0 auto; margin-top: 40px;">
+            <?php foreach($categories as $category){ if($category->category){?>
+                <div class="col-md-3" style="height: 190px; padding: 0;">
+                    <div>
+                        <div style="width: 100%; height: 190px; overflow: hidden; padding: 0px; background-color: #e2e2e2">
+                            <img id="<?=$category->id?>_banner_category" style="width: 100%;" src="<?=base_url().$category->full_url?>">
+                        </div>
+                        <div style="margin-top: -40px;">
+                            <div style="background-color: black; height: 40px; position: relative; z-index: 100; opacity: 0.6"></div>
+                            <h4 style="padding: 10px 10px 10px 10px; margin-top: -35px; position: relative; z-index: 102">
+                                <a style="color: white" onclick="show_category_sharings('<?=$category->category?>','first')"><?=$category->category?></a>
+                            </h4>
+                        </div>
+                        <script type="text/javascript">
+                            adjust_img_size('<?=$category->id?>_banner_category');
+                        </script>
+                    </div>
+                </div>
+            <?php }}?>
+        </div>
+        <div id="loading_category" class="center_text"></div>
+    </div>
+    <div id="content_of_sharings">
 
+    </div>
+    <?php if($num_sharings >= count($sharings)){?>
+        <div class="center_text" id="end_of_sharings" style="margin-top: 20px;">
+            <div class="center_text"><a class="btn btn-broventh btn-fifth" onclick="load_more_sharings()">LOAD MORE</a></div>
+            <div id="loading"></div>
+        </div>
+    <?php }?>
+</div>
 <script>
     $(document).ready(function() {
         $("#lightgallery").lightGallery({
@@ -88,8 +86,6 @@
         });
         load_more_sharings('first_time');
     });
-
-
     function show_sharing_form(id){
         $(".loading_panel").show();
         $.ajax({
@@ -109,8 +105,13 @@
         });
     }
 
+
     function load_more_sharings(type){
-        
+        if(type == "first_time"){
+            $('#list_of_sharing').html('');
+            $('#content_of_sharings').html('');
+        }
+
         var next_member = $('.mysharing_member').length;
         if(next_member != <?=$num_sharings?>){
             $('#loading').html("<img src='"+config.base+"assets/img/loader_images/Preloader_3.gif' />");
@@ -123,19 +124,16 @@
                 success: function(resp){
                     if(resp.status==1){
                         if(type == "first_time"){
-                            $('#list_sharings_div').html(resp.html);
-                            //load_more_sharings();
+                            $('#list_of_sharing').html(resp.html);
+                            load_more_sharings();
                         }
                         else{
-                            $('#list_sharings_div').append(resp.html);
-                            /*
                             if(type == "refresh"){
                                 $('#content_of_sharings').html(resp.html);
                             }else{
                                 $('#content_of_sharings').append(resp.html);
-                            }*/
+                            }
                         }
-                        //$('#list_sharings_div').append(resp.html);
                     }
                     if($('.mysharing_member').length == <?=$num_sharings?> || resp.status==0){
                         $('#end_of_sharings').html('');
@@ -145,6 +143,7 @@
             });
         }
     }
+
 
     function show_category_sharings(category,type){
         if(type == "first"){
@@ -171,7 +170,7 @@
         });
     }
      
-    
+	
     function search_sharing(e,event,hash){
         var search = $( "#search_value" ).val();
         //$('#search_result').html(key_in);
@@ -216,7 +215,7 @@
             confirm: function(){  
                 $.ajax({
                     type: "GET",
-                    url: config.base+"sharing/delete_mysharing",
+                    url: config.base+"mysharing/delete_mysharing",
                     data: {id:id, type:type},
                     dataType: 'json',
                     cache: false,
