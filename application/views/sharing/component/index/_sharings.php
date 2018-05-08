@@ -11,14 +11,14 @@
         <div class="row">
             <?php if(isset($first_time) && $first_time){ $sharing = $sharings[0]?>
                 <div class="col-md-9 mysharing_member" id="<?=$sharing->mysharing_id?>" style="padding: 10px 20px 5px 20px;">
-                    <div style="height: 238px; overflow: hidden;">
+                    <div style="height: 232px; overflow: hidden;">
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-10">
                                 <div class="photo_frame_circle" style="width: 20px; height: 20px; margin: 0px 10px 0 0px; float: left;">
                                     <?=employee_photo_thumb_small($sharing)?>
                                 </div>
                                 <h5 class="news_title" style="float: left; padding-top: 5px;">
-                                    <a onclick="show_user_detail(<?=$sharing->created_by?>)"><?=$sharing->full_name?></a>
+                                    <a onclick="show_user_detail(<?=$sharing->created_by?>)"><?=get_long_text($sharing->full_name,100)?></a>
                                     <?=dot_devider()?>
                                     <?=date('j M y', strtotime($sharing->date))?>
                                 </h5>
@@ -46,12 +46,12 @@
                                 </script>
                             </div>
                             <div class="col-md-6" style="margin-top: 0px;">
-                                <span class="category_label"><?=($sharing->category) ? $sharing->category : "UNCATEGORIZED"?></span>
+                                <span class="category_label"><?=($sharing->category) ? $sharing->category : "OTHERS"?></span>
                                 <h3 style="margin-top: 10px;" class="news_title">
                                     <a onclick="show_mysharing_detail(<?=$sharing->mysharing_id?>);"><?=get_long_text_real($sharing->title,90)?></a>
                                 </h3>
                                 <div style="margin-top: 10px">
-                                    <?php echo long_text_real(strip_tags($sharing->description),230)?>
+                                    <?php echo long_text_real(strip_tags($sharing->description),290)?>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                     <?=employee_photo_thumb_small($sharing)?>
                                 </div>
                                 <h6 class="news_title" style="float: left; padding-top: 5px;">
-                                    <a onclick="show_user_detail(<?=$sharing->created_by?>)"><?=get_user_nick_name($sharing)?></a>
+                                    <a onclick="show_user_detail(<?=$sharing->created_by?>)"><?=get_long_text(get_user_nick_name($sharing),100)?></a>
                                     <?=dot_devider()?>
                                     <?=($sharing->date != "0000-00-00") ? date('j M y', strtotime($sharing->date)) : date('j M y', strtotime($sharing->created_at))?>
                                 </h6>

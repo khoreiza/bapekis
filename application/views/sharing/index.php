@@ -23,7 +23,7 @@
 
 <div class="container_broventh container_broventh_small">
     <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e2e2e2">
-        <a href="<?=base_url()?>market" style="font-size: 12px;"><span class="glyphicon glyphicon-menu-left"></span> ADMIN PAGE</a>
+        <a href="<?=base_url()?>admin" style="font-size: 12px;"><span class="glyphicon glyphicon-menu-left"></span> ADMIN PAGE</a>
         <h1 class="center_text front_title" style="margin-top: 10px">Bapekis Sharing Management</h1>
         <div class="row" style="margin-top: 40px;">
             <div class="col-md-8" style="padding-top: 15px;">
@@ -65,7 +65,7 @@
         </div>
         <div class="col-md-3 column">
             <div class="broventh_card">
-                <h4 class="news_title center_text">Market Category</h4>
+                <h4 class="news_title center_text">Sharing Category</h4>
                 <div style="margin-top: 20px">
                     <?php foreach($categories as $categ){if($categ->count){?>
                         <a onclick="show_market_category_news(<?=$categ->category_id?>,'<?=$categ->category?>','')">
@@ -110,7 +110,7 @@
     }
 
     function load_more_sharings(type){
-        
+
         var next_member = $('.mysharing_member').length;
         if(next_member != <?=$num_sharings?>){
             $('#loading').html("<img src='"+config.base+"assets/img/loader_images/Preloader_3.gif' />");

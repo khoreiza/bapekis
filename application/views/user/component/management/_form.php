@@ -32,7 +32,7 @@
         </div>
     </div><hr>
     <form class="form-horizontal form-borventh" 
-          action="<?=base_url()?>data/store_user/<?=(isset($profile) && $profile->id) ? $profile->id : ''?>" 
+          action="<?=base_url()?>user/store_user/<?=(isset($profile) && $profile->id) ? $profile->id : ''?>" 
           method ="post" id="form_input_room" role="form" enctype="multipart/form-data" style="padding: 10px;">
 
         <input type="hidden" id="pp_not_file" name="pp_not_file" value="">
@@ -140,7 +140,7 @@
                 <label class="checkbox-inline">
                     <input name="role[]" type="checkbox" value="SYSTEM ADMINISTRATOR" <?php if(isset($profile) && in_array("SYSTEM ADMINISTRATOR",$arr_role)){echo "checked";}?>> System Adm.
                 </label>
-                <label class="checkbox-inline">
+                <?php /*<label class="checkbox-inline">
                     <input name="role[]" type="checkbox" value="ACCOUNT PLAN ADMINISTRATOR" <?php if(isset($profile) && in_array("ACCOUNT PLAN ADMINISTRATOR",$arr_role)){echo "checked";}?>> AP Adm.
                 </label>
                 <label class="checkbox-inline">
@@ -171,9 +171,6 @@
                     <input name="role[]" type="checkbox" value="RAKER ADMINISTRATOR" <?php if(isset($profile) && in_array("RAKER ADMINISTRATOR",$arr_role)){echo "checked";}?>> Raker Adm.
                 </label>
                 <label class="checkbox-inline">
-                    <input name="role[]" type="checkbox" value="GENERAL VIEWER" <?php if(isset($profile) && in_array("GENERAL VIEWER",$arr_role)){echo "checked";}?>> General Viewer
-                </label>
-                <label class="checkbox-inline">
                     <input name="role[]" type="checkbox" value="PERFORMANCE VIEWER" <?php if(isset($profile) && in_array("PERFORMANCE VIEWER",$arr_role)){echo "checked";}?>> Performance Viewer
                 </label>
                 <label class="checkbox-inline">
@@ -191,6 +188,11 @@
                 <label class="checkbox-inline">
                     <input name="role[]" type="checkbox" value="LEGAL ADMINISTRATOR" <?php if(isset($profile) && in_array("LEGAL ADMINISTRATOR",$arr_role)){echo "checked";}?>> Legal Adm.
                 </label>
+                */?>
+                <label class="checkbox-inline">
+                    <input name="role[]" type="checkbox" value="GENERAL VIEWER" <?php if(isset($profile) && in_array("GENERAL VIEWER",$arr_role)){echo "checked";}?>> General Viewer
+                </label>
+                
             </div><div style="clear:both"></div>
         </div><hr>
         <div class="center_text">
