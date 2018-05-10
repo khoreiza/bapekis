@@ -47,7 +47,7 @@
 					</button>
 					<ul id="user_menu_dropdown" class="dropdown-menu pull-right" aria-labelledby="dropdownMenu2">
 						<li role="presentation" style="padding:5px 0 5px;">
-							<a role="menuitem" tabindex="-1" href="<?php echo base_url()?>" style="color:#189cb8;">
+							<a role="menuitem" tabindex="-1" href="<?php echo base_url()?>admin" style="color:#189cb8;">
 								<img style="height:18px; margin-right:10px;" src="<?php echo icon_url('timeline - office.png')?>"> Home
 							</a>
 						</li>
@@ -103,7 +103,7 @@
 						</div>
 						<div class="col-xs-4 submenu_left_not_show submenu_user_notif">
 							<div class="border_icon_submenu">
-								<a href="<?php echo base_url()?>"><span class="glyphicon glyphicon-home" style=""></span></a>
+								<a href="<?php echo base_url()?>admin"><span class="glyphicon glyphicon-home" style=""></span></a>
 							</div>
 						</div>
 					</div>

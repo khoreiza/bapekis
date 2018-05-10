@@ -97,6 +97,19 @@
             <div style="margin-top: 40px;">
                 <?php if($news){?>
                     <div class="row">
+                        
+                        <?php if(is_user_role($user,"EVENT ADMINISTRATOR")){?>
+                            <div class="col-md-4 center_text" style="padding-top: 0px;">
+                                <div class="broventh_card" style="height: 222px;">
+                                    <div style="padding-top: 40px;">
+                                        <a onclick="show_input_form('','calendar news','<?=get_long_text($event->modul,100)?>','<?=$event->id?>');" class="btn btn-broventh btn-first btn-circle"><span class="glyphicon glyphicon-plus"></span></a>
+                                        <div style="margin-top: 20px">Add new Event News, Event Documentation, or Others Information related to this Event</div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }?>
+
+
                         <?php foreach($news as $row){?>
                             <div class="col-md-4" id="news_content_<?=$row->id?>">
                                 <div class="broventh_card">
@@ -128,10 +141,7 @@
                                 </div>
                             </div>
                         <?php }?>
-                        <div class="col-md-4 center_text" style="padding-top: 80px;">
-                            <a onclick="show_input_form('','calendar news','<?=get_long_text($event->modul,100)?>','<?=$event->id?>');" class="btn btn-broventh btn-first btn-circle"><span class="glyphicon glyphicon-plus"></span></a>
-                            <div>Event News</div>
-                        </div>
+                        
                     </div>
                 <?php }else{?>
                     <div class="center_text">
