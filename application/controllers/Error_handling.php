@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Error extends CI_Controller {
+class Error_handling extends CI_Controller {
 
-    public function page_missing(){
+    public function index(){
         
         $data['title'] = "Mandiri Bapekis Error 404 Page";
 
