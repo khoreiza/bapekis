@@ -67,8 +67,6 @@
         <link href="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/css/jquery.dataTables.css" rel="stylesheet"/>
         <link href="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/css/buttons.dataTables.min.css" rel="stylesheet"/>
 
-        <link rel="stylesheet" href="<?=base_url()?>assets/template/css/manual.css">
-
         <script>
             var config = {
                  base: "<?php echo base_url(); ?>"
@@ -155,20 +153,20 @@
         </script>
 
         <link href="<?php echo base_url();?>assets/css/shared.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="<?=base_url()?>assets/template/css/manual.css">
     </head>
     
     <body>
         <div id="modal_finder"></div>
-        <div class="page">
+        <div class="page" style="height: 100%;">
             <!--=============================== Header ===========================-->
             <div id="header">
                 <?=$header?>
             </div>
 
             <!--=============================== Content ========================-->
-            <?=(isset($content)) ? $content : ""?>
-
+            <div id="body-content" class="container-fluid" style="min-height:89%;">
+                <?=(isset($content)) ? $content : ""?>
+            </div>
             <!--=============================== Footer ===========================-->
             <div id="footer">
                 <?=$footer?>

@@ -76,7 +76,7 @@ function adjust_img_size(div, type){
 
         var parent = $('#'+div+"_parent");
         //alert("<?=$sharing->id?> "+width+" "+height);
-        if(width > height || (width/height > 1.6)){
+        if((width > height) || (width/height > 1.6)){
             
             img.height('100%');
             img.width('');

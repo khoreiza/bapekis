@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
         if(!$session){
             $url = current_url();
             $this->session->set_userdata('last_page_open',$url);
-            redirect('user/login');
+            redirect('account/login');
         }
 
         if(!is_user_role($session,"SYSTEM ADMINISTRATOR")){

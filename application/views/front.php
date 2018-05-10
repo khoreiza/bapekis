@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/bootstrap-responsive.min.css">
         
                 
-                <!-- Google fonts Poppins -->
+        <!-- Google fonts Poppins -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

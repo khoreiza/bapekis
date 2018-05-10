@@ -37,7 +37,7 @@ src: url('../fonts/MyriadPro-Light.woff') format('woff');
 
 html,
 body {
-  height: 100%;
+  height: 100% !important;
   background-color:white;/*#f0eff4;*/
   font-size:14px;
   font-family: "titillium";
@@ -1199,4 +1199,268 @@ input.valid{
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+
+
+
+
+
+
+/* =======================  6. Footer  ====================== */
+.black {
+    background-color: #030303;
+    color: white;
+}
+
+.red-btn {
+    background: #ffb500;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.red-btn:hover {
+    background: #060606;
+}
+
+.red-btn-0:hover,
+.red-btn-5:hover,
+.red-btn-form:hover{
+    background: #fff;
+    color:#ffb500;
+}
+
+.footer-container {
+    position: relative;
+    padding: 136px 0 84px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-content h4 {
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.footer-about-info{
+    margin-left: -2px;
+}
+
+.footer-about-info p {
+    margin-bottom: 27px;
+    margin-top: -15px;
+    max-width: 325px;
+    line-height: 1.8;
+}
+
+.footer-about-info ul{
+    margin-left: -4px;
+}
+
+.footer-about-info li {
+    margin-bottom: 12px;
+}
+
+.footer-about-info i {
+    margin-right: 2px;
+}
+
+.footer-about-info .icon-location-1:before {
+    content: "\e803";
+    color: #fff;
+}
+
+.icon-phone:before {
+    content: "\e807";
+    color: #fff;
+}
+
+.icon-mail:before {
+    content: "\e805";
+    color: #fff;
+}
+
+.icon-tumblr:before {
+    content: "\f315";
+    color: #fff;
+}
+
+.footer-social-link ul {
+    margin-top: 44px;
+}
+
+.social-link ul li {
+    display: inline-block;
+    float: left;
+    padding: 0 2px;
+}
+
+.icon-facebook:before {
+    content: "\f30c";
+    color: #fff;
+}
+
+.icon-instagram:before {
+    content: "\f16d";
+    color: #fff;
+}
+
+.icon-pinterest:before {
+    content: "\f312";
+    color: #fff;
+}
+
+.icon-vimeo:before {
+    content: "\f306";
+    color: #fff;
+}
+
+.circle_sosmed {
+    display: block;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    text-align: center;
+    line-height: 3.3em;
+    margin-right: 0;
+    width: 45px;
+    height: 45px;
+}
+
+.circle_sosmed:hover{
+    -webkit-transform: scale(1.18);
+    -ms-transform: scale(1.18);
+    transform: scale(1.18);
+}
+
+.circle_sosmed.c-1 {
+    background-color: #25a9df;
+}
+
+.circle_sosmed.c-2 {
+    background-color: #29378f;
+}
+
+.circle_sosmed.c-3 {
+    background-color: #ed1b23;
+}
+
+.circle_sosmed.c-4 {
+    background-color: #d91c5c;
+}
+
+.news-1,
+.news-2 {
+    margin-bottom: 35px;
+}
+
+.news {
+    display: inline-block;
+    margin-left: 9px;
+    width: 222px;
+}
+
+.news-h {
+    margin-top: -5px;
+    line-height: 1.7;
+    font-weight: 500;
+    max-width: 210px;
+}
+
+.news-h a:hover{
+    color: #ffb500;
+}
+
+.date {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: #b9b9b9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#copyright {
+    padding: 37px 0;
+    text-align: center;
+    border-top: 1px solid #454545;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    border-radius: 0;
+    height: 50px;
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+footer::-webkit-input-placeholder {
+    color: #fff;
+}
+
+footer:-moz-placeholder {
+    color: #fff;
+}
+
+footer::-moz-placeholder {
+    color: #fff;
+}
+
+footer:-ms-input-placeholder {
+    color: #fff;
+}
+
+.red-btn-form {
+    margin-top: 6px;
+    padding: 14px 28px;
+    border: none;
+}
+
+.top {
+    position: absolute;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #ffb500;
+}
+
+.top-page{
+    top: 81px;
+    right: 49px;
+}
+
+.top:hover{
+    background: #fff;
+}
+
+.back-to-top-mob{
+    display: none;
+}
+
+.top-mob{
+    bottom: 10px;
+    right: 10px;
+}
+
+.icon-up-open-big:before {
+    content: "\e810";
+    color: #fff;
+    padding: 16px 28px 19px 15px;
+}
+
+.icon-up-open-big:hover:before{
+    color:#ffb500;
 }

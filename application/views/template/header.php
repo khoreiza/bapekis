@@ -9,7 +9,7 @@
 
             <div class="col-md-4 col-sm-4 col-xs-12 login lh">
                 <i class="fa fa-lock" aria-hidden="true"></i>
-                <a href="login.html">Login</a>
+                <a href="<?=base_url()?>account/login">Login</a>
             </div>
 
         </div>

@@ -78,7 +78,7 @@
                                         <img src="<?=base_url()?>assets/img/icon/calendar - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>data/parser">Event Management</a></h5>
+                                        <h5 class="news_title"><a href="<?=base_url()?>calendar">Event Management</a></h5>
                                         <h6>Data parser and uploader menu for CBIC</h6>
                                     </div>
                                 </div>

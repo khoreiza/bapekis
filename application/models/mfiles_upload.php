@@ -263,7 +263,7 @@ class Mfiles_upload extends CI_Model {
     	$this->db->select('*');
 		$this->db->where('modul',$modul);
 		$this->db->where('sub_modul',$submodul);
-    	$this->db->order_by('created','desc');
+    	$this->db->order_by('created_at','desc');
         $this->db->order_by('id','desc');
     	$result = $this->db->get('files_upload');
     	return $result->result();

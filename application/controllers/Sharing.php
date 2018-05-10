@@ -11,7 +11,7 @@ class Sharing extends CI_Controller {
         if(!$session){
             $url = current_url();
             $this->session->set_userdata('last_page_open',$url);
-            redirect('user/login');
+            redirect('account/login');
         }
         //elseif(!$session['is_employee'] && !is_user_role($session,"PERFORMANCE VIEWER") && $session['position']!="Director"){redirect('');}
     }
