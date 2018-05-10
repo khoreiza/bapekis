@@ -45,7 +45,7 @@
 			</div>
 		</div>
 	</div>
-	<div style="text-align: center; margin: 0px 0 0px 0;">
+	<div class="component_border">
 		<img src="<?=base_url()?>assets/img/general/book border.png" style="height:50px; margin: 0 auto;">
 	</div>
 	<div class="component_part">
@@ -78,7 +78,52 @@
 					</div>
 				</div>
 			</div>
-			
+		</div>
+	</div>
+	<div class="component_border">
+		<img src="<?=base_url()?>assets/img/general/book border.png" style="height:50px; margin: 0 auto;">
+	</div>
+	<div class="component_part">
+		<div class="component_part_content">
+			<div class="row">
+				<div class="col-md-1">
+					<img src="<?=base_url()?>assets/img/general/Logo people.png" style="height:80px;">
+				</div>
+				<div class="col-md-11">
+					<div class="part_title">STRUKTUR ORGANISASI</div>
+					<div class="part_description">
+						<div style="margin-top: 20px;">
+							<img src="<?=base_url()?>assets/img/general/SO.png" style="width:100%;">
+						</div>
+
+						<div class="row">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="component_border">
+		<img src="<?=base_url()?>assets/img/general/book border.png" style="height:50px; margin: 0 auto;">
+	</div>
+	<div class="component_part">
+		<div class="component_part_content">
+			<div class="row">
+				<div class="col-md-1">
+					<img src="<?=base_url()?>assets/img/general/Logo ketupat.png" style="height:80px;">
+				</div>
+				<div class="col-md-11">
+					<div class="part_title">PROGRRAM KERJA BAPEKIS</div>
+					<div class="part_description">
+						<div style="margin-top: 20px;">
+							<img src="<?=base_url()?>assets/img/general/Kegiatan.png" style="width:100%;">
+						</div>
+
+						<div class="row">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

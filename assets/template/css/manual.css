@@ -4791,6 +4791,12 @@ p.about-author-paragraph:hover a{
     text-align: justify;
 }
 
+.component_border{
+    text-align: center;
+    padding:5px;
+    background-color: #e2e2e2; 
+}
+
 
 
 
