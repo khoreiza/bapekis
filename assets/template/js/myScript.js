@@ -35,32 +35,6 @@ if (iframeYoutube) {
 
 $(function() {
 
-    // ================ Add .html file on page =================
-    $.get("header_page.html", function(data){
-        $('#header').append(data);
-    });
-    $.get("header_page-ecology.html", function(data){
-        $('#header-ecology').append(data);
-    });
-    $.get("menu-bar-charity.html", function(data){
-        $('#menuBar-charity').append(data);
-    });
-    $.get("menu-bar-ecology.html", function(data){
-        $('#menuBar-ecology').append(data);
-    });
-    $.get("sidebar.html", function(data){
-        $('#sidebar').append(data);
-    });
-    $.get("sidebar-ecology.html", function(data){
-        $('#sidebar-ecology').append(data);
-    });
-    $.get("footer.html", function(data){
-        $('#footer').append(data);
-    });
-    $.get("footer-ecology.html", function(data){
-        $('#footer-ecology').append(data);
-    });
-
     // ===================== Menu-Bar ======================
     $(document).on('click','button.navbar-toggle', function(){
         if($(".slider-info")) {

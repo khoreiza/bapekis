@@ -27,7 +27,7 @@
         
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/bootstrap.min.css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/manual.css">
-        <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/template/css/animate.css">
+        <link rel="stylesheet" href="<?=base_url()?>assets/template/css/animate.css" type="text/css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/owlcarousel/owl.carousel.min.css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/owlcarousel/owl.theme.default.min.css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/bootstrap-responsive.min.css">

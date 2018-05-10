@@ -5,9 +5,10 @@ class Gallery extends CI_Controller {
 
     public function index(){
 
-        $data['title'] = "Mandiri Bapekis Event & Gallery Page";
+        $data['title'] = "Mandiri Bapekis Gallery Page";
 
         $component['banner'] = $this->load->view('gallery/component/banner','',TRUE);
+        $component['gallery'] = $this->load->view('gallery/component/gallery','',TRUE);
 
         $data['content'] = $this->load->view('gallery/index',$component,TRUE);
 

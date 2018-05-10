@@ -19,7 +19,14 @@
 						<li><a href="<?=base_url()?>" class="contact" title="home">HOME</a></li>
 						<li><a href="general" class="contact" title="general">GENERAL INFO</a></li>
 						<li><a href="financial" class="contact" title="financial">FINANCIAL INFO</a></li>
-						<li><a href="gallery" class="contact" title="gallery">EVENT & GALLERY</a></li>
+						<li class="dropdown features-menu">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button" aria-expanded="false" title="gallery">EVENT &amp; GALLERY</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="event" >EVENT PAGE</a></li>
+                                <li><a href="gallery" >GALLERY PAGE</a></li>
+                            </ul>
+                        </li>
 						<li class="last"><a href="profile" class="contact" title="profile">PROFILE</a></li>
 					</ul>
 				</div>

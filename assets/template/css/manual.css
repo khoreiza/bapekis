@@ -315,6 +315,14 @@ img {
     content: "";
 }
 
+.wave-line-white {
+    height: 17px;
+    margin: 17px auto 28px;
+    background-image: url(../images/wave-lines-white.png);
+    background-repeat: no-repeat;
+    content: "";
+}
+
 .wave-center {
     background-position: 50%;
 }

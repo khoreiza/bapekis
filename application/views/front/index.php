@@ -2,6 +2,10 @@
 <?=$banner?>
 <!-- /.slider -->
 
+<!--=============================== Prayer Schedule ==========================-->
+<?=$prayer_schedule?>
+<!-- /.prayer schedule -->
+
 <!--=============================== Latest Event ==========================-->
 <?=$event_latest?>
 <!-- /.latest event -->
