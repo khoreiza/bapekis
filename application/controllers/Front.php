@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Front extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->model(array('mmysharing'));
+    }
+
     public function index(){
 
         $data['title'] = "Mandiri Bapekis Front Page";
@@ -13,11 +18,21 @@ class Front extends CI_Controller {
 
         $prayer_schedule['jadwalsholat'] = $jadwal[1];
 
+
+        /******* GET BAPEKIS SHARING *******/
+        $latest_sharing['sharings'] = $this->mmysharing->get_detil("all",5,0,"");
+
+
+        /******* GET BAPEKIS EVENT *******/
+        $upcoming_event['events'] = $this->mfiles_upload->get_db('start','desc','calendar','','',"");
+
+
+
         $component['banner'] = $this->load->view('front/component/slider','',TRUE);
         $component['prayer_schedule'] = $this->load->view('front/component/prayer_schedule',$prayer_schedule,TRUE);
         $component['news'] = $this->load->view('front/component/news','',TRUE);
-        $component['event_latest'] = $this->load->view('front/component/event_latest','',TRUE);
-        $component['event_upcoming'] = $this->load->view('front/component/event_upcoming','',TRUE);
+        $component['latest_sharing'] = $this->load->view('front/component/latest_sharing',$latest_sharing,TRUE);
+        $component['event_upcoming'] = $this->load->view('front/component/upcoming_event',$upcoming_event,TRUE);
 
         $data['content'] = $this->load->view('front/index',$component,TRUE);
 

@@ -1198,46 +1198,7 @@ function please_wait_msg(dom){
     $("#"+dom).html('Please wait. . .<br><img src='+config.base+'assets/img/general/loading.gif>');
 }
 var RESIZEABLE_CANVAS=true;
-$.validator.addMethod("ispasswordtrue", function(value, element) {
-    var responsepass;
-    $.ajax({
-        type: "POST",
-        url: config.base+"user/check_user_password",
-        data: {
-            password: value
-        },
-        dataType:"json",
-        async: false,
-        success: function(result)
-        {
-            //console.log(result.value);
-            responsepass = result.value;
-        }
-    })
-    //console.log(responsepass);
-    return responsepass;
-}, "Password Wrong");
-$.validator.addMethod(
-    "dateTrio",
-    function(value, element) {
-        var check = false;
-        var re = /^\d{1,2}\-\d{1,2}\-\d{4}$/;
-        if( re.test(value)){
-            var adata = value.split('-');
-            var dd = parseInt(adata[0],10);
-            var mm = parseInt(adata[1],10);
-            var yyyy = parseInt(adata[2],10);
-            var xdata = new Date(yyyy,mm-1,dd);
-            if ( ( xdata.getFullYear() == yyyy ) && ( xdata.getMonth () == mm - 1 ) && ( xdata.getDate() == dd ) )
-                check = true;
-            else
-                check = false;
-        } else
-            check = false;
-        return this.optional(element) || check;
-    },
-    "Please enter a date in the format dd-mm-yyyy"
-);
+
 function toggle_visibility(id) {
     $('#'+id).animate({'height':'toggle','opacity':'toggle'});
 }

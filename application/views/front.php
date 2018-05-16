@@ -50,6 +50,31 @@
         <![endif]-->
     </head>
     <body>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
+        <script>
+            var config = {
+                 base: "<?php echo base_url(); ?>"
+            };
+        </script>
+
+        <!-- JS code --> 
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="<?=base_url()?>assets/template/js/bootstrap.min.js"></script>
+
+        <?php if($this->uri->segment(1) != "admin"){?>
+               
+        <script src="<?=base_url()?>assets/template/js/jquery.spincrement.js"></script>
+        <script src="<?=base_url()?>assets/template/js/owl.carousel.min.js"></script>
+        <script src="<?=base_url()?>assets/template/js/scrollBar.js"></script>
+        
+        <script src="<?=base_url()?>assets/template/js/myScript.js"></script>
+
+        <?php }?>
+
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/application.js"></script>
+
+
+
         <div class="page">
             <!--=============================== Header ===========================-->
             <div id="header">
@@ -69,19 +94,5 @@
                 <?=$footer?>
             </div>
         </div>
-
-
-        <!-- JS code --> 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="<?=base_url()?>assets/template/js/bootstrap.min.js"></script>
-
-        <?php if($this->uri->segment(1) != "admin"){?>
-               
-        <script src="<?=base_url()?>assets/template/js/jquery.spincrement.js"></script>
-        <script src="<?=base_url()?>assets/template/js/owl.carousel.min.js"></script>
-        <script src="<?=base_url()?>assets/template/js/scrollBar.js"></script>
-        
-        <script src="<?=base_url()?>assets/template/js/myScript.js"></script>
-        <?php }?>
     </body>
 </html>

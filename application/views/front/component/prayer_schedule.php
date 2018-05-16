@@ -4,6 +4,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="text-center">
                     <h2 class="title-text">Jadwal Sholat</h2>
+                    <h4 style="padding: 5px 0 5px 0"><?=date('j M Y')?></h4>
                     <div class="wave-line-white wave-center"></div>
                 </div>
             </div>

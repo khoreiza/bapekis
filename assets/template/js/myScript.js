@@ -99,30 +99,6 @@ $(function() {
         }
     );
 
-    // ===================== Owl Carousel ====================
-    var owl = $('.owl-carousel');
-    if (owl.length>0) {
-        owl.owlCarousel({
-            autoplayHoverPause: true,
-            autoplayTimeout: 4000,
-            autoplay: true,
-            loop: true,
-            margin: 30,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                400: {
-                    items: 2
-                },
-                700: {
-                    items: 3
-                },
-                1000: {
-                    items: 4
-                }
-            }
-        });
-    }
+    
 
 });
