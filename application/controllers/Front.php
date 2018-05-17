@@ -18,6 +18,17 @@ class Front extends CI_Controller {
 
         $prayer_schedule['jadwalsholat'] = $jadwal[1];
 
+        $page = file_get_contents('https://jadwalsholat.pkpu.or.id');
+        preg_match_all("'<tr class=\"table_light\" align=\"center\">(.*?)</tr>|<tr class=\"table_dark\" align=\"center\">(.*?)</tr>|<tr class=\"table_highlight\" align=\"center\">(.*?)</tr>'", $page, $agent_name);
+        
+        echo "<table style='border: 1px solid black;'>";
+        foreach ($agent_name[0] as $key => $value) {
+            //preg_match_all("'<td>(.*?)</td>'", $value, $tes);
+            echo $value;
+        }
+        echo "</table>";
+        die();
+
 
         /******* GET BAPEKIS SHARING *******/
         $latest_sharing['sharings'] = $this->mmysharing->get_detil("all",5,0,"");
