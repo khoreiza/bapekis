@@ -8,6 +8,8 @@ class Profile extends CI_Controller {
         $data['title'] = "Mandiri Bapekis Profile Page";
 
         $component['banner'] = $this->load->view('profile/component/banner','',TRUE);
+        $component['contact'] = $this->load->view('profile/component/contact','',TRUE);
+        $component['map'] = $this->load->view('profile/component/map','',TRUE);
 
         $data['content'] = $this->load->view('profile/index',$component,TRUE);
 
