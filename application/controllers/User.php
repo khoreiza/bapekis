@@ -70,7 +70,7 @@ class User extends CI_Controller {
         $user = $this->session->userdata('userbapekis');
         $profile = $this->muser->get_user_by_id($id);
         
-        $arr = array('full_name','panggilan','gender','agama','username','nik','jabatan','position','sumber','directorate','group','department','phone_number','ip_phone','extension','email','strata','universitas','jurusan','tahun_lulus','is_employee','is_rkk_committee','status','redirect_page_id','is_NDA');
+        $arr = array('full_name','gender','username','nik','jabatan','position','directorate','group','department','phone_number','email','status','redirect_page_id','is_NDA');
         $data = $this->mfiles_upload->get_form_element($arr);
 
 
@@ -91,14 +91,18 @@ class User extends CI_Controller {
         }
         /**** End of Role Information ****/
 
-        /**** Dir Priority Data ****/
+
+        /**** Dir Priority Data ****
         $directorate = $this->mfiles_upload->get_db('directorate','asc','cbdirectorate',array("directorate" => strtoupper($data['directorate'])),'','');
         if($directorate) $data['priority_dir'] = $directorate[0]->priority;
         /**** End of Dir Priority Data ****/
 
-        /**** Position Priority Data ****/
+
+        /**** Position Priority Data ****
         $data['priority'] = get_position_priority($data['position']);
         /**** End Position Priority Data ****/
+
+
 
         /**** Make Image ****/
         $upload_path = "assets/uploads/user_profile/";
@@ -150,7 +154,7 @@ class User extends CI_Controller {
             $this->muser->insert_user_access_log("Access CBIC Data Quality Page, Edit user data for ".$data['full_name']);
         }
 
-        redirect('data/user');
+        redirect('user/management');
     }
     /********************** END OF USER MENU **********************/
 }
