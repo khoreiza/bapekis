@@ -730,7 +730,7 @@ function get_batas_sp($bawah_val,$atas_val,$bawah_rate,$atas_rate,$val,$rate){
 	return $result;
 }
 
-function get_form_element($array, $this){
+function get_form_element($array){
 	$result = array();
 	foreach ($array as $row) {
 		$result[$row] = $this->input->post($row);
