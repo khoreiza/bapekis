@@ -33,7 +33,7 @@
 														<?php long_text(str_replace("_", " ", $row->title),25)?>
 													</a>
 	                                            </div>
-	                                            <div style="font-size: 10px;" class="third_font"><?= date("j M y", strtotime($row->created))?></div>
+	                                            <div style="font-size: 10px;" class="third_font"><?= date("j M y", strtotime($row->created_at))?></div>
 	                                        </div>
 	                                    </div>
 	                                </div>
