@@ -11,7 +11,7 @@
         <div class="row">
             <?php if(isset($first_time) && $first_time){ $sharing = $sharings[0]?>
                 <div class="col-md-9 mysharing_member" id="<?=$sharing->mysharing_id?>" style="padding: 10px 20px 5px 20px;">
-                    <div style="height: 232px; overflow: hidden;">
+                    <div style="height: 242px; overflow: hidden;">
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-10">
                                 <div class="photo_frame_circle" style="width: 20px; height: 20px; margin: 0px 10px 0 0px; float: left;">

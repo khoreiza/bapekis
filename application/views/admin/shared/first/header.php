@@ -8,15 +8,15 @@
 ?>
 
 
-<div class="navbar-top">
-	<div class="row" style="width:100%; margin:0 auto; padding:0px 5px 0px 5px;">
+<div class="navbar-top" style="">
+	<div class="row" style="width:100%; max-width: 1340px; margin:0 auto; padding:0px 5px 0px 5px; ">
 		<div class="col-md-9 col-sm-8 col-xs-10">
 			<div class="row">
-				<div class="col-md-3 col-sm-6 col-xs-3 center_text" style=" margin: 0px 0px 0px -10px; ">
-					<div style="height: 65px; float: left; width: 100px; background-color: <?=array_color_new(2)?>;">
+				<div class="col-md-3 col-sm-6 col-xs-3 center_text" style=" margin: 0px 0px 0px 0px;">
+					<div style="height: 75px; float: left; width: 100px;">
 						<a onclick="openNav()" data-target="#submenuModal">
 							<!--<span style="font-size:32px;">CBIC</span>-->
-							<div><img style="padding-top:10px; height:60px; max-width: 100px;" src="<?=base_url()?>assets/img/logo.png"></img></div>
+							<div><img style="padding-top:0px; height:75px; max-width: 120px;" src="<?=base_url()?>assets/img/logo-color.png"></img></div>
 							<!--<span style="font-size:12px;" class="glyphicon glyphicon-menu-down"></span>-->
 						</a>
 					</div>
@@ -29,12 +29,12 @@
 						<span class="input-group-btn cbic_search_box_addon" id="basic-addon2">
 							<span class="glyphicon glyphicon-search" aria-hidden="true" style="font-size:16px !important; color:#828282"></span>
 						</span>
-						<input onkeyup="search_cbic(event)" id="search_cbic_header" type="text" class="form-control cbic_search_box" placeholder="Search" aria-describedby="basic-addon2" style="height:65px; width:100%;">
+						<input onkeyup="search_cbic(event)" id="search_cbic_header" type="text" class="form-control cbic_search_box" placeholder="Search" aria-describedby="basic-addon2" style="height:75px; width:100%;">
 					</div><div style="clear:both;"></div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-4 col-xs-2" style="padding:5px 10px 4px 10px;">
+		<div class="col-md-3 col-sm-4 col-xs-2" style="padding:15px 10px 4px 10px;">
 			
 			<div style="padding-top: 5px;">
 				

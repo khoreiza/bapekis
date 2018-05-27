@@ -51,7 +51,7 @@ class Mmysharing extends CI_Model {
             $this->db->where('category.category',$category);
         }
 
-        $this->db->select('mysharing.*, mysharing.id as mysharing_id, user.full_name, user.nik, user.profile_picture, files_upload.full_url, category.category');
+        $this->db->select('mysharing.*, mysharing.id as mysharing_id, user.full_name, user.nik, user.profile_picture, files_upload.full_url, category.category, category.description as category_description');
         $this->db->order_by('mysharing.created_at','desc');
         $this->db->order_by('mysharing_id','desc');
         $this->db->join('user', 'mysharing.created_by = user.id');

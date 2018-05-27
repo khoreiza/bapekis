@@ -772,7 +772,7 @@ function array_color($i){
 }
 
 function array_color_new($i){
-	$arr_col = array("#c1954f","#ffb500","#c2c2c2","#90d2e5","#f4614e","#f8a095","#296480","#64abcd", "#e6e7e8","#bfbfbf","#3f5a78","#778c9f","#1bbfe2","#88d3f0","#1ab99b","#dd5967","#ea9ba3","#ffc80b","#ffe385","#e6e7e8","#c5cdd6","#3f5a78");
+	$arr_col = array("#c1954f","#5889cb","#79a0d5","#90d2e5","#f4614e","#ffb500","#296480","#64abcd", "#e6e7e8","#bfbfbf","#3f5a78","#778c9f","#1bbfe2","#88d3f0","#1ab99b","#dd5967","#ea9ba3","#ffc80b","#ffe385","#e6e7e8","#c5cdd6","#3f5a78");
 	return $arr_col[$i];
 }
 

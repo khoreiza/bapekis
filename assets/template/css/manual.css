@@ -852,25 +852,6 @@ footer:-ms-input-placeholder {
     transition-delay: 0s;
 }
 
-.slide_1 {
-    background-image: url("https://images7.alphacoders.com/398/thumb-1920-398458.jpg");
-    background-repeat: no-repeat;
-    background-position: 2% 39%;
-    background-size: 1920px 1280px;
-}
-
-.slide_2 {
-    background-image: url("https://cdn3.foap.com/images/510a8d8c-cca8-4290-86e0-ccdfb26da45c/w1920.jpg?1505135756");
-    background-repeat: no-repeat;
-    background-position: 2% 45%;
-}
-
-.slide_3 {
-    background-image: url("https://hometurkey.com/HTContents/Icerik/506d1e1e-04dc-425a-a2b3-e01e896f2fe1.jpg");
-    background-repeat: no-repeat;
-    background-position: 2% 73%;
-}
-
 .item-content {
     display: table;
     width: 100%;
@@ -4771,8 +4752,14 @@ p.about-author-paragraph:hover a{
 
 
 /* """"""""""   MANUAL ADDING STYLE  """""""""""""""" */
+
 .content_bapekis{
-    font-family: Calibri, sans-serif;
+    color:#666;
+    background-color: #f1f5f7;
+}
+.content_bapekis .row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 .content_bapekis .component_part{
     padding: 40px;
@@ -4782,8 +4769,12 @@ p.about-author-paragraph:hover a{
     width: 100%;
     max-width: 1170px;
 }
+
+.component_part_content .body_section{
+    padding-top: 30px;
+}
 .part_title{
-    font-size: 40px;
+    font-size: 35px;
     color: #395b89;
     padding-top: 10px;
 }
@@ -4802,6 +4793,20 @@ p.about-author-paragraph:hover a{
     text-align: center;
     padding:5px;
     background-color: #e2e2e2; 
+}
+.img_section{
+    padding-left: 0px;
+    max-width: 80px !important;
+}
+.img_section img{
+    height:60px;
+}
+
+.box_subpart{
+    background-color: white;
+    padding: 0px;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
 }
 
 

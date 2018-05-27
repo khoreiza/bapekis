@@ -91,8 +91,8 @@
                                         <img src="<?=base_url()?>assets/img/icon/web design - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title">BAPEKIS Info</h5>
-                                        <h6>Manage CISAM Theme such us logo, color and header</h6>
+                                        <h5 class="news_title"><a href="<?=base_url()?>category">Category Management</a></h5>
+                                        <h6>Manage Category for Sharing</h6>
                                     </div>
                                 </div>
                             </div>

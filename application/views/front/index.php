@@ -2,14 +2,20 @@
 <?=$banner?>
 <!-- /.slider -->
 
-<!--=============================== Prayer Schedule ==========================-->
-<?=$prayer_schedule?>
-<!-- /.prayer schedule -->
+<div class="content_bapekis">
+	<?php /*
+	<!--=============================== Prayer Schedule ==========================-->
+	<?=$prayer_schedule?>
+	<!-- /.prayer schedule -->
+	*/ ?>
 
-<!--=============================== Latest Event ==========================-->
-<?=$latest_sharing?>
-<!-- /.latest event -->
+	<!--=============================== Latest Event ==========================-->
+	<?=$latest_sharing?>
+	<!-- /.latest event -->
 
-<!--=============================== Upcoming Event ==========================-->
-<?=$event_upcoming?>
-<!-- /.upcoming event -->
+	<!--=============================== Upcoming Event ==========================-->
+	<?=$event_upcoming?>
+	<!-- /.upcoming event -->
+
+</div>
+
