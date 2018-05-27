@@ -4773,6 +4773,9 @@ p.about-author-paragraph:hover a{
 .component_part_content .body_section{
     padding-top: 30px;
 }
+.title_section{
+    margin-left: 20px;
+}
 .part_title{
     font-size: 30px;
     color: #395b89;
@@ -4816,6 +4819,9 @@ p.about-author-paragraph:hover a{
 }
 .prayer_scedule .col-md-1.with_border{
     border-right: 1px solid #ffb500;
+}
+.prayer_scedule .col-md-1 .box_subpart{
+    border:1px solid #ffb500 !important;
 }
 .prayer_scedule .col-md-1 .prayer_time{
     color:#395b89;
