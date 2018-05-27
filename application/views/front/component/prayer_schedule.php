@@ -1,4 +1,57 @@
-<div class="number" id="counts">
+<div class="component_part">
+    <div class="component_part_content">
+        <div class="title_section">
+            <div class="row">
+                <div class="col-md-1 img_section">
+                    <img src="<?=base_url()?>assets/img/general/Logo people.png">
+                </div>
+                <div class="col-md-6">
+                    <div class="part_title">JADWAL SHOLAT</div>
+                    <h5 style="color: <?=array_color_new(5)?>"><?=date('j M Y')?></h5>
+                </div>
+            </div>
+        </div>
+        <div class="body_section">
+            <div class="row prayer_scedule" style="text-align: center">
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[0]?></h3>
+                    <h4 class="news_title">Imsak</h4>
+                </div>
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[1]?></h3>
+                    <h4 class="news_title">Subuh</h4>
+                </div>
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[2]?></h3>
+                    <h4 class="news_title">Terbit</h4>
+                </div>
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[3]?></h3>
+                    <h4 class="news_title">Dhuha</h4>
+                </div>
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[4]?></h3>
+                    <h4 class="news_title">Dzuhur</h4>
+                </div>
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[5]?></h3>
+                    <h4 class="news_title">Ashar</h4>
+                </div>
+                <div class="col-md-1 with_border">
+                    <h3 class="prayer_time"><?=$jadwalsholat[6]?></h3>
+                    <h4 class="news_title">Magrib</h4>
+                </div>
+                <div class="col-md-1">
+                    <h3 class="prayer_time"><?=$jadwalsholat[7]?></h3>
+                    <h4 class="news_title">Isya</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php /*<div class="number" id="counts">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -78,3 +131,4 @@
         </div>
     </div>
 </div>
+*/ ?>

@@ -12,11 +12,14 @@ class Front extends CI_Controller {
 
         $data['title'] = "Mandiri Bapekis Front Page";
         
-        //$datakemenag = file_get_contents('https://bimasislam.kemenag.go.id/widget/jadwalshalat/42d38931fbd98d4764cc39ab8694a0f1f42d2e7d');
 
-        //preg_match_all("'<div class=\"pukul\"> (.*?)</div>'si",$datakemenag, $jadwal);
+        /******* GET PRAYER SCHEDULE *******/
+        $datakemenag = file_get_contents('https://bimasislam.kemenag.go.id/widget/jadwalshalat/42d38931fbd98d4764cc39ab8694a0f1f42d2e7d');
+        preg_match_all("'<div class=\"pukul\"> (.*?)</div>'si",$datakemenag, $jadwal);
+        $prayer_schedule['jadwalsholat'] = $jadwal[1];
+        $component['prayer_schedule'] = $this->load->view('front/component/prayer_schedule',$prayer_schedule,TRUE);
 
-        //$prayer_schedule['jadwalsholat'] = $jadwal[1];
+
 
 
         /******* GET BAPEKIS SHARING *******/
@@ -34,7 +37,7 @@ class Front extends CI_Controller {
 
 
         $component['banner'] = $this->load->view('front/component/slider','',TRUE);
-        //$component['prayer_schedule'] = $this->load->view('front/component/prayer_schedule',$prayer_schedule,TRUE);
+        
         $component['news'] = $this->load->view('front/component/news','',TRUE);
         
         $component['event_upcoming'] = $this->load->view('front/component/upcoming_event',$upcoming_event,TRUE);

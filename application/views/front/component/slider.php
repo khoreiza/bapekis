@@ -5,7 +5,7 @@
     .slide_1 {
         background-image: url("<?=base_url()?>assets/img/slider/Masjid-terbesar-Masjid-Agung-Sheikh-Zayed-sore-hari-.jpg");
         background-repeat: no-repeat;
-        background-position: 70% 99%;
+        background-position: 70% 299%;
     }
 
     .slide_2 {
@@ -17,7 +17,7 @@
     .slide_3 {
         background-image: url("<?=base_url()?>assets/img/slider/suleymaniye-mosque-stands-against-city-landscape-and-blue-sky-time-lapse_my-jinw5u__F0000.png");
         background-repeat: no-repeat;
-        background-position: 80% 109%;
+        background-position: 80% 209%;
 
     }
 </style>

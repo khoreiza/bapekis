@@ -1,9 +1,3 @@
-<script>
-    
-</script>
-
-
-
 <div class="component_part">
     <div class="component_part_content">
             <div class="title_section">
@@ -25,11 +19,11 @@
                         </div>
                         <div class="row" style="padding: 15px 0 0 0;">
                             <?php foreach($sharings as $sharing){?>
-                                <div class="col-md-4" style="padding: 0 8px 0 8px;">
+                                <div class="col-md-4" style="padding: 0 0px 0 18px;">
                                     <div class="box_subpart">
                                         <div class="row">
-                                            <div class="col-md-4" style="padding: 0;">
-                                                <div style="width: 100%; height: 90px; overflow: hidden;" id="<?=$sharing->id?>_banner_sharing_parent">
+                                            <div class="col-md-4 col-xs-5" style="padding: 0;">
+                                                <div style="width: 100%; height: 120px; overflow: hidden;" id="<?=$sharing->id?>_banner_sharing_parent">
                                                     <img id="<?=$sharing->id?>_banner_sharing" style="width: 100%;" src="<?=base_url().$sharing->full_url?>">
                                                 </div>
                                                 <script type="text/javascript">
@@ -37,7 +31,7 @@
                                                     adjust_img_size('<?=$sharing->id?>_banner_sharing','');
                                                 </script>
                                             </div>
-                                            <div class="col-md-8" style="padding-left: 0px;">
+                                            <div class="col-md-8 col-xs-7" style="padding-left: 0px;">
                                                 <div style="padding: 5px 10px 5px 10px;">
                                                     <span style="font-size: 10px; color: #929292"><?=date("M j, Y")?></span>
                                                     <div class="news_title"><?=get_long_text_real($sharing->title,80)?></div>
@@ -56,5 +50,5 @@
                 <?php }}?>
             </div>
         </div>
-    </div>/
+    </div>
 </div>
