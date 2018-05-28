@@ -4,14 +4,17 @@
 
 <div class="content_bapekis">
 	
+	<!--=============================== Latest Event ==========================-->
+	<?=$latest_sharing?>
+	<!-- /.latest event -->
+
+
 	<!--=============================== Prayer Schedule ==========================-->
 	<?=$prayer_schedule?>
 	<!-- /.prayer schedule -->
 	
 
-	<!--=============================== Latest Event ==========================-->
-	<?=$latest_sharing?>
-	<!-- /.latest event -->
+	
 
 	<!--=============================== Upcoming Event ==========================-->
 	<?=$event_upcoming?>
