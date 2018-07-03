@@ -1,38 +1,46 @@
-function show_add_room_form(id){
-  $("#loading_panel").show();
-  $.ajax({
+function show_add_mosque_form(id){
+   $("#loading_panel").show();
+   $.ajax({
       type: "GET",
-      url: config.base+"meeting/add_room",
+      url: config.base+"Mosque/add_mosque",
       data: {id: id},
       dataType: 'json',
       cache: false,
       success: function(resp){
-          if(resp.status==1){
-              show_popup_modal(resp.html);
-          }else{}
-          $("#loading_panel").hide();
+         if(resp.status==1){
+            show_popup_modal(resp.html);
+         }else{}
+         $("#loading_panel").hide();
       }
   });
 }
 
-function change_group_room(){
+
+function change_mosque_data(){
   var group_req = $("#group_req").val();
   var date = $("#meeting_date").val();
   $("#loading_panel").show();
   $.ajax({
       type: "GET",
-      url: config.base+"meeting/change_group_room",
+      url: config.base+"Mosque/change_mosque_data",
       data: {group_req: group_req,date: date},
       dataType: 'json',
       cache: false,
       success: function(resp){
           if(resp.status==1){
-              $("#list_of_rooms_index").html(resp.list_of_rooms);
+              $("#list_of_mosque_index").html(resp.list_of_mosque);
               $("#loading_panel").hide();
           }else{}
       }
   });
 }
+
+
+
+
+
+
+
 
 function show_book_room_form(start,room_id,agenda_id,type){
   var date = $("#meeting_date").val();

@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-xs-9">
                                         <h5 class="news_title"><a href="<?=base_url()?>calendar">Event Management</a></h5>
-                                        <h6>Data parser and uploader menu for CBIC</h6>
+                                        <h6>Event Management for Bapekis Event</h6>
                                     </div>
                                 </div>
                             </div>
@@ -101,11 +101,11 @@
                             <div class="broventh_card" style="border-top-color:<?=array_color_new(11)?>">
                                 <div class="row menu_card">
                                     <div class="col-xs-3 center_text">
-                                        <img src="<?=base_url()?>assets/img/icon/bar - office.png">
+                                        <img src="<?=base_url()?>assets/img/icon/mosque - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>category">Financial Management</a></h5>
-                                        <h6>Manage Category Data</h6>
+                                        <h5 class="news_title"><a href="<?=base_url()?>mosque">Mosque Management</a></h5>
+                                        <h6>Manage Mosque Data</h6>
                                     </div>
                                 </div>
                             </div>
