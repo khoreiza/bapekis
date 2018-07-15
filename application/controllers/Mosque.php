@@ -205,7 +205,26 @@ class Mosque extends CI_Controller {
     public function get_mosque_show_data(){
         $mosque_id = $this->input->get('mosque_id');
         
-        $data = "";
+
+        
+        /****** GET EVENT ******/
+        $arr_where_event = array("calendar.ownership_id" => $mosque_id, "calendar.modul" => 'mosque');
+
+        //Latest Event
+        $this->db->where('start <',date('Y-m-d'));
+        $latest_events = $this->mfiles_upload->get_db_join('start','desc','calendar',$arr_where_event,'',"",'','');
+        foreach($latest_events as $k=>$lat){
+            $data['latest_events'][$k]['event'] = $lat;
+            $data['latest_events'][$k]['photos'] = $this->mfiles_upload->get_files_upload_by_ownership_id_order('calendar','gallery',$lat->id, "created_at", "desc");
+        }
+
+        //Upcoming Event
+        $this->db->where('start >',date('Y-m-d'));
+        $data['upcoming_events'] = $this->mfiles_upload->get_db_join('start','asc','calendar',$arr_where_event,'',"",'','');
+        $data['event_view'] = $this->load->view('mosque/component/show/content/_event',$data,TRUE);
+        /****** END OF GET EVENT ******/
+
+
 
         /****** GET SHARING ******/
         $arr_where_sharing = array("mysharing.mosque_id" => $mosque_id);

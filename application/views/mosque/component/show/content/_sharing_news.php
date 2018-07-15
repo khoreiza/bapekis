@@ -5,7 +5,7 @@
 <div>
 	<div class="row">
 		<?php foreach($sharings as $sharing){?>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="broventh_card">
 					<div id="mysharing_<?=$sharing->mysharing_id?>" class="mysharing_member">
 	                    <div style="height: 299px; overflow: hidden; ">
@@ -21,7 +21,7 @@
 	                                <?php if($sharing->full_url){?>
 	                                    <h4 class="news_title" style="margin-top: 10px;"><a onclick="show_mysharing_detail(<?php echo $sharing->mysharing_id?>);"><?= get_long_text_real($sharing->title,106)?></a></h4>
 	                                <?php }else{?>
-	                                    <h4 class="news_title" style="margin-top: 10px;"><a onclick="show_mysharing_detail(<?php echo $sharing->mysharing_id?>);"><?= get_long_text_real($sharing->title,90)?></a></h4>
+	                                    <h3 class="news_title" style="margin-top: 10px;"><a onclick="show_mysharing_detail(<?php echo $sharing->mysharing_id?>);"><?= get_long_text_real($sharing->title,120)?></a></h3>
 	                                    <div style="margin-top: 10px">
 	                                        <?php echo long_text_real(strip_tags($sharing->description),180)?>
 	                                    </div>

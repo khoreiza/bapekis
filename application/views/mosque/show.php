@@ -29,7 +29,7 @@
 ?>
 <div id="" class="container_broventh container_broventh_small">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div id="header_cal">
                 <div class="row">
                     <div class="col-md-6">

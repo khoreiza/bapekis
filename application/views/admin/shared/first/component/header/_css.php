@@ -258,6 +258,16 @@
 		border-top: 1px solid #e3e3e3 !important;
 	}
 
+	.broventh_card_square{
+		background-color: white;
+		box-shadow: 0 4px 2px -3px #d2d2d2;
+		padding: 10px;
+		margin-bottom: 10px;
+		border:1px solid #dfdfdf;
+		border-bottom-color: #cfcfcf;
+		overflow: hidden;
+	}
+
 
 	.square_box{
 		background-color: white;
