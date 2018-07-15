@@ -15,5 +15,5 @@
 </div>
 
 <script type="text/javascript">
-    change_div_component_info('overview', 'mosque_show');
+    change_div_component_info('event', 'mosque_show');
 </script>

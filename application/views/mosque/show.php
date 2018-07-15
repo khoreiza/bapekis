@@ -29,13 +29,13 @@
 ?>
 <div id="" class="container_broventh container_broventh_small">
     <div class="row">
+        <div class="col-md-6">
+            <a href="<?=base_url()?>mosque" class="btn btn-broventh btn-third btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> LIST MOSQUE</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-9">
             <div id="header_cal">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a href="<?=base_url()?>mosque" class="btn btn-broventh btn-third btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> LIST MOSQUE</a>
-                    </div>
-                </div>
                 <div class="broventh_card_transparent" style="margin-top: 20px;">
                     <div class="row">
                         <div class="col-md-4">
@@ -83,9 +83,9 @@
             <div class="broventh_card menu_bar_nav">
                 <div class="menu_bar_header_nav">
                     <div class="row">
-                        <div class="menu_bar">
+                        <?php /*<div class="menu_bar">
                             <div class="menu_bar_nav mosque_show_nav" id="overview_nav"><a onclick="change_div_component_info('overview', 'mosque_show')">Overview</a></div>
-                        </div>
+                        </div>*/ ?>
                         <div class="menu_bar">
                             <div class="menu_bar_nav mosque_show_nav" id="event_nav"><a onclick="change_div_component_info('event', 'mosque_show')">Events</a></div>
                         </div>
@@ -98,15 +98,66 @@
                         <div class="menu_bar">
                             <div class="menu_bar_nav mosque_show_nav" id="photos_nav" ><a onclick="change_div_component_info('photos', 'mosque_show')">Photos</a></div>
                         </div>
+                        <div class="menu_bar">
+                            <div class="menu_bar_nav mosque_show_nav" id="files_nav" ><a onclick="change_div_component_info('files', 'mosque_show')">Files</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="menu_content_section" id="mosque_show_content">
             </div>
         </div>
-        <div class="col-md-3" style="padding-left: 20px;">
-            <div style="margin-top: 30px;">
-                <?=$files_upload?>
+        <div class="col-md-3 broventh_sidebar column">
+            <div class="row" style="margin: 20px 0 8px 0;">
+                <div class="col-md-6">
+                    <div class="menu_section_title" style="text-align: left;">
+                        <div>PENGURUS</div>
+                    </div>
+                </div>
+                <div class="col-md-6 right_text">
+                    <a onclick="show_team_matrix_form('','')" class="btn btn-broventh btn-white btn-xs" style="font-size: 12px;"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                </div>
+            </div>
+            <div class="square_box" style="">
+                <div class="square_box_body">
+
+                    <div class="section_border_separation">
+                        <?php if(isset($teams)){?>
+                        
+                            <div class="right_text" style="margin-bottom: 10px;">Project Team</div>
+                            <div>
+                                <div class="row">
+                                    <?php foreach($teams as $team){?>
+                                            <div class="col-md-4 col-sm-6" style="margin-bottom: 10px;" id="team_matrix_div_<?=$team->team_id?>">
+                                                <div class="photo_frame_circle" style="height: 35px; width:35px;">
+                                                    <?=employee_photo($team)?>
+                                                </div>
+                                                <div class="center_text" style="margin-top: 5px">
+                                                    <h5 style="height: 16px; overflow: hidden;"><a onclick="show_user_detail(<?=$team->id?>)"><?php long_text($team->full_name,20)?></a></h5>
+                                                    <h6><a class="news_title" onclick="delete_team_matrix(<?=$team->team_id?>)">Delete</a></h6>
+                                                </div>
+                                            </div>
+                                    <?php }?>
+                                </div>
+                            </div>
+                        
+                        <?php }else{?>
+                            <div style="padding: 20px;">
+                                <h4 class="helper_text center_text">No Data</h4>
+                            </div>
+                        <?php }?>
+                    </div>
+                    
+                    <div>
+                        <?=$comment_view?>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-left: 20px;">
+                <div style="margin-top: 30px;">
+                    <?=$files_upload?>
+                </div>
             </div>
         </div>
     </div> 

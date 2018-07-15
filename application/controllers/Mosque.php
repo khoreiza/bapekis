@@ -168,21 +168,25 @@ class Mosque extends CI_Controller {
             /******* End of Files Upload Section ********/
 
 
-            /******** EVENT DOCUMENTATION *********/
-            $data['documentations'] = $this->mfiles_upload->get_files_upload_by_ownership_id_order('event', 'documentation', $id, "id", "asc");
-            $data['list_of_documentation'] = $this->load->view('calendar/component/show/_list_of_documentation',$data,TRUE);
-            /******** END of EVENT DOCUMENTATION *********/
+            /******* Pengurus Masjid *********
+            $pic = $this->mfiles_upload->get_db('id','desc','user',array('id' => $data['project']->project_pic),'','');
+            if($pic) $data['pic'] = $pic[0];
+
+            $join[0] = array('table' => 'user','in' => "ssf_team.user_id = user.id");
+            $ssf_team = $this->mfiles_upload->get_db_join('priority','asc','ssf_team',array('ssf_project_id' => $id),'*,ssf_team.id as team_id','','',$join);
+            if($ssf_team) $data['teams'] = $ssf_team;
+            /******* End of Pengurus Masjid *********/
 
 
-            /******** EVENT NEWS *********/
-            $arr_where_news = array("news.ownership_id" => $id, 'news.modul' => 'calendar news');
-
-            $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'photo' and sub_modul = 'calendar news') as files_upload";
-            $join_news[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = news.id", 'how' => 'left');
-            $join_news[1] = array('table' => 'user', 'in' => "user.id = news.user_id");
-            $data['news'] = $this->mfiles_upload->get_db_join('id','desc','news',$arr_where_news,'news.*, user.full_name, user.profile_picture, user.nik, files_upload.full_url',"",'',$join_news);
-
-            /******** END OF EVENT NEWS *********/
+            /******* Comment Section ********/
+            $data['id'] = $id;
+            $data['kind'] = "id"; $data['ownership'] = "activity_steps";
+            $join[0] = array('table' => 'user', 'in' => "user.id = comment.user_id");
+            $arr_where = array('ownership_type' => $data['ownership'], 'ownership_id' => $data['id']);
+            $data['comments'] = $this->mfiles_upload->get_db_join('comment.id','desc','comment',$arr_where,'*, comment.id as comment_id','','',$join);
+            $data['comment_list'] = $this->load->view('comment/theme/broventh/_list',$data,TRUE);
+            $data['comment_view'] = $this->load->view('comment/theme/broventh/_form',$data,TRUE);
+            /****** End of Comment ******/
             
 
 

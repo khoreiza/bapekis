@@ -413,7 +413,6 @@ function submit_comment(ownership_id, type, kind, modul, sub_modul, is_rich_text
         success: function(resp){
             if(resp.status==1){
                 //console.log('c'+comment);console.log('t'+type);console.log('k'+kind);console.log('m'+modul);console.log('s'+sub_modul);console.log('oid'+ownership_id);
-                notify_comment(kind, type, modul, sub_modul, ownership_id, comment, get_relative_url(window.location.href), 'department', chat_to_dept);
                 comment_list.html(resp.comment_list);
                 comment_text_form.val('');
                 if(type == "audit"){

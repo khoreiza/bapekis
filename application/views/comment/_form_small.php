@@ -1,5 +1,5 @@
 <?php 
-	$user = $this->session->userdata('userdb');
+	$user = $this->session->userdata('userbapekis');
 	$modul_val=""; $sub_modul_val="";
 	if(isset($modul)) $modul_val = $modul;
 	if(isset($sub_modul)) $sub_modul_val = $sub_modul;

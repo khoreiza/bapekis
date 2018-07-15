@@ -1,4 +1,4 @@
-<?php $user = $this->session->userdata('userdb');
+<?php $user = $this->session->userdata('userbapekis');
 if($comments){?>
 
 	<div style="margin: 20px 0 0px">

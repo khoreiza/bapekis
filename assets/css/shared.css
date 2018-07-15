@@ -1392,13 +1392,7 @@ input.valid{
     border-top: 1px solid #454545;
 }
 
-.form-control {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #fff;
-    border-radius: 0;
-    height: 50px;
-}
+
 
 textarea.form-control {
     resize: none;

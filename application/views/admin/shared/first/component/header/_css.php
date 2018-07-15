@@ -525,7 +525,7 @@
 	.btn-broventh.btn-circle{
 		border-radius: 220px;
 		text-align: center !important;
-		padding: 8px 4px 0 8px; font-size: 14px;
+		padding: 5px 4px 0 5px; font-size: 14px;
 		height: 29px; width: 29px;
 	}
 
