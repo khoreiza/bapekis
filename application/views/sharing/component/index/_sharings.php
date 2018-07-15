@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-2 right_text" style="font-size: 10px; padding-top: 5px;">
                                 <?php if(($user['id'] == $sharing->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
-                                    <a onclick="show_sharing_form(<?php echo $sharing->mysharing_id?>,'internal');" class="edit_color">
+                                    <a onclick="show_sharing_form(<?php echo $sharing->mysharing_id?>);" class="edit_color">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a>
                                     <a onclick="delete_mysharing(<?php echo $sharing->mysharing_id?>,'')">
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-md-2 right_text" style="font-size: 10px;">
                                 <?php if(($user['id'] == $sharing->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
-                                    <a onclick="show_sharing_form(<?php echo $sharing->mysharing_id?>,'internal');" class="edit_color">
+                                    <a onclick="show_sharing_form(<?php echo $sharing->mysharing_id?>);" class="edit_color">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a>
                                     <a onclick="delete_mysharing(<?php echo $sharing->mysharing_id?>,'')">

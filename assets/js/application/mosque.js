@@ -1,3 +1,21 @@
+function get_mosque_show_data(mosque_id){
+    $("#loading_panel").show();
+    $.ajax({
+        type: "GET",
+        url: config.base+"Mosque/get_mosque_show_data",
+        data: {mosque_id: mosque_id},
+        dataType: 'json',
+        cache: false,
+        success: function(resp){
+            if(resp.status==1){
+                $("#mosque_show_content").html(resp.mosque_content);
+                $("#loading_panel").hide();
+            }else{}
+        }
+    });
+}
+
+
 function show_add_mosque_form(id){
    $("#loading_panel").show();
    $.ajax({

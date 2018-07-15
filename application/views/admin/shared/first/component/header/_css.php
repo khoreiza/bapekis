@@ -178,7 +178,7 @@
 	/************************************ CBIC NEW BROVENTH CSS BODY ************************************/
 	body{
 		font-size:14px;
-		background-color: white !important;
+		background-color: #f1f5f7 !important;
 		/*background-color: #e2e6e7 !important;*/
 		font-family: "fakt-normal";
 		color:#777;
@@ -199,7 +199,7 @@
 	}
 
 	.container_broventh_small{
-		max-width: 1350px;
+		max-width: 1550px;
 	}
 
 	.container_broventh .theme_color{
@@ -241,6 +241,21 @@
 		border:1px solid #dfdfdf;
 		border-bottom-color: #cfcfcf;
 		overflow: hidden;
+		border-radius: 5px;
+	}
+
+	.broventh_card_transparent{
+		background-color: #fafafa;
+		padding: 10px;
+		margin-bottom: 10px;
+		border:1px solid #dfdfdf;
+		border-bottom-color: #cfcfcf;
+		overflow: hidden;
+		border-radius: 5px;
+	}
+
+	.broventh_card_transparent hr{
+		border-top: 1px solid #e3e3e3 !important;
 	}
 
 
@@ -322,8 +337,14 @@
 
 
 	/******* MENU BAR ********/
+    .broventh_card.menu_bar_nav{
+    	margin:0px !important;
+    	padding: 0px;
+
+    }
+
     .menu_bar_header_nav{
-    	margin-top: 10px; margin-bottom: 10px; padding-top: 10px; border-top: 1px solid #e2e2e2;
+    	margin-top: 0px; margin-bottom: 0px; padding-top: 0px;
     }
 
     .menu_bar_div{
@@ -331,8 +352,19 @@
     }
 
     .menu_bar{
-        padding: 0px 40px 0 5px;
+        height: 62px;
         float: left;
+		border-right: 1px solid #e2e2e2;
+    }
+
+    .menu_bar, .menu_bar_nav > a{
+    	font-size: 20px;
+        text-align: center;
+		color:#666;
+    }
+
+    .menu_bar_nav{
+    	padding: 15px 40px 15px 40px;
     }
 
     .menu_bar_right{
@@ -342,12 +374,25 @@
     }
 
     .active_menu_bar{
-    	border-top: 4px solid <?=array_color_new(2)?>;
-    	padding: 6px 10px 0 10px;
-    	font-size: 16px;
+    	border-bottom: 4px solid <?=array_color_new(2)?>;
+    	font-family: "fakt-semicon";
     }
     /******* END of MENU BAR ********/
 
+
+    /******* MENU CONTENT ********/
+    .menu_content_section{
+    	margin-top: 20px;
+    	padding: 0px;
+    }
+    .menu_section_title{
+    	font-size: 16px;
+    	text-align: right;
+    	font-family: "fakt-semibold";
+    	color: #c0aa63;
+    	margin-bottom: 10px;
+    }
+    /******* END of MENU CONTENT ********/
 
     
 
@@ -412,6 +457,11 @@
 		color:#666;
 	}
 
+	.content_title, .content_title > a{
+		font-family: "fakt-semicon";
+		color:#79a0d5;
+	}
+
 	.condens_font{
 		font-family: "fakt-semicon";
 	}
@@ -457,15 +507,15 @@
 
 
 	.btn-broventh{
-		padding:3px 8px 3px 8px;
-		border-radius: 0px;
+		padding:8px 8px 8px 8px;
+		border-radius: 5px;
 		color:white !important;
-		box-shadow: 2px 1px 5px #d2d2d2;
+		border: 1px solid #e7e7e7;
 	}
 	.btn-broventh.btn-circle{
 		border-radius: 220px;
 		text-align: center !important;
-		padding: 4px 0; font-size: 14px;
+		padding: 8px 4px 0 8px; font-size: 14px;
 		height: 29px; width: 29px;
 	}
 
@@ -500,9 +550,28 @@
 		background-color:<?=array_color_new(1)?>;
 	}
 
+	.btn-broventh.btn-white{
+		background-color:#fff;
+		color: #888 !important;
+	}
+
+	.btn-broventh.btn-edit{
+		background-color:#fae6c9 !important;
+		color: #888 !important;
+	}
+
+	.btn-broventh.btn-delete{
+		background-color:#fcd7d2 !important;
+		color: #888 !important;
+	}
+
 	.btn-broventh:hover{
 		color:white !important;
 		background-color:<?=array_color_new(10)?>;
+	}
+
+	.btn-broventh .glyphicon{
+		padding-right: 5px;
 	}
 
 	.bootstrap-select .btn.dropdown-toggle{

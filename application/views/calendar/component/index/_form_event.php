@@ -7,97 +7,127 @@
     <input type="hidden" name="modul" value="<?=($calendar && $calendar->modul) ? $calendar->modul : $modul?>">
     <input type="hidden" name="ownership_id" value="<?=($calendar && $calendar->ownership_id) ? $calendar->ownership_id : $ownership_id?>">
 
-	<div class="form-group row">
-		<div class="col-sm-6 col-sm-offset-1">
-			<input type="text" class="form-control-minimalist" id="title" name="title" placeholder="Title" <?php if($calendar){echo "value='".$calendar->title."'";}?>>
+    <div>
+		<div class="form_group_part_description">Event Title, Event Location, Event Banner</div>
+        <div class="form_group_part_title">Event Data</div>
+		<div class="form-group row">
+			<div class="col-sm-6 col-sm-offset-1">
+				<input type="text" class="form-control-minimalist" id="title" name="title" placeholder="Title" <?php if($calendar){echo "value='".$calendar->title."'";}?>>
+			</div>
+			<div class="col-sm-4">
+				<select id="category" class="selectpicker" name="category" data-live-search="true" data-width="100%">
+	                <?php foreach($arr_category as $categ){?>
+	                    <option <?=($calendar && $calendar->category == $categ) ? "selected" : ""?> value="<?=$categ?>"><?=$categ?></option>
+	                <?php }?>
+	            </select>
+			</div>
 		</div>
-		<div class="col-sm-4">
-			<select id="category" class="selectpicker" name="category" data-live-search="true" data-width="100%">
-                <?php foreach($arr_category as $categ){?>
-                    <option <?=($calendar && $calendar->category == $categ) ? "selected" : ""?> value="<?=$categ?>"><?=$categ?></option>
-                <?php }?>
-            </select>
+		<div class="form-group row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<input type="text" class="form-control-minimalist" id="location" name="location" placeholder="Location" <?php if($calendar){echo "value='".$calendar->location."'";}?>>
+			</div>
 		</div>
-	</div>
-	<div class="form-group row">
-		<div class="col-sm-10 col-sm-offset-1">
-			<input type="text" class="form-control-minimalist" id="location" name="location" placeholder="Location" <?php if($calendar){echo "value='".$calendar->location."'";}?>>
+		<div class="form-group row">
+			<div class="col-sm-2 col-sm-offset-1">
+				<input type="file" name="img[]" multiple class="btn btn-default">
+			</div>
+			<label class="col-sm-2 control-label input-md" style="text-align: left">Photo Banner</label>
 		</div>
-	</div>
-	<div class="form-group row">
-		<div class="col-sm-2 col-sm-offset-1">
-			<input type="file" name="img[]" multiple class="btn btn-default">
+		<hr>
+	</div> 
+	<div>
+		<div class="form_group_part_description">Event Date, Event Time, Event Description</div>
+        <div class="form_group_part_title">Event Time</div>
+		<div class="form-group row">
+			<div class="col-sm-3 col-sm-offset-1">
+				<?php $start=""; if($calendar){if($calendar->start){$start = date("m/d/Y", strtotime($calendar->start));}}
+				elseif($this->uri->segment(4)){$start = $this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6);}
+				?>
+				<input type="text" class="form-control-minimalist" id="start" name="start" placeholder="Start Date" value="<?php echo $start?>">
+				<small style="color:grey">format: mm/dd/YYYY</small>
+			</div>
+			<div class="col-sm-2">
+				<?php $start_time="8:00"; if($calendar){if($calendar->start){$start_time = date("h:i", strtotime($calendar->start));}}?>
+				<input type="text" class="form-control-minimalist time" id="start_time" name="start_time" placeholder="hh:mm" value="<?php echo $start_time?>">
+				<small style="color:grey">format: hh:mm</small>
+			</div>
+			<div class="col-sm-3">
+				<?php $end=""; if($calendar){if($calendar->end){$end = date("m/d/Y", strtotime($calendar->end));}}
+				?>
+				<input type="text" class="form-control-minimalist" id="end" name="end" placeholder="End Date" value="<?php echo $end?>">
+				<small style="color:grey">format: mm/dd/YYYY</small>
+			</div>
+			<div class="col-sm-2">
+				<?php $end_time="17:00"; if($calendar){if($calendar->end){$end_time = date("h:i", strtotime($calendar->end));}}?>
+				<input type="text" class="form-control-minimalist time" id="end_time" name="end_time" placeholder="hh:mm" value="<?php echo $end_time?>">
+				<small style="color:grey">format: hh:mm</small>
+			</div>
 		</div>
-		<label class="col-sm-2 control-label input-md" style="text-align: left">Photo Banner</label>
+		<div class="form-group row">
+	        <div class="col-sm-10 col-sm-offset-1">
+	            <textarea onfocus="actived_summernote('description');" type="text" class="form-control-minimalist" name="description" id="description" placeholder="Description"><?php if($calendar){echo $calendar->description;}?></textarea>
+	        </div>
+	    </div>
 	</div>
 	<hr>
-    <?php /*
-    <div class="form-group row">
-        <?php if($calendar){$arr_group_res = explode(";",$calendar->group_allowed);}?>
-        <div class="col-sm-10 col-sm-offset-1">
-            <?php foreach($arr_group as $group){?>
-	            <label class="checkbox-inline">
-	                <input name="group_allowed[]" type="checkbox" value="<?=$group->id?>" <?php if($calendar && in_array($group->short,$arr_group_res)){echo "checked";}?>> <?=$group->short?>
-	            </label>
-            <?php } ?>
-            <label class="checkbox-inline">
-                <input name="group_allowed[]" type="checkbox" value="all" <?php if($calendar && in_array("all",$arr_group_res)){echo "checked";}elseif(!$calendar){echo "checked";}?>> All
-            </label>
+    <div>
+        <div class="form_group_part_description">Attachment Files, Photo Gallery</div>
+        <div class="form_group_part_title">Event Attachment</div>
+
+        <div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label input-md">Attachment</label>
+                <div class="col-sm-10">
+                    <input type="file" name="attachment[]" id="attachment" multiple class="btn btn-default">
+                    <?php if(isset($mysharing['attachment'])){?>
+                    <div style="margin-top:20px; max-width:80%">
+                        <?php foreach($mysharing['attachment'] as $file){?>
+                            <div class="file_<?php echo $file->id?>">
+                                <div style="float:left; width:80%; overflow:hidden; padding-right:10px;">
+                                    <span><img style="height:18px" src="<?=get_ext_office($file->ext)?>"></span>
+                                    <a href="<?php echo base_url()?><?php echo $file->full_url;?>"><?= $file->title?></a>
+                                </div>
+                                <div style="float:right; padding-right:10px;">
+                                    <?php if(($user['id'] == $file->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
+                                        <a onclick="delete_files_upload(<?php echo $file->id?>,'file_form')">
+                                            <span class="glyphicon glyphicon-trash" style="color:#c9302c"></span>
+                                        </a>
+                                    <?php }?>
+                                </div><div style="clear:both"></div>
+                            </div>
+                        <?php }?>
+                    </div>
+                    <?php }?>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 control-label input-md">Photo Gallery</label>
+                <div class="col-sm-10">
+                    <input type="file" name="photo[]" id="photo" multiple class="btn btn-default">
+                    <?php if(isset($mysharing['img'])){?>
+                    <div style="margin-top:20px; max-width:80%">
+                        <?php foreach($mysharing['img'] as $file){?>
+                            <div class="file_<?php echo $file->id?>">
+                                <div style="float:left; width:80%; overflow:hidden; padding-right:10px;">
+                                    <span><img style="height:18px" src="<?php echo base_url().$file->full_url ?>"></span>
+                                    <?php echo $file->title?>
+                                </div>
+                                <div style="float:right; padding-right:10px;">
+                                    <?php if(($user['id'] == $file->user_id) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
+                                        <a onclick="delete_files_upload(<?php echo $file->id?>,'file_form')">
+                                            <span class="glyphicon glyphicon-trash" style="color:#c9302c"></span>
+                                        </a>
+                                    <?php }?>
+                                </div><div style="clear:both"></div>
+                            </div>
+                        <?php }?>
+                    </div>
+                    <?php }?>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <?php if($calendar){$arr_position_res = explode(";",$calendar->position_allowed);}?>
-        <div class="col-sm-10 col-sm-offset-1">
-            <?php foreach($arr_position as $pos){?>
-	            <label class="checkbox-inline">
-	                <input name="position_allowed[]" type="checkbox" value="<?=$pos->position?>" <?php if($calendar && in_array($pos->position,$arr_position_res)){echo "checked";}?>> <?=$pos->position?>
-	            </label>
-            <?php } ?>
-            <label class="checkbox-inline">
-                <input name="position_allowed[]" type="checkbox" value="all" <?php if($calendar && in_array("all",$arr_position_res)){echo "checked";}elseif(!$calendar){echo "checked";}?>> All
-            </label>
-        </div>
-    </div>
- 	<hr>
- 	*/ ?>
-	<div class="form-group row">
-		<div class="col-sm-3 col-sm-offset-1">
-			<?php $start=""; if($calendar){if($calendar->start){$start = date("m/d/Y", strtotime($calendar->start));}}
-			elseif($this->uri->segment(4)){$start = $this->uri->segment(4)."/".$this->uri->segment(5)."/".$this->uri->segment(6);}
-			?>
-			<input type="text" class="form-control-minimalist" id="start" name="start" placeholder="Start Date" value="<?php echo $start?>">
-			<small style="color:grey">format: mm/dd/YYYY</small>
-		</div>
-		<div class="col-sm-2">
-			<?php $start_time="8:00"; if($calendar){if($calendar->start){$start_time = date("h:i", strtotime($calendar->start));}}?>
-			<input type="text" class="form-control-minimalist time" id="start_time" name="start_time" placeholder="hh:mm" value="<?php echo $start_time?>">
-			<small style="color:grey">format: hh:mm</small>
-		</div>
-		<div class="col-sm-3">
-			<?php $end=""; if($calendar){if($calendar->end){$end = date("m/d/Y", strtotime($calendar->end));}}
-			?>
-			<input type="text" class="form-control-minimalist" id="end" name="end" placeholder="End Date" value="<?php echo $end?>">
-			<small style="color:grey">format: mm/dd/YYYY</small>
-		</div>
-		<div class="col-sm-2">
-			<?php $end_time="17:00"; if($calendar){if($calendar->end){$end_time = date("h:i", strtotime($calendar->end));}}?>
-			<input type="text" class="form-control-minimalist time" id="end_time" name="end_time" placeholder="hh:mm" value="<?php echo $end_time?>">
-			<small style="color:grey">format: hh:mm</small>
-		</div>
-	</div>
-	<div class="form-group row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <textarea onfocus="actived_summernote('description');" type="text" class="form-control-minimalist" name="description" id="description" placeholder="Description"><?php if($calendar){echo $calendar->description;}?></textarea>
-        </div>
-    </div>
-	<div class="form-group row">
-		<div class="col-sm-2 col-sm-offset-1">
-			<input type="file" name="attachment[]" multiple class="btn btn-default">
-		</div>
-		<label class="col-sm-2 control-label input-md" style="text-align: left">Attachment File</label>
-	</div>
-	
-	<hr>
+    <hr>
 	<div class="center_text">
         <button class="btn btn-broventh btn-circle btn-first btn-lg" type="submit"><span class="glyphicon glyphicon-save"></span></button>
     </div>

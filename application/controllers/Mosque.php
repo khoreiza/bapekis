@@ -51,9 +51,13 @@ class Mosque extends CI_Controller {
 
     public function change_mosque_data(){
         $group_req = $this->input->get('group_req');
-        $arr['start_date'] = DateTime::createFromFormat('d M y', $this->input->get('date'))->format('Y-m-d');
+        $arr['date'] = DateTime::createFromFormat('d M y', $this->input->get('date'))->format('Y-m-d');
 
-        $data['mosques'] = $this->mmosque->get_room_availability($arr,'',$group_req);
+        $join[0]['table'] = "files_upload";
+        $join[0]['in'] = "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'";
+        $join[0]['how'] = "left";
+        $arr_where = array();
+        $data['mosques'] = $this->mfiles_upload->get_db_join('name','asc','mosque',$arr_where,'*, mosque.id as mosque_id','','',$join);
 
         $json['status'] = 1;
         $json['list_of_mosque'] = $this->load->view('mosque/component/index/_list_of_mosque',$data,TRUE);
@@ -74,7 +78,7 @@ class Mosque extends CI_Controller {
         
 
         if($id){
-            $data['room'] = $this->mfiles_upload->get_db('id','asc','meeting_room',array('id' => $id),'*','1')[0];
+            $data['mosque'] = $this->mfiles_upload->get_db('id','asc','mosque',array('id' => $id),'*','1')[0];
         }
 
         
@@ -123,6 +127,108 @@ class Mosque extends CI_Controller {
         redirect('mosque');
     }
     
+
+
+
+
+
+    public function show()
+    {
+        $id = $this->uri->segment(3);
+        $user = $this->session->userdata('userbapekis');
+
+        /****** GET EVENT FROM ID ******/
+        $join[0]['table'] = "files_upload";
+        $join[0]['in'] = "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'";
+        $join[0]['how'] = "left";
+        $arr_where = array('mosque.id' => $id);
+        $mosque = $this->mfiles_upload->get_db_join('name','asc','mosque',$arr_where,'mosque.*, files_upload.full_url, mosque.id as mosque_id','','',$join);
+        /****** END OF GET EVENT FROM ID ******/
+
+        if($mosque && $id){
+            $data['mosque'] = $mosque[0];
+            //$this->muser->insert_user_access_log("Access Calendar of Event, ".$data['event']->title);
+
+            
+            /******* Files Upload Section ********/
+        
+            // Set the parameter
+            $files_upload['modul'] = "mosque";
+            $files_upload['submodul'] = "mosque_files";
+            $files_upload['ownership_id'] = $data['mosque']->id;
+            $files_upload['count_file'] = 5;
+
+            // Get the Files
+            $arr_where_files = array("ownership_id" => $files_upload['ownership_id']);
+            $files_upload['publications'] = $this->mfiles_upload->get_publication_files_where($files_upload['modul'],$files_upload['submodul'],$files_upload['count_file'], $arr_where_files);
+
+            // List of View
+            $data['list_files_view'] = $this->load->view('files_upload/theme/broventh/_list_files', $files_upload,TRUE);
+            $data['files_upload'] = $this->load->view('files_upload/theme/broventh/_files_upload_box', $data,TRUE);
+            /******* End of Files Upload Section ********/
+
+
+            /******** EVENT DOCUMENTATION *********/
+            $data['documentations'] = $this->mfiles_upload->get_files_upload_by_ownership_id_order('event', 'documentation', $id, "id", "asc");
+            $data['list_of_documentation'] = $this->load->view('calendar/component/show/_list_of_documentation',$data,TRUE);
+            /******** END of EVENT DOCUMENTATION *********/
+
+
+            /******** EVENT NEWS *********/
+            $arr_where_news = array("news.ownership_id" => $id, 'news.modul' => 'calendar news');
+
+            $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'photo' and sub_modul = 'calendar news') as files_upload";
+            $join_news[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = news.id", 'how' => 'left');
+            $join_news[1] = array('table' => 'user', 'in' => "user.id = news.user_id");
+            $data['news'] = $this->mfiles_upload->get_db_join('id','desc','news',$arr_where_news,'news.*, user.full_name, user.profile_picture, user.nik, files_upload.full_url',"",'',$join_news);
+
+            /******** END OF EVENT NEWS *********/
+            
+
+
+            $data['title'] = $data['mosque']->name." - Bapekis";
+
+            $data['header'] = $this->load->view('admin/shared/first/header','',TRUE);   
+            $data['footer'] = $this->load->view('admin/shared/first/footer','',TRUE);
+            $data['content'] = $this->load->view('mosque/show',$data,TRUE);
+
+            $this->load->view('admin/shared/front',$data);
+
+
+        }else{
+            redirect('calendar');
+        } 
+    }
+
+
+
+    public function get_mosque_show_data(){
+        $mosque_id = $this->input->get('mosque_id');
+        
+        $data = "";
+
+        /****** GET SHARING ******/
+        $arr_where_sharing = array("mysharing.mosque_id" => $mosque_id);
+
+        $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
+        $join_sharing[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = mysharing.id", 'how' => 'left');
+        $join_sharing[1] = array('table' => 'user', 'in' => "user.id = mysharing.created_by");
+        $join_sharing[2] = array('table' => 'category', 'in' => "mysharing.category_id = category.id");
+        $data['sharings'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, user.full_name, user.profile_picture, user.nik, files_upload.full_url, category.category',"",'',$join_sharing);
+        $data['sharing_view'] = $this->load->view('mosque/component/show/content/_sharing_news',$data,TRUE);
+        /****** END OF GET SHARING ******/
+
+
+        $json['status'] = 1;
+        $json['mosque_content'] = $this->load->view('mosque/component/show/_content',$data,TRUE);
+
+        $this->output->set_content_type('application/json')
+                     ->set_output(json_encode($json));
+    }
+
+
+
+
 
 
 

@@ -164,7 +164,7 @@
             </div>
 
             <!--=============================== Content ========================-->
-            <div id="body-content" class="container-fluid" style="min-height:89%;">
+            <div id="body-content" class="container-fluid" style="min-height:89%; background-color: #f1f5f7 !important;">
                 <?=(isset($content)) ? $content : ""?>
             </div>
             <!--=============================== Footer ===========================-->

@@ -340,7 +340,7 @@ class Calendar extends CI_Controller {
         }
 		
 		/************ Upload Attachment *************/
-		$path = "calendar/".$cal_id."/attachment/";
+		$path = "calendar/".$cal_id."/files/";
         
         //Attachment
         if(isset($_FILES['attachment']) && !($_FILES['attachment']['error'] == UPLOAD_ERR_NO_FILE)){
@@ -348,8 +348,17 @@ class Calendar extends CI_Controller {
             $file = $this->mfiles_upload->upload_files("attachment",$path,'calendar','event',$cal_id,true,false);
         }
 
+         /*** Photo Gallery ***/
+        $this->upload->reset_multi_upload_data();
+        //$path = "calendar/".$cal_id."/gallery/";
+        if(isset($_FILES['photo']) && !($_FILES['photo']['error'] == UPLOAD_ERR_NO_FILE)){
+            /*Upload */ 
+            $file = $this->mfiles_upload->upload_files("photo",$path,'calendar','gallery',$cal_id,true,true);
+        }
+
        /*** Photo Banner ***/
         $this->upload->reset_multi_upload_data();
+        //$path = "calendar/".$cal_id."/banner/";
         if(isset($_FILES['img']) && !($_FILES['img']['error'] == UPLOAD_ERR_NO_FILE)){
             /*Upload */ 
             $file = $this->mfiles_upload->upload_files("img",$path,'photo','calendar',$cal_id,true,true);

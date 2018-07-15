@@ -3,7 +3,7 @@
     <div>
         <div class="row">
             <div class="col-md-8">
-                <h2 class="page_title">Meeting Management Page</h2>
+                <h2 class="page_title">Mosque Management Page</h2>
                 <p class="broventh_page_description">
                     Today <?=date('l, j M y')?>.
                 </p>
@@ -20,26 +20,19 @@
         <div class="col-md-8 column" style="padding-right: 20px;">
             <div class="broventh_submenu_div" style="margin-top: 0px;">
                 <div class="broventh_submenu_title no_border">
+                   
                     <div class="row">
-                        <div class="col-md-4">
-                            <a onclick="show_book_room_form()" class="btn btn-broventh btn-circle btn-first" style="margin-right: 10px;"><span class="glyphicon glyphicon-plus"></span></a>
-                            Book a Room
+                        <div class="col-xs-7">
+                            <select class="selectpicker" onchange="change_group_room()" id="group_req">
+                                <?php foreach($list_of_groups as $group){?>
+                                    <option value="<?=$group->val?>" <?=(strtoupper($user['group']) == strtoupper($group->val)) ? "selected" : ""?>><?=$group->val?></option>
+                                <?php }?>
+                            </select>
                         </div>
-                        <div class="col-md-8 right_text">
-                            <div class="row">
-                                <div class="col-xs-7">
-                                    <select class="selectpicker" data-width=100% onchange="change_group_room()" id="group_req">
-                                        <?php foreach($list_of_groups as $group){?>
-                                            <option value="<?=$group->val?>" <?=(strtoupper($user['group']) == strtoupper($group->val)) ? "selected" : ""?>><?=$group->val?></option>
-                                        <?php }?>
-                                    </select>
-                                </div>
-                                <div class="col-xs-5">
-                                    <div class="input-group" style="float: right; width: 100%; max-width: 200px">
-                                        <input class="form-control-minimalist" value="<?=date('j M y')?>" id="meeting_date" onchange="change_date_for_room()">
-                                        <div class="input-group-addon addon-minimalist"><span class="glyphicon glyphicon-calendar"></span></div>
-                                    </div>
-                                </div>
+                        <div class="col-xs-5 right_text">
+                            <div class="input-group" style="float: right; width: 100%; max-width: 200px">
+                                <input class="form-control-minimalist" value="<?=date('j M y')?>" id="meeting_date" onchange="change_date_for_room()">
+                                <div class="input-group-addon addon-minimalist"><span class="glyphicon glyphicon-calendar"></span></div>
                             </div>
                         </div>
                     </div>
@@ -52,9 +45,6 @@
             </div>
         </div>
         <div class="col-md-4 column" id="list_of_requests" style="padding-left: 20px;">
-            <?php if($requests || $my_reqs){echo $list_of_requests;}?>
-            <?php if($my_meeting_as_invitee){echo $html_invitee;}?>
-            <?php if($my_meeting_as_invitor){echo $html_invitor;}?>
         </div>
     </div>
 </div>

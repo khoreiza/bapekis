@@ -19,7 +19,7 @@ class Mmosque extends CI_Model {
         $this->load->model(array('mfiles_upload'));
     }
     
-    function get_mosque_data($arr_time, $room_id, $group_req){
+    function get_mosque_data($arr){
         
         $user = $this->session->userdata('userdb');
         if($group_req) $group = strtoupper($group_req);
@@ -37,16 +37,12 @@ class Mmosque extends CI_Model {
         }
 
         if($room_id){$arr_where['meeting_room.id'] = $room_id;}
+        
+
         $rooms = $this->mfiles_upload->get_db_join('name','asc','meeting_room',$arr_where,'*, meeting_room.id as room_id','','',$join); $i=0;
         $result['rooms'] = $this->get_room_agendas($rooms,$result,$arr_time);
 
-        if(!$room_id){
-            /*$result['others'] = $this->mfiles_upload->get_db_join('name','asc','meeting_room',array('pic_group !=' => $group, 'modul' => 'meeting', 'sub_modul' => 'room_photo'),'','','',$join);*/
-
-            //Use Together
-            $togethers = $this->mfiles_upload->get_db_join('name','asc','meeting_room',array('pic_group !=' => $group, 'use_together' => 1, 'is_use' => 1),'*, meeting_room.id as room_id','','',$join); $i=0;
-            $result['rooms'] = $this->get_room_agendas($togethers,$result['rooms'],$arr_time);
-        }
+        
         return $result;
     }
 

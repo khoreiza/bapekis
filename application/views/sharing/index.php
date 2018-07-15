@@ -27,7 +27,7 @@
         <h1 class="center_text front_title" style="margin-top: 10px">Bapekis Sharing Management</h1>
         <div class="row" style="margin-top: 40px;">
             <div class="col-md-8" style="padding-top: 15px;">
-                <a style="margin-right: 5px;" onclick="show_sharing_form('','internal');" class="btn btn-broventh btn-circle btn-first"><span class="glyphicon glyphicon-pencil"></span></a> <span>Add New Sharing</span>
+                <a style="margin-right: 5px;" onclick="show_sharing_form();" class="btn btn-broventh btn-circle btn-first"><span class="glyphicon glyphicon-pencil"></span></a> <span>Add New Sharing</span>
                 <?php if(is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
                 <a style="margin: 0 5px 0 20px;" class="btn btn-broventh btn-first btn-circle" onclick="show_category_form('','mysharing')">
                     <span class="glyphicon glyphicon-tasks"></span></a> <span>Add New Category</span>
@@ -88,26 +88,6 @@
         });
         load_more_sharings('first_time');
     });
-
-
-    function show_sharing_form(id){
-        $(".loading_panel").show();
-        $.ajax({
-            type: "GET",
-            url: config.base+"sharing/show_sharing_form",
-            data: {id: id},
-            dataType: 'json',
-            cache: false,
-            success: function(resp){
-                if(resp.status==1){
-                    //$('#modal_finder').html(resp.html);
-                    //$('#sharing_form_Modal').modal('show');
-                    show_popup_modal(resp.html);
-                    $(".loading_panel").hide();
-                }else{}
-            }
-        });
-    }
 
     function load_more_sharings(type){
 

@@ -1,3 +1,27 @@
+function show_sharing_form(id, mosque_id){
+    $(".loading_panel").show();
+    $.ajax({
+        type: "GET",
+        url: config.base+"sharing/show_sharing_form",
+        data: {id: id, mosque_id: mosque_id},
+        dataType: 'json',
+        cache: false,
+        success: function(resp){
+            if(resp.status==1){
+                //$('#modal_finder').html(resp.html);
+                //$('#sharing_form_Modal').modal('show');
+                show_popup_modal(resp.html);
+                $(".loading_panel").hide();
+            }else{}
+        }
+    });
+}
+
+
+
+
+
+
 function change_customer(type){
     $.ajax({
         type: "GET",

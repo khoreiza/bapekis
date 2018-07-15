@@ -128,6 +128,8 @@ class Sharing extends CI_Controller {
     
     public function show_sharing_form(){
         $id = $this->input->get('id');
+        $mosque_id = $this->input->get('mosque_id');
+
         $user = $this->session->userdata('userbapekis');
         if($id){
             $data['mysharing'] = $this->mmysharing->get_by_id_with_atc($id);
@@ -146,10 +148,12 @@ class Sharing extends CI_Controller {
         //$data['arr_group'] = $this->mfiles_upload->get_db_join("group_name asc, sort",'asc','cbgroup',array('directorate' => $user['directorate']),"cbgroup.*","","",$join);
         //$data['arr_position'] = $this->mfiles_upload->get_db_group_by("priority",'asc','user',array('directorate' => $user['directorate']),"","","position");
 
+        $data['mosque_id'] = $mosque_id ? $mosque_id : "";
+
         $data['categories'] = $this->mfiles_upload->get_db('category','asc','category',array('menu' => 'mysharing'),'','');
 
         $data['popup_content'] = $this->load->view('sharing/component/index/_sharing_form',$data,TRUE);
-        $data['popup_title'] = "Form Internal Sharing"; 
+        $data['popup_title'] = ($mosque_id) ? "Mosque News Sharing" : "Form Sharing"; 
         $data['popup_width'] = "800px";
 
         $data['status'] = 1;
@@ -188,7 +192,7 @@ class Sharing extends CI_Controller {
       	$id = $this->uri->segment(3);
       	$user = $this->session->userdata('userbapekis');
         
-        $arr = array('title','category_id','description');
+        $arr = array('title','category_id','description','mosque_id');
         $data = $this->mfiles_upload->get_form_element($arr);
 
         $data['date'] = DateTime::createFromFormat('j M y', $this->input->post('date'))->format('Y-m-d');

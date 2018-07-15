@@ -6,7 +6,7 @@
   action="<?=base_url()?>sharing/submit/<?=(isset($mysharing) && $mysharing['mysharing']->id) ? $mysharing['mysharing']->id : ''?>" 
   method ="post" id="form_mysharing" role="form" enctype="multipart/form-data" style="padding: 10px;">
 
-
+    <input type="hidden" name="mosque_id" value="<?=$mosque_id?>">
     <div class="form_group_part_div" id="form_group_part_div_1" style="display: block;">
         <div>
             <div class="form_group_part_description">Title, Category, Date, Sharing Content, and Photo Banner</div>

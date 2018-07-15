@@ -9,7 +9,7 @@
 
 
 <div class="navbar-top" style="">
-	<div class="row" style="width:100%; max-width: 1340px; margin:0 auto; padding:0px 5px 0px 5px; ">
+	<div class="row" style="width:100%; max-width: 1500px; margin:0 auto; padding:0px 5px 0px 5px; ">
 		<div class="col-md-9 col-sm-8 col-xs-10">
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-3 center_text" style=" margin: 0px 0px 0px 0px;">
