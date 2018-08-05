@@ -46,12 +46,11 @@ function get_kpi_type_result($type){
 
 
 function get_position_priority($position){
-	if(strtoupper($position) == "GROUP HEAD") $data['priority'] = 1;
-    elseif(strtoupper($position) == "DEPARTMENT HEAD") $data['priority'] = 2;
-    elseif(strtoupper($position) == "TEAM LEADER") $data['priority'] = 3;
-    elseif(strtoupper($position) == "OFFICER") $data['priority'] = 4;
-    elseif(strtoupper($position) == "PELAKSANA") $data['priority'] = 5;
-    elseif(strtoupper($position) == "SEKRETARIS") $data['priority'] = 5;
+	if(strtoupper($position) == "KETUA UMUM") $data['priority'] = 1;
+    elseif(strtoupper($position) == "KETUA") $data['priority'] = 2;
+    elseif(strtoupper($position) == "WAKIL KETUA") $data['priority'] = 3;
+    elseif(strtoupper($position) == "ANGGOTA") $data['priority'] = 4;
+    elseif(strtoupper($position) == "TAKMIR") $data['priority'] = 5;
 
     return $data['priority'];
 }
@@ -443,7 +442,7 @@ function get_file_ext($ext){
 	if($ext == ".doc" || $ext == ".docx"){$img = "word";}
     elseif($ext == ".xls" || $ext == ".xlsx"){$img = "xlx";}
     elseif($ext == ".ppt" || $ext == ".pptx"){$img = "ppt";}
-    elseif($ext == ".png" || $ext == ".jpg"){$img = "gallery";}
+    elseif($ext == ".png" || $ext == ".jpg" || $ext == ".jpeg"){$img = "gallery";}
     else{$img = "pdf";}
     return $img;
 }
@@ -624,7 +623,7 @@ function long_text_real($string,$char){
 }
 
 function check_all_big($string){
-	$arr_all_big = array("PLN","DCOR","HCBP","BOD","SEVP","PTPN","II","III","IV","VI","XIII","LPDP","BPDP","BPJS","XL","BOD","KMK","KI","AKR","SME","IDR","(AKM)","CASA", "MKM", "KTA", "PWE", "LC", "KPR", "MGM", "FX", "EDC","ATM","DF","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","SSF","PT");
+	$arr_all_big = array("PLN","DCOR","HCBP","BOD","SEVP","PTPN","II","III","IV","VI","XIII","LPDP","BPDP","BPJS","XL","BOD","KMK","KI","AKR","SME","IDR","(AKM)","CASA", "MKM", "KTA", "PWE", "LC", "KPR", "MGM", "FX", "EDC","ATM","DF","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","SSF","PT","PHBI");
 	if(!in_array(strtoupper($string), $arr_all_big)) return ucwords(strtolower($string));
 	else return strtoupper($string);
 }

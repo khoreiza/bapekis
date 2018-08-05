@@ -3,7 +3,7 @@
     <div>
         <div class="row">
             <div class="col-md-8">
-                <h2 class="page_title">Mosque Management Page</h2>
+                <h1 class="page_title">Mosque Management Page</h1>
                 <p class="broventh_page_description">
                     Today <?=date('l, j M y')?>.
                 </p>

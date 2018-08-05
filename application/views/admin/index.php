@@ -117,8 +117,8 @@
                                         <img src="<?=base_url()?>assets/img/icon/images - office.png">
                                     </div>
                                     <div class="col-xs-9">
-                                        <h5 class="news_title"><a href="<?=base_url()?>data/tutorial">Banner Picture</a></h5>
-                                        <h6>Manage Page & Tutorial Data</h6>
+                                        <h5 class="news_title"><a href="<?=base_url()?>management">Pengurus Bapekis</a></h5>
+                                        <h6>Halaman profil para pengurus bapekis</h6>
                                     </div>
                                 </div>
                             </div>

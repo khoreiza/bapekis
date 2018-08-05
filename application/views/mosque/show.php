@@ -62,10 +62,10 @@
                                      <a onclick="show_calendar_form('','mosque',<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
                                         <span class="glyphicon glyphicon-calendar"></span> Add Event
                                     </a>
-                                     <a onclick="show_sharing_form('','<?=$mosque->mosque_id?>');" class="btn btn-broventh btn-white show_header_option">
+                                     <a onclick="show_sharing_form('',<?=$mosque->mosque_id?>);" class="btn btn-broventh btn-white show_header_option">
                                         <span class="glyphicon glyphicon-volume-up"></span> Add News
                                     </a>
-                                     <a onclick="show_add_mosque_form(<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
+                                     <a onclick="show_financial_form('',<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
                                         <span class="glyphicon glyphicon-tasks"></span> Add Financial
                                     </a>
                                     <a onclick="show_add_mosque_form(<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-edit show_header_option">
@@ -166,6 +166,7 @@
 
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/application/mosque.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/application/calendar.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/application/financial.js"></script>
 <script type="text/javascript">
     get_mosque_show_data(<?=$mosque->mosque_id?>);
 

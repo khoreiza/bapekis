@@ -33,7 +33,7 @@ class File extends CI_Controller {
         if($data['ownership_id']){$arr_where['ownership_id'] = $data['ownership_id'];}
         
         /*ALL Files*/
-        $arr_order = array('created');
+        $arr_order = array('created_at');
         $arr_how = array('desc');
         $data['files'] = $this->mfiles_upload->get_db($arr_order,$arr_how,'files_upload',$arr_where,'','');
 
@@ -349,7 +349,7 @@ class File extends CI_Controller {
         $data['popup_subtitle'] = $data['submodul']; 
         $data['popup_width'] = "800px";
 
-        $json['html'] = $this->load->view('shared/component/_popup_brobot',$data,TRUE);
+        $json['html'] = $this->load->view('admin/shared/component/_popup_page',$data,TRUE);
         $json['status'] = 1;
         $this->output->set_content_type('application/json')
                          ->set_output(json_encode($json));
@@ -430,32 +430,7 @@ class File extends CI_Controller {
                 foreach($attachments as $atch){
                     $file_id = $this->mfiles_upload->insert_files_upload_with_full_url_with_param($upload_path,$page,$sub, $atch, $program['ownership_id'],$program);
                     
-                    /*INSERT UPDATES*/
-                    if($page != "account plan"){
-                        $updates['user_id'] = $user['id'];
-                        $updates['date'] = date("Y-m-d H:i:s");
-                        
-                        if($page=='compliance'){
-                            $updates['modul'] = "Internal Information";
-                            $updates['sub_modul'] = "Legal & Compliance News";
-                        }
-                        elseif($page=='market'){
-                            $updates['modul'] = "Market & Industry (iData)";
-                            $updates['sub_modul'] = "Market Outlook";
-                        }
-                        elseif($page=='hr'){
-                            $updates['modul'] = "Internal Information";
-                            $updates['sub_modul'] = "Human Resources";
-                        }
-
-                        if(isset($updates['modul'])){
-                            $updates['subsub_modul'] = $sub;
-                            $updates['ownership_id'] = $file_id;
-                            $updates['position_allowed'] = $program['user_allowed'];
-                            $this->mupdates->insert($updates);
-                        }
-                    }
-                    /*END OF INSERT UPDATES*/
+                    
                 }
             }
             else{
@@ -523,37 +498,6 @@ class File extends CI_Controller {
         	$program['user_id'] = $user['id'];
             $file_id = $this->mnews->insert_news($program);
             
-            /*INSERT UPDATES*/
-            if($page == "compliance" || $page == "market" || $page == "product_knowledge" || $page == "hr" ){
-                $updates['user_id'] = $user['id'];
-                $updates['date'] = date("Y-m-d H:i:s");
-                
-                if($program['modul']=='compliance'){
-                    $updates['modul'] = "Internal Information";
-                    $updates['sub_modul'] = "Legal & Compliance News";
-                }
-                else if($program['modul']=='market'){
-                    $updates['modul'] = "Market & Industry (iData)";
-                    $updates['sub_modul'] = "Market Outlook";
-                }
-                else if($program['modul']=='product_knowledge'){
-                    $updates['modul'] = "Update News";
-                    $updates['sub_modul'] = "Product Knowledge";
-                }
-                else if($program['modul']=='hr'){
-                    $updates['modul'] = "Internal Information";
-                    $updates['sub_modul'] = "Human Resources";
-                }
-                else if($program['modul']=='competition'){
-                    $updates['modul'] = "Competition";
-                    $updates['sub_modul'] = "Competition";
-                }
-               
-                $updates['ownership_id'] = $file_id;
-                $updates['position_allowed'] = $program['user_allowed'];
-                $this->mupdates->insert($updates);
-            }
-            /*END OF INSERT UPDATES*/
         }
         
         /*Upload attach */ 

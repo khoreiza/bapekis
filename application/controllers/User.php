@@ -98,7 +98,7 @@ class User extends CI_Controller {
         /**** End of Dir Priority Data ****/
 
 
-        /**** Position Priority Data ****
+        /**** Position Priority Data ****/
         $data['priority'] = get_position_priority($data['position']);
         /**** End Position Priority Data ****/
 
@@ -157,4 +157,14 @@ class User extends CI_Controller {
         redirect('user/management');
     }
     /********************** END OF USER MENU **********************/
+
+
+
+    public function delete_user(){
+        $id = $this->input->get('id');
+        $result = $this->muser->delete_user($id);
+        $this->output
+          ->set_content_type('application/json')
+          ->set_output(json_encode($result));
+    }
 }

@@ -24,7 +24,7 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label">Region</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control-minimalist" id="region" name="region" placeholder="" value="<?php if(isset($mosque)){echo $mosque->name;}?>">
+                <input type="text" class="form-control-minimalist" id="region" name="region" placeholder="" value="<?php if(isset($mosque)){echo $mosque->region;}?>">
                 <?php /*<select class="selectpicker form-control" name="pic_group">
                     <?php for($i=1;$i<=7;$i++){?>
                         <option value="Corporate Banking <?=$i?>">Corporate Banking <?=$i?></option>

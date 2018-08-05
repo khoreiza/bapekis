@@ -92,9 +92,10 @@ class Mfiles_upload extends CI_Model {
         }
 		$file_atch['modul'] = $modul;
 		$file_atch['sub_modul'] = $submodul;
-		$file_atch['user_id'] = $user['id'];
-		$file_atch['created'] = $program['created'];
-        $file_atch['updated'] = date("Y-m-d H:i:s");
+		$file_atch['created_by'] = $user['id'];
+		$file_atch['created_at'] = $program['created'];
+        $file_atch['updated_at'] = date("Y-m-d H:i:s");
+        $file_atch['updated_by'] = $user['id'];
 		$file_atch['ownership_id'] = $ownership_id;
         if($program['user_allowed']){
              $file_atch['user_allowed'] = $program['user_allowed'];

@@ -118,7 +118,7 @@ class Mosque extends CI_Controller {
         if(isset($_FILES['photo']) && !($_FILES['photo']['error'] == UPLOAD_ERR_NO_FILE)){
             /*Upload */ 
             $path = "mosque/".$mosque_id."/photo/";
-            $file = $this->mfiles_upload->upload_file("photo",$path,'mosque', 'mosque_photo',$mosque_id,true);
+            $file = $this->mfiles_upload->upload_file("photo",$path,'mosque', 'mosque_photo',$mosque_id,true,false);
 
             if($file){ $this->mfiles_upload->make_photo_thumb($file['file_name'],$file['full_url'],$path,400,'_thumbnail.jpg');}
 
@@ -227,6 +227,30 @@ class Mosque extends CI_Controller {
         $data['upcoming_events'] = $this->mfiles_upload->get_db_join('start','asc','calendar',$arr_where_event,'',"",'','');
         $data['event_view'] = $this->load->view('mosque/component/show/content/_event',$data,TRUE);
         /****** END OF GET EVENT ******/
+
+
+
+
+
+
+        /****** GET FINANCIAL ******/
+        //Summary Performance
+        $select_financial = "*, sum(case when (type = 'Outcome') then `amount` else 0 end) sum_outcome, sum(case when (type = 'Income') then `amount` else 0 end) sum_income";
+        $summary = $this->mfiles_upload->get_db_join('type','asc','financial_cashflow',array('mosque_id' => $mosque_id),$select_financial,"",'','');
+        if($summary) $data['summary'] = $summary[0];
+
+        //List Performance
+        $data['cashflows'] = $this->mfiles_upload->get_db_join('date','desc','financial_cashflow',array('mosque_id' => $mosque_id),'',"",'','');
+        
+        //Growth Performance
+        $data['growth'] = $this->mfiles_upload->get_db_join('date','asc','financial_cashflow',array('mosque_id' => $mosque_id),"*, sum(case when (type = 'Outcome') then `amount`*-1 else `amount` end) sum_amount","",'month(date)','');
+
+        $data['financial_view'] = $this->load->view('mosque/component/show/content/_financial',$data,TRUE);
+        /****** END OF GET FINANCIAL ******/
+
+
+
+
 
 
 

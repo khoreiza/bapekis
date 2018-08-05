@@ -1,6 +1,6 @@
 <?php
     $user = $this->session->userdata('userbapekis');
-    $arr_position = array("DIRECTOR","GROUP HEAD","DEPARTMENT HEAD","TEAM LEADER","OFFICER","PELAKSANA","SEKRETARIS");
+    $arr_position = array("KETUA UMUM","KETUA","WAKIL KETUA","ANGGOTA","TAKMIR");
 ?>
 <div>
     <a class="btn btn-broventh btn-circle btn-third" onclick="close_form_user()">X</a>
@@ -48,8 +48,8 @@
                 </div>
                 <div class="col-sm-2">
                     <select class="selectpicker" name="gender" data-width="100%">
-                        <option value="P" <?=(isset($profile) && $profile->gender == "P") ? "selected" : ""; ?>>Woman</option>
                         <option value="L" <?=(isset($profile) && $profile->gender == "L") ? "selected" : ""; ?>>Man</option>
+                        <option value="P" <?=(isset($profile) && $profile->gender == "P") ? "selected" : ""; ?>>Woman</option>
                     </select>
                 </div>
             </div>

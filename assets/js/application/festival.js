@@ -1,17 +1,8 @@
-function show_popup_modal(resp, modal_id){
-    $('#popup_Modal').modal('hide');
-    setTimeout(function(){
-        $('#modal_finder').html(resp);
-        $('.selectpicker').selectpicker('refresh');
-        $('#popup_Modal').modal('show');
-    }, 500);
-}
-
-function show_form(id,comp_stat){
+function show_financial_form(id, mosque_id){
     $.ajax({
         type: "GET",
         url: config.base+"festival/show_form",
-        data: {id: id,in_competition: comp_stat},
+        data: {id: id,mosque_id: mosque_id},
         dataType: 'json',
         cache: false,
         success: function(resp){

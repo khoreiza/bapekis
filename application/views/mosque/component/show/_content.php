@@ -8,7 +8,7 @@
     <?=$sharing_view?>
 </div>
 <div class="mosque_show_div menu_bar_div " id="financial_div">
-    <h4>Financial</h4>
+    <?=$financial_view?>
 </div>
 <div class="mosque_show_div menu_bar_div " id="photos_div">
     <h4>Photos</h4>

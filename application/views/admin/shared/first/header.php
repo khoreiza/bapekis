@@ -68,7 +68,7 @@
 						<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url()?>user/change_password" style="color:#189cb8;">
 							<span style="margin-right:5px;" class="glyphicon glyphicon-lock" aria-hidden="true"></span> Change Password
 						</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url()?>user/logout" style="color:#189cb8;">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url()?>account/logout" style="color:#189cb8;">
 							<span style="margin-right:5px;" class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout
 						</a></li>
 						<?php if(is_user_role($user,"POLICY ADMINISTRATOR") || is_user_role($user,"PERFORMANCE ADMINISTRATOR") || is_user_role($user,"LOG VIEWER")){?>
@@ -83,7 +83,7 @@
 								<span style="margin-right:5px;" class="glyphicon glyphicon-star" aria-hidden="true"></span> Login Photo
 							</a></li>
 							<?php }?>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url()?>data/user" style="color:#189cb8;">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url()?>user/management" style="color:#189cb8;">
 								<span style="margin-right:5px;" class="glyphicon glyphicon-user" aria-hidden="true"></span> User Management
 							</a></li>
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo base_url()?>log_activity" style="color:#189cb8;">

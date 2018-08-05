@@ -47,7 +47,7 @@
                                         <td><?php echo $i?></td>
                                         <td title="<?php echo $row->title?>">
                                             <div>
-                                                <span><img style="height:18px" src="<?php echo base_url()?>assets/img/icon/<?php echo get_file_ext($row->ext)?> - color.png"></span>
+                                                <span><img style="height:18px" src="<?php echo base_url()?>assets/img/icon/<?php echo get_file_ext_office($row->ext)?>"></span>
 
                                                 <?php if($row->full_url){?>
                                                     <a target="_blank" href="<?php echo base_url()?><?php echo $row->full_url;?>">
@@ -61,7 +61,7 @@
                                                 <div style="font-size: 12px; margin-top: 5px;"><?php long_text_real(strip_tags($row->description),120)?></div>
                                             <?php }?>
                                         </td>
-                                        <td class="center_text"><?=date("j M y",strtotime($row->created))?></td>
+                                        <td class="center_text"><?=date("j M y",strtotime($row->created_at))?></td>
 
                                         <?php if($modul == "account plan"){?>
                                             <td><?php
@@ -77,12 +77,12 @@
                                         <?php }?>
 
                                         <td class="right_text">
-                                            <?php if(($user['id'] == $row->user_id) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
+                                            <?php if(($user['id'] == $row->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
                                                 <a onclick="show_form_files('<?php echo $modul?>','<?php echo $submodul?>','<?php echo $row->id?>');">
                                                     <span class="glyphicon glyphicon-pencil" style="color:#f0ad4e"></span>
                                                 </a>
                                             <?php }?>
-                                            <?php if(($user['id'] == $row->user_id) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
+                                            <?php if(($user['id'] == $row->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
                                                 <a onclick="delete_files_upload(<?php echo $row->id?>)">
                                                     <span class="glyphicon glyphicon-trash" style="color:#c9302c"></span>
                                                 </a>

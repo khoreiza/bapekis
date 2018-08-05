@@ -85,4 +85,14 @@ class Account extends CI_Controller {
             else{echo "gak ada"; return false;}
          }
     }
+
+
+    public function logout(){
+        $user = $this->session->userdata('userdb');
+        if($user){
+            $this->muser->insert_user_logout_log($user['id']);
+            $this->session->unset_userdata('userdb');
+        }
+        redirect(base_url().'account/login');
+    }
 }

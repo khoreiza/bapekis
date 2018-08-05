@@ -325,7 +325,7 @@
 	.broventh_page_description{
 		font-size: 16px;
 		padding: 5px 0 10px 0;
-		color:<?=array_color(9)?>;
+		color:#999;
 		font-family: "fakt-normal";
 	}
 

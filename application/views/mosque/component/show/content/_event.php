@@ -7,10 +7,10 @@
 			<div>LATEST EVENT</div>
 		</div>
 		<div>
-			<?php foreach($latest_events as $lat){?>
+			<?php if(isset($latest_events))foreach($latest_events as $lat){{?>
 				<div class="broventh_card" style="padding: 20px;">
 					<div class="news_title">
-                        <h3><?=$lat['event']->title?></h3>
+                        <h3 class="news_title"><a target="_blank" href="<?=base_url()?>calendar/show/<?=$lat['event']->id?>"><?=$lat['event']->title?></a></h3>
                         <div style="margin-top: 5px;" class="helper_text">
 							<span class="glyphicon glyphicon-map-marker"></span> <?=$lat['event']->location?>
 							<span class="glyphicon glyphicon-time" style="margin-left: 10px;"></span>
@@ -29,7 +29,7 @@
                         <?php }?>
                     </div><div style="clear:both"></div>
 				</div>
-			<?php }?>
+			<?php }}?>
 		</div>
 	</div>
 	<div class="col-md-4">
