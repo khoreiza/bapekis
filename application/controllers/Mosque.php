@@ -36,6 +36,7 @@ class Mosque extends CI_Controller {
 
 
         $this->muser->insert_user_access_log("Access Meeting Room");*/
+
         $data['title'] = "Mosque - Bapekis";
         $header['page_name'] = "Meeting Room";
 
@@ -178,6 +179,31 @@ class Mosque extends CI_Controller {
             /******* End of Pengurus Masjid *********/
 
 
+
+            /******* Pengurus Masjid *********/
+            
+            // Get the Team
+            $join_team[0] = array('table' => 'user','in' => "team_matrix.user_id = user.id");
+            
+            $team['category'] = "mosque";
+            $team['modul'] = "pengurus";
+            $team['sub_modul'] = $data['mosque']->mosque_id;
+
+            $arr_where_team = array('ownership_category' => $team['category'], 'ownership_modul' => $team['modul'], 'ownership_sub_modul' => $team['sub_modul']);
+
+            $team_matrixs = $this->mfiles_upload->get_db_join('priority','asc','team_matrix',$arr_where_team,'*,team_matrix.id as team_id','','',$join_team);
+            if($team_matrixs) $team['teams'] = $team_matrixs;
+
+            // List of View
+            $team['section_title'] = "Pengurus Masjid ";
+            $team['list_teams_view'] = $this->load->view('team_matrix/broventh/_list_teams', $team,TRUE);
+            $data['team_matrix'] = $this->load->view('team_matrix/broventh/_team_matrix_box', $team,TRUE);
+            /******* End of Pengurus Masjid *********/
+            
+
+
+
+
             /******* Comment Section ********/
             $data['id'] = $id;
             $data['kind'] = "id"; $data['ownership'] = "activity_steps";
@@ -243,7 +269,8 @@ class Mosque extends CI_Controller {
         $data['cashflows'] = $this->mfiles_upload->get_db_join('date','desc','financial_cashflow',array('mosque_id' => $mosque_id),'',"",'','');
         
         //Growth Performance
-        $data['growth'] = $this->mfiles_upload->get_db_join('date','asc','financial_cashflow',array('mosque_id' => $mosque_id),"*, sum(case when (type = 'Outcome') then `amount`*-1 else `amount` end) sum_amount","",'month(date)','');
+        $select_growth = "*, sum(case when (type = 'Outcome') then `amount`*-1 else `amount` end) sum_amount, sum(case when (type = 'Income') then `amount` else 0 end) sum_income, sum(case when (type = 'Outcome') then `amount` else 0 end) sum_outcome";
+        $data['growth'] = $this->mfiles_upload->get_db_join('date','asc','financial_cashflow',array('mosque_id' => $mosque_id),$select_growth,"",'month(date)','');
 
         $data['financial_view'] = $this->load->view('mosque/component/show/content/_financial',$data,TRUE);
         /****** END OF GET FINANCIAL ******/

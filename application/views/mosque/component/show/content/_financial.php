@@ -61,7 +61,6 @@
 								<tr>
 									<th>#</th>
 									<th>Item</th>
-									<th>Desc.</th>
 									<th>Type</th>
 									<th>Date</th>
 									<th>Amount</th>
@@ -72,8 +71,10 @@
 								<?php foreach($cashflows as $i => $row){?>
 									<tr class="<?=($row->type=='Outcome') ? 'outcome_cf' : 'income_cf'?>">
 										<td><?= $i+1;?></td>
-										<td><?= long_text($row->purpose, 20);?></td>
-										<td><?=$row->description?></td>
+										<td>
+                                            <div><?= long_text($row->purpose, 20);?></div>
+                                            <div class="helper_text" style="margin-top: 5px; font-size: 12px;"><?=$row->description?></div>
+                                        </td>
 										<td><?=$row->type?></td>
 										<td class="right_text" title="<?= $row->date;?>"><?= date("j M y", strtotime($row->date));?></td>
 										<td class="right_text" title="<?= number_format($row->amount);?>"><?= currency_format($row->amount)?></td>

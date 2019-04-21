@@ -108,6 +108,8 @@
             </div>
         </div>
         <div class="col-md-3 broventh_sidebar column">
+
+
             <div class="row" style="margin: 20px 0 8px 0;">
                 <div class="col-md-6">
                     <div class="menu_section_title" style="text-align: left;">
@@ -115,37 +117,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 right_text">
-                    <a onclick="show_team_matrix_form('','')" class="btn btn-broventh btn-white btn-xs" style="font-size: 12px;"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                    <?php /*<a onclick="show_team_matrix_form('','')" class="btn btn-broventh btn-white btn-xs" style="font-size: 12px;"><span class="glyphicon glyphicon-plus"></span> Add</a>*/ ?>
                 </div>
             </div>
             <div class="square_box" style="">
                 <div class="square_box_body">
 
                     <div class="section_border_separation">
-                        <?php if(isset($teams)){?>
-                        
-                            <div class="right_text" style="margin-bottom: 10px;">Project Team</div>
-                            <div>
-                                <div class="row">
-                                    <?php foreach($teams as $team){?>
-                                            <div class="col-md-4 col-sm-6" style="margin-bottom: 10px;" id="team_matrix_div_<?=$team->team_id?>">
-                                                <div class="photo_frame_circle" style="height: 35px; width:35px;">
-                                                    <?=employee_photo($team)?>
-                                                </div>
-                                                <div class="center_text" style="margin-top: 5px">
-                                                    <h5 style="height: 16px; overflow: hidden;"><a onclick="show_user_detail(<?=$team->id?>)"><?php long_text($team->full_name,20)?></a></h5>
-                                                    <h6><a class="news_title" onclick="delete_team_matrix(<?=$team->team_id?>)">Delete</a></h6>
-                                                </div>
-                                            </div>
-                                    <?php }?>
-                                </div>
-                            </div>
-                        
-                        <?php }else{?>
-                            <div style="padding: 20px;">
-                                <h4 class="helper_text center_text">No Data</h4>
-                            </div>
-                        <?php }?>
+                        <?=$team_matrix?>
                     </div>
                     
                     <div>
