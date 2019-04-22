@@ -151,22 +151,7 @@ class Mosque extends CI_Controller {
             //$this->muser->insert_user_access_log("Access Calendar of Event, ".$data['event']->title);
 
             
-            /******* Files Upload Section ********/
-        
-            // Set the parameter
-            $files_upload['modul'] = "mosque";
-            $files_upload['submodul'] = "mosque_files";
-            $files_upload['ownership_id'] = $data['mosque']->id;
-            $files_upload['count_file'] = 5;
-
-            // Get the Files
-            $arr_where_files = array("ownership_id" => $files_upload['ownership_id']);
-            $files_upload['publications'] = $this->mfiles_upload->get_publication_files_where($files_upload['modul'],$files_upload['submodul'],$files_upload['count_file'], $arr_where_files);
-
-            // List of View
-            $data['list_files_view'] = $this->load->view('files_upload/theme/broventh/_list_files', $files_upload,TRUE);
-            $data['files_upload'] = $this->load->view('files_upload/theme/broventh/_files_upload_box', $data,TRUE);
-            /******* End of Files Upload Section ********/
+            
 
 
             /******* Pengurus Masjid *********
@@ -277,10 +262,6 @@ class Mosque extends CI_Controller {
 
 
 
-
-
-
-
         /****** GET SHARING ******/
         $arr_where_sharing = array("mysharing.mosque_id" => $mosque_id);
 
@@ -291,6 +272,27 @@ class Mosque extends CI_Controller {
         $data['sharings'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, user.full_name, user.profile_picture, user.nik, files_upload.full_url, category.category',"",'',$join_sharing);
         $data['sharing_view'] = $this->load->view('mosque/component/show/content/_sharing_news',$data,TRUE);
         /****** END OF GET SHARING ******/
+
+
+
+        /******* Files Upload Section ********/
+        
+        // Set the parameter
+        $files_upload['modul'] = "mosque";
+        $files_upload['submodul'] = "mosque_files";
+        $files_upload['ownership_id'] = $mosque_id;
+        $files_upload['count_file'] = 5;
+
+        // Get the Files
+        $arr_where_files = array("ownership_id" => $files_upload['ownership_id']);
+        $files_upload['publications'] = $this->mfiles_upload->get_publication_files_where($files_upload['modul'],$files_upload['submodul'],$files_upload['count_file'], $arr_where_files);
+
+        // List of View
+        $data['list_files_view'] = $this->load->view('files_upload/theme/broventh/_list_files', $files_upload,TRUE);
+        $data['files_upload'] = $this->load->view('files_upload/theme/broventh/_files_upload_box', $data,TRUE);
+
+        $data['files_view'] = $this->load->view('mosque/component/show/content/_files',$data,TRUE);
+        /******* End of Files Upload Section ********/
 
 
         $json['status'] = 1;

@@ -87,6 +87,9 @@
                             <div class="menu_bar_nav mosque_show_nav" id="overview_nav"><a onclick="change_div_component_info('overview', 'mosque_show')">Overview</a></div>
                         </div>*/ ?>
                         <div class="menu_bar">
+                            <div class="menu_bar_nav mosque_show_nav" id="ramadhan_nav"><a onclick="change_div_component_info('ramadhan', 'mosque_show')">Ramadhan</a></div>
+                        </div>
+                        <div class="menu_bar">
                             <div class="menu_bar_nav mosque_show_nav" id="event_nav"><a onclick="change_div_component_info('event', 'mosque_show')">Events</a></div>
                         </div>
                         <div class="menu_bar">
@@ -130,12 +133,6 @@
                     <div>
                         <?=$comment_view?>
                     </div>
-                </div>
-            </div>
-
-            <div style="padding-left: 20px;">
-                <div style="margin-top: 30px;">
-                    <?=$files_upload?>
                 </div>
             </div>
         </div>
