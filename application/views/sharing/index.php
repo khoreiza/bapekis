@@ -187,31 +187,4 @@
             }
         });
     }
-
-    function delete_mysharing(id,type){
-        $.confirm({
-            title: 'Apa anda yakin?',
-            content: '',
-            confirmButton: 'Ya',
-            confirm: function(){  
-                $.ajax({
-                    type: "GET",
-                    url: config.base+"sharing/delete_mysharing",
-                    data: {id:id, type:type},
-                    dataType: 'json',
-                    cache: false,
-                    success: function(resp){
-                        console.log(resp);
-                        if(resp.status==true){
-                            $('#mysharing_'+id).animate({'opacity':'toggle'});
-                            load_more_sharings('first_time');
-                            //location.reload(config.base+"mysharing/index");
-                        }else{
-                            console.log('action after failed');
-                        }
-                    }
-                });
-            },
-        });
-    }
 </script>

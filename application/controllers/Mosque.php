@@ -268,7 +268,7 @@ class Mosque extends CI_Controller {
         $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
         $join_sharing[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = mysharing.id", 'how' => 'left');
         $join_sharing[1] = array('table' => 'user', 'in' => "user.id = mysharing.created_by");
-        $join_sharing[2] = array('table' => 'category', 'in' => "mysharing.category_id = category.id");
+        $join_sharing[2] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
         $data['sharings'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, user.full_name, user.profile_picture, user.nik, files_upload.full_url, category.category',"",'',$join_sharing);
         $data['sharing_view'] = $this->load->view('mosque/component/show/content/_sharing_news',$data,TRUE);
         /****** END OF GET SHARING ******/

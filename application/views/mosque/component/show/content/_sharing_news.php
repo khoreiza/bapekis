@@ -5,9 +5,9 @@
 <div>
 	<div class="row">
 		<?php foreach($sharings as $sharing){?>
-			<div class="col-md-3">
+			<div id="mysharing_<?=$sharing->mysharing_id?>" class="col-md-3">
 				<div class="broventh_card">
-					<div id="mysharing_<?=$sharing->mysharing_id?>" class="mysharing_member">
+					<div class="mysharing_member">
 	                    <div style="height: 299px; overflow: hidden; ">
 	                        
 	                        <div style="height: 270px; overflow: hidden;">
