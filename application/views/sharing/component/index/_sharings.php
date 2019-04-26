@@ -9,7 +9,7 @@
 <div>
     <?php if($sharings){?>
         <div class="row">
-            <?php if(isset($first_time) && $first_time){ $sharing = $sharings[0]?>
+            <?php /*if(isset($first_time) && $first_time){ $sharing = $sharings[0]?>
                 <div class="col-md-9 mysharing_member" id="<?=$sharing->mysharing_id?>" style="padding: 10px 20px 5px 20px;">
                     <div style="height: 242px; overflow: hidden;">
                         <div class="row" style="margin-bottom: 10px;">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            <?php unset($sharings[0]);}?>
+            <?php unset($sharings[0]);}*/?>
 
             <?php foreach ($sharings as $sharing) {?>
                 <div id="mysharing_<?=$sharing->mysharing_id?>" class="col-md-3 mysharing_member" style="padding: 10px 20px 5px 20px; margin-bottom: 10px;">
@@ -97,7 +97,7 @@
                                 <?php }else{?>
                                     <h4 class="news_title" style="margin-top: 10px;"><a onclick="show_mysharing_detail(<?php echo $sharing->mysharing_id?>);"><?= get_long_text_real($sharing->title,90)?></a></h4>
                                     <div style="margin-top: 10px">
-                                        <?php echo long_text_real(strip_tags($sharing->description),180)?>
+                                        <?php echo long_text_real(strip_tags($sharing->description),220)?>
                                     </div>
                                 <?php }?>
                             </div>

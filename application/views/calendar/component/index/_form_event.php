@@ -11,20 +11,25 @@
 		<div class="form_group_part_description">Event Title, Event Location, Event Banner</div>
         <div class="form_group_part_title">Event Data</div>
 		<div class="form-group row">
-			<div class="col-sm-6 col-sm-offset-1">
-				<input type="text" class="form-control-minimalist" id="title" name="title" placeholder="Title" <?php if($calendar){echo "value='".$calendar->title."'";}?>>
-			</div>
-			<div class="col-sm-4">
-				<select id="category" class="selectpicker" name="category" data-live-search="true" data-width="100%">
-	                <?php foreach($arr_category as $categ){?>
-	                    <option <?=($calendar && $calendar->category == $categ) ? "selected" : ""?> value="<?=$categ?>"><?=$categ?></option>
+			<div class="col-sm-4 col-sm-offset-1">
+				<select id="category" class="selectpicker" name="category_id" data-live-search="true" data-width="100%">
+	                <?php foreach($categories as $categ){?>
+	                    <option <?=($calendar && $calendar->category == $categ->category) ? "selected" : ""?> value="<?=$categ->id?>"><?=$categ->category?></option>
 	                <?php }?>
 	            </select>
+			</div>
+			<div class="col-sm-6">
+				<input type="text" class="form-control-minimalist" id="title" name="title" placeholder="Title" <?php if($calendar){echo "value='".$calendar->title."'";}?>>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<input type="text" class="form-control-minimalist" id="location" name="location" placeholder="Location" <?php if($calendar){echo "value='".$calendar->location."'";}?>>
+				<?php 
+					$loc = "";
+					if($calendar){ $loc = $calendar->location;}
+					elseif(isset($mosque)){$loc = $mosque->name;} 
+				?>
+				<input type="text" class="form-control-minimalist" id="location" name="location" placeholder="Location" value="<?=$loc;?>">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -68,6 +73,31 @@
 	            <textarea onfocus="actived_summernote('description');" type="text" class="form-control-minimalist" name="description" id="description" placeholder="Description"><?php if($calendar){echo $calendar->description;}?></textarea>
 	        </div>
 	    </div>
+	</div>
+	<hr>
+	<div>
+		<div class="form_group_part_description">Event Date, Event Time, Event Description</div>
+        <div class="form_group_part_title">Pengisi Acara</div>
+		<div class="form-group row">
+			<div class="col-sm-4 col-sm-offset-1">
+				<small style="color:grey">Nama Imam</small>
+				<input type="text" class="form-control-minimalist" id="imam" name="imam" placeholder="Imam" value="">
+			</div>
+			<div class="col-sm-4">
+				<small style="color:grey">Nama Muadzin</small>
+				<input type="text" class="form-control-minimalist" id="muadzin" name="muadzin" placeholder="Muadzin" value="">
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-4 col-sm-offset-1">
+				<input type="text" class="form-control-minimalist" id="penceramah" name="penceramah" placeholder="Penceramah" value="">
+				<small style="color:grey">Penceramah</small>
+			</div>
+			<div class="col-sm-6">
+				<input type="text" class="form-control-minimalist" name="judul_ceramah" placeholder="Judul Ceramah" value="">
+				<small style="color:grey">Judul Ceramah</small>
+			</div>
+		</div>
 	</div>
 	<hr>
     <div>

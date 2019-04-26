@@ -13,49 +13,37 @@
         </div>
         <div class="body_section">
             <div class="row prayer_scedule" style="text-align: center">
-                <div class="col-md-1">
-                    <div class="box_subpart" style="padding: 20px 10px;">
-                        <h3 class="prayer_time"><?=$jadwalsholat[1]?></h3>
-                        <h4 class="news_title">Imsak</h4>
-                    </div>
-                </div>
-                <div class="col-md-1">
+                <div class="col-md-2 col-xs-6">
                     <div class="box_subpart" style="padding: 20px 10px;">
                         <h3 class="prayer_time"><?=$jadwalsholat[1]?></h3>
                         <h4 class="news_title">Subuh</h4>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2 col-xs-6">
                     <div class="box_subpart" style="padding: 20px 10px;">
                         <h3 class="prayer_time"><?=$jadwalsholat[2]?></h3>
                         <h4 class="news_title">Terbit</h4>
                     </div>
                 </div>
-                <div class="col-md-1">
-                    <div class="box_subpart" style="padding: 20px 10px;">
-                        <h3 class="prayer_time"><?=$jadwalsholat[3]?></h3>
-                        <h4 class="news_title">Dhuha</h4>
-                    </div>
-                </div>
-                <div class="col-md-1">
+                <div class="col-md-2 col-xs-6">
                     <div class="box_subpart" style="padding: 20px 10px;">
                         <h3 class="prayer_time"><?=$jadwalsholat[4]?></h3>
                         <h4 class="news_title">Dzuhur</h4>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2 col-xs-6">
                     <div class="box_subpart" style="padding: 20px 10px;">
                         <h3 class="prayer_time"><?=$jadwalsholat[5]?></h3>
                         <h4 class="news_title">Ashar</h4>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2 col-xs-6">
                     <div class="box_subpart" style="padding: 20px 10px;">
                         <h3 class="prayer_time"><?=$jadwalsholat[6]?></h3>
                         <h4 class="news_title">Magrib</h4>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2 col-xs-6">
                     <div class="box_subpart" style="padding: 20px 10px;">
                         <h3 class="prayer_time"><?=$jadwalsholat[7]?></h3>
                         <h4 class="news_title">Isya</h4>

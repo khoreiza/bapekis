@@ -4815,22 +4815,25 @@ p.about-author-paragraph:hover a{
 
 
 .prayer_scedule .col-md-1{
-    width: 12.5% !important;
+    
 }
-.prayer_scedule .col-md-1.with_border{
+.prayer_scedule .with_border{
     border-right: 1px solid #ffb500;
 }
-.prayer_scedule .col-md-1 .box_subpart{
+.prayer_scedule .box_subpart{
     border:1px solid #ffb500 !important;
 }
-.prayer_scedule .col-md-1 .prayer_time{
+.prayer_scedule .prayer_time{
     color:#395b89;
     margin-bottom: 5px;
 }
 
 
 
-
+/***** DIV SECTION ******/
+.sub_menu_body_div{
+    margin-top: 40px;
+}
 
 
 

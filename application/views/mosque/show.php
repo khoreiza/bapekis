@@ -59,13 +59,13 @@
                                 </div>
                                 <hr>
                                 <div class="">
-                                     <a onclick="show_calendar_form('','mosque',<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
+                                    <a onclick="show_calendar_form('','mosque',<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
                                         <span class="glyphicon glyphicon-calendar"></span> Add Event
                                     </a>
-                                     <a onclick="show_sharing_form('',<?=$mosque->mosque_id?>);" class="btn btn-broventh btn-white show_header_option">
+                                    <a onclick="show_sharing_form('',<?=$mosque->mosque_id?>);" class="btn btn-broventh btn-white show_header_option">
                                         <span class="glyphicon glyphicon-volume-up"></span> Add News
                                     </a>
-                                     <a onclick="show_financial_form('',<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
+                                    <a onclick="show_financial_form('',<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-white show_header_option">
                                         <span class="glyphicon glyphicon-tasks"></span> Add Financial
                                     </a>
                                     <a onclick="show_add_mosque_form(<?=$mosque->mosque_id?>)" class="btn btn-broventh btn-edit show_header_option">

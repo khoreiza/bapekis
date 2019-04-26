@@ -219,9 +219,18 @@ class Mosque extends CI_Controller {
 
     public function get_mosque_show_data(){
         $mosque_id = $this->input->get('mosque_id');
+
+        //GET MOSQUE DATA
+        $arr_where = array('mosque.id' => $mosque_id);
+        $data['mosque'] = $this->mfiles_upload->get_db_join('name','asc','mosque',$arr_where,'mosque.*, mosque.id as mosque_id','','','')[0];
         
 
+        /****** GET RAMADHAN DATA ******/
+        $data['ramadhan_view'] = $this->load->view('mosque/component/show/content/_ramadhan',$data,TRUE);
+        /****** END OF RAMADHAN DATA ******/
         
+
+
         /****** GET EVENT ******/
         $arr_where_event = array("calendar.ownership_id" => $mosque_id, "calendar.modul" => 'mosque');
 

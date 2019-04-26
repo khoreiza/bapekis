@@ -2,7 +2,7 @@
     <div class="broventh_card"><h4>Overview</h4></div>
 </div>
 <div class="mosque_show_div menu_bar_div " id="ramadhan_div">
-    
+    <?=$ramadhan_view?>
 </div>
 <div class="mosque_show_div menu_bar_div " id="event_div">
     <?=$event_view?>

@@ -245,11 +245,17 @@ class Calendar extends CI_Controller {
         $data['modul'] = $this->input->get('modul');
         $data['ownership_id'] = $this->input->get('ownership_id');
 
+        if($data['modul'] == "mosque" && $data['ownership_id']){
+            $data['mosque'] = $this->mfiles_upload->get_db('id','asc','mosque',array('id' => $data['ownership_id']),'','')[0];
+        }
+
 		/*$join[0] = array('table' => 'cbdirectorate','in' => 'cbdirectorate.id = cbgroup.cbdirectorate_id');
     	$data['arr_group'] = $this->mfiles_upload->get_db_join("group_name asc, sort",'asc','cbgroup',array('directorate' => $user['directorate']),"cbgroup.*","","",$join);
 
     	$data['arr_position'] = $this->mfiles_upload->get_db_group_by("priority",'asc','user',array('directorate' => $user['directorate']),"","","position");
         */
+
+        $data['categories'] = $this->mfiles_upload->get_db('category','asc','category',array('menu' => 'calendar'),'','');
 
 		$data['calendar'] = "";
 		if($id){
@@ -273,7 +279,7 @@ class Calendar extends CI_Controller {
       	$id = $this->uri->segment(3);
       	$user = $this->session->userdata('userbapekis');
 
-        $arr = array('title','category','description','location','modul','ownership_id');
+        $arr = array('title','category_id','description','location','modul','ownership_id','imam','muadzin','penceramah','judul_ceramah');
         $program = $this->mfiles_upload->get_form_element($arr);
 
         //$user_dir = $this->mfiles_upload->get_db("id",'asc','cbdirectorate',array('directorate' => $user['directorate']),'','');
