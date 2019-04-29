@@ -27,6 +27,14 @@ class Ramadhan extends CI_Controller {
         /************* END of GET RAMADHAN DATA *************/
 
 
+        
+
+        /************ GET FILTER MASJID ***********/
+        $data['mosques'] = $this->mfiles_upload->get_db_join('name','asc','mosque','','','','','');
+        /************ END of GET FILTER MASJID ***********/
+
+
+
         $data['content'] = $this->load->view('ramadhan/index',$data,TRUE);
 
         $data['menu'] = $this->load->view('template/menu','',TRUE);
@@ -36,46 +44,98 @@ class Ramadhan extends CI_Controller {
         $this->load->view('front',$data);
     }
 
-    public function general(){
+    public function get_mosque_data(){
 
-        $data['title'] = "Mandiri Bapekis Front Page";
+        $mosque_id = $this->input->get('mosque_id');
+
+        //GET MOSQUE DATA
+        $join_mq[0]['table'] = "files_upload";
+        $join_mq[0]['in'] = "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'";
+        $join_mq[0]['how'] = "left";
+        $arr_where = array('mosque.id' => $mosque_id);
+        $data['mosque'] = $this->mfiles_upload->get_db_join('name','asc','mosque',$arr_where,'mosque.*, mosque.id as mosque_id, files_upload.full_url','','',$join_mq)[0];
         
 
-        /******* GET PRAYER SCHEDULE *******/
-        $datakemenag = file_get_contents('https://bimasislam.kemenag.go.id/widget/jadwalshalat/42d38931fbd98d4764cc39ab8694a0f1f42d2e7d');
-        preg_match_all("'<div class=\"pukul\"> (.*?)</div>'si",$datakemenag, $jadwal);
-        $prayer_schedule['jadwalsholat'] = $jadwal[1];
-        $component['prayer_schedule'] = $this->load->view('front/component/prayer_schedule',$prayer_schedule,TRUE);
+        /****** GET RAMADHAN DATA ******/
+        $data['ramadhan_view'] = $this->load->view('mosque/component/show/content/_ramadhan',$data,TRUE);
+        /****** END OF RAMADHAN DATA ******/
+        
 
 
+        /****** GET EVENT ******/
+        $arr_where_event = array("calendar.ownership_id" => $mosque_id, "calendar.modul" => 'mosque');
 
-
-        /******* GET BAPEKIS SHARING *******/
-        $arr_category = array('Ragam Ramadhan','Bapekis Event', 'Belajar Hadist','Berbagi Ilmu');
-        foreach($arr_category as $category){
-            $latest_sharing['category_sharings'][$category] = $this->mmysharing->get_detil("category",5,0,$category);
+        //Latest Event
+        $this->db->where('start <',date('Y-m-d'));
+        $latest_events = $this->mfiles_upload->get_db_join('start','desc','calendar',$arr_where_event,'',"",'','');
+        foreach($latest_events as $k=>$lat){
+            $data['latest_events'][$k]['event'] = $lat;
+            $data['latest_events'][$k]['photos'] = $this->mfiles_upload->get_files_upload_by_ownership_id_order('calendar','gallery',$lat->id, "created_at", "desc");
         }
-        $component['latest_sharing'] = $this->load->view('front/component/latest_sharing',$latest_sharing,TRUE);
+
+        //Upcoming Event
+        $this->db->where('start >',date('Y-m-d'));
+        $data['upcoming_events'] = $this->mfiles_upload->get_db_join('start','asc','calendar',$arr_where_event,'',"",'','');
+        $data['event_view'] = $this->load->view('mosque/component/show/content/_event',$data,TRUE);
+        /****** END OF GET EVENT ******/
 
 
 
+        /****** GET FINANCIAL ******/
+        //Summary Performance
+        $select_financial = "*, sum(case when (type = 'Outcome') then `amount` else 0 end) sum_outcome, sum(case when (type = 'Income') then `amount` else 0 end) sum_income";
+        $summary = $this->mfiles_upload->get_db_join('type','asc','financial_cashflow',array('mosque_id' => $mosque_id),$select_financial,"",'','');
+        if($summary) $data['summary'] = $summary[0];
 
-        /******* GET BAPEKIS EVENT *******/
-        $upcoming_event['events'] = $this->mfiles_upload->get_db('start','desc','calendar','','',"");
-
-
-        $component['banner'] = $this->load->view('front/component/slider','',TRUE);
+        //List Performance
+        $data['cashflows'] = $this->mfiles_upload->get_db_join('date','desc','financial_cashflow',array('mosque_id' => $mosque_id),'',"",'','');
         
-        $component['news'] = $this->load->view('front/component/news','',TRUE);
+        //Growth Performance
+        $select_growth = "*, sum(case when (type = 'Outcome') then `amount`*-1 else `amount` end) sum_amount, sum(case when (type = 'Income') then `amount` else 0 end) sum_income, sum(case when (type = 'Outcome') then `amount` else 0 end) sum_outcome";
+        $data['growth'] = $this->mfiles_upload->get_db_join('date','asc','financial_cashflow',array('mosque_id' => $mosque_id),$select_growth,"",'month(date)','');
+
+        $data['financial_view'] = $this->load->view('mosque/component/show/content/_financial',$data,TRUE);
+        /****** END OF GET FINANCIAL ******/
+
+
+
+        /****** GET SHARING ******/
+        $arr_where_sharing = array("mysharing.mosque_id" => $mosque_id);
+
+        $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
+        $join_sharing[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = mysharing.id", 'how' => 'left');
+        $join_sharing[1] = array('table' => 'user', 'in' => "user.id = mysharing.created_by");
+        $join_sharing[2] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
+        $data['sharings'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, user.full_name, user.profile_picture, user.nik, files_upload.full_url, category.category',"",'',$join_sharing);
+        $data['sharing_view'] = $this->load->view('mosque/component/show/content/_sharing_news',$data,TRUE);
+        /****** END OF GET SHARING ******/
+
+
+
+        /******* Files Upload Section ********/
         
-        $component['event_upcoming'] = $this->load->view('front/component/upcoming_event',$upcoming_event,TRUE);
+        // Set the parameter
+        $files_upload['modul'] = "mosque";
+        $files_upload['submodul'] = "mosque_files";
+        $files_upload['ownership_id'] = $mosque_id;
+        $files_upload['count_file'] = 5;
 
-        $data['content'] = $this->load->view('front/index',$component,TRUE);
+        // Get the Files
+        $arr_where_files = array("ownership_id" => $files_upload['ownership_id']);
+        $files_upload['publications'] = $this->mfiles_upload->get_publication_files_where($files_upload['modul'],$files_upload['submodul'],$files_upload['count_file'], $arr_where_files);
 
-        $data['menu'] = $this->load->view('template/menu','',TRUE);
-        $data['header'] = $this->load->view('template/header','',TRUE);
-        $data['footer'] = $this->load->view('template/footer','',TRUE);
+        // List of View
+        $data['list_files_view'] = $this->load->view('files_upload/theme/broventh/_list_files', $files_upload,TRUE);
+        $data['files_upload'] = $this->load->view('files_upload/theme/broventh/_files_upload_box', $data,TRUE);
 
-        $this->load->view('front',$data);
+        $data['files_view'] = $this->load->view('mosque/component/show/content/_files',$data,TRUE);
+        /******* End of Files Upload Section ********/
+
+
+        $json['status'] = 1;
+        $json['mosque_content'] = $this->load->view('ramadhan/component/index/_mosque',$data,TRUE);
+
+        $this->output->set_content_type('application/json')
+                     ->set_output(json_encode($json));
     }
 }

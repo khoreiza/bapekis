@@ -54,9 +54,12 @@ class Mosque extends CI_Controller {
         $group_req = $this->input->get('group_req');
         $arr['date'] = DateTime::createFromFormat('d M y', $this->input->get('date'))->format('Y-m-d');
 
-        $join[0]['table'] = "files_upload";
-        $join[0]['in'] = "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'";
-        $join[0]['how'] = "left";
+        //$join[0]['table'] = "files_upload";
+        //$join[0]['in'] = "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'";
+        //$join[0]['how'] = "left";
+        
+        $files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'mosque' and sub_modul = 'mosque_photo' group by ownership_id order by id asc) as files_upload";
+        $join[0] = array('table' => $files_upload_table_sharing, 'in' => "files_upload.ownership_id = mosque.id", 'how' => 'left');
         $arr_where = array();
         $data['mosques'] = $this->mfiles_upload->get_db_join('name','asc','mosque',$arr_where,'*, mosque.id as mosque_id','','',$join);
 
