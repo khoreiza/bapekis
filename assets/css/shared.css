@@ -35,20 +35,6 @@ src: url('../fonts/MyriadPro-Light.woff') format('woff');
   src: url('../fonts/Palanquin/palanquin-regular.ttf');
 }
 
-html,
-body {
-  height: 100% !important;
-  background-color:white;/*#f0eff4;*/
-  font-size:14px;
-  font-family: "titillium";
-  /* The html and body elements cannot have any padding or margin. */
-}
-body a{
-	color:black;
-}
-a:hover {
-	cursor:pointer;
-}
 
 th{
 	text-align:center;
@@ -556,18 +542,6 @@ a.second_font:hover{
 	float:left;
 }
 
-.component_part{
-	background-color: white;
-	border-radius: 10px;
-	border: 1px solid #d3d3d3;
-	padding: 10px 10px 10px 10px;
-	margin-bottom: 10px;
-	/*overflow: auto;*/
-}
-.component_part.overflow{
-	overflow: auto;
-	/*overflow: visible !important;*/
-}
 .user_menu_page{
 	margin-left: 159px;
 }
@@ -1086,22 +1060,7 @@ a.sub_menu_link{
 	margin-top:70px;
 }
 
-a{
-	color:#122E8A;
-}
-body a:hover{
-	color:#444;
-}
-.no_pad{
-	padding: 0;
-}
-.right_col{
-	float: right;
-}
-.headertab{
-	background-color:#0B3861;
-	color:white;
-}
+
 
 /* Custom page CSS
 -------------------------------------------------- */

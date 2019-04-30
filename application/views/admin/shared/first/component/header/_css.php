@@ -176,19 +176,23 @@
 	}
 
 	/************************************ CBIC NEW BROVENTH CSS BODY ************************************/
-	body{
+	body .broventh_container {
 		font-size:14px;
 		background-color: #f1f5f7 !important;
 		/*background-color: #e2e6e7 !important;*/
 		font-family: "fakt-normal";
 		color:#777;
 	}
-	body a{
+	body .broventh_container a{
 		color: <?=array_color_new(2)?>;
 	}
-	body a:hover{
+	body .broventh_container  a:hover{
 		color: <?=array_color_new(10)?>;
 		text-decoration: none;
+	}
+
+	.content_bapekis{
+		background-color: #fff;
 	}
 
 	.container_broventh{

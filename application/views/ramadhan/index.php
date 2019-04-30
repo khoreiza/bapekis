@@ -6,7 +6,7 @@
 	<div class="component_part">
 		<div class="component_part_content">
 			<div class="row">
-				<div class="col-md-5">
+				<div class="col-md-5 broventh_left_content">
 					<div class="sub_menu_title_div">
 						<div class="row">
 							<div class="col-md-2">
@@ -27,7 +27,7 @@
 						<?php }?>
 					</div>
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-7 broventh_right_content">
 					<div style="text-align: right;">
 						<select class="" onchange="get_mosque_show_data()" id="mosque_id">
 							<?php foreach($mosques as $mosque){?>

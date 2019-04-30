@@ -50,6 +50,9 @@
         <![endif]-->
     </head>
     <body>
+        <?php echo $this->load->view('admin/shared/first/component/header/_css','',TRUE);?>
+        <link rel="stylesheet" href="<?=base_url()?>assets/css/shared.css" type="text/css"/>
+
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
         <script>
             var config = {

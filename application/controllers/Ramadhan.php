@@ -30,7 +30,7 @@ class Ramadhan extends CI_Controller {
         
 
         /************ GET FILTER MASJID ***********/
-        $data['mosques'] = $this->mfiles_upload->get_db_join('name','asc','mosque','','','','','');
+        $data['mosques'] = $this->mfiles_upload->get_db_join('id','asc','mosque','','','','','');
         /************ END of GET FILTER MASJID ***********/
 
 
@@ -48,17 +48,42 @@ class Ramadhan extends CI_Controller {
 
         $mosque_id = $this->input->get('mosque_id');
 
-        //GET MOSQUE DATA
-        $join_mq[0]['table'] = "files_upload";
-        $join_mq[0]['in'] = "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'";
-        $join_mq[0]['how'] = "left";
+        /******** GET MOSQUE DATA *********/
+        
+        $join_mq[0] = array('table' => 'files_upload','in' => "ownership_id = mosque.id AND modul = 'mosque' AND sub_modul = 'mosque_photo'", 'how' => 'left');
         $arr_where = array('mosque.id' => $mosque_id);
         $data['mosque'] = $this->mfiles_upload->get_db_join('name','asc','mosque',$arr_where,'mosque.*, mosque.id as mosque_id, files_upload.full_url','','',$join_mq)[0];
         
+        /******** END GET MOSQUE DATA *********/
 
-        /****** GET RAMADHAN DATA ******/
-        $data['ramadhan_view'] = $this->load->view('mosque/component/show/content/_ramadhan',$data,TRUE);
-        /****** END OF RAMADHAN DATA ******/
+
+
+        /****** GET TODAY EVENT ******/
+        $arr_where_ev = array("calendar.ownership_id" => $mosque_id, "calendar.modul" => 'mosque');
+
+        $this->db->where('DATE(start)','2019-05-06');
+        
+        $join_ev[0] = array('table' => 'files_upload','in' => "files_upload.ownership_id = calendar.id AND files_upload.modul = 'photo' AND files_upload.sub_modul = 'calendar'", 'how' => 'left');
+        $join_ev[1] = array('table' => 'category','in' => "calendar.category_id = category.id", 'how' => 'left');
+        $data['events'] = $this->mfiles_upload->get_db_join('start','asc','calendar',$arr_where_ev,'calendar.*, files_upload.full_url, category.category',"",'calendar.id',$join_ev);
+
+        /****** END GET TODAY EVENT ******/
+        
+
+        
+
+        /****** GET TODAY TAKJIL ******/
+        $arr_where_sharing = array("mysharing.mosque_id" => $mosque_id,'category_id' => 1);
+
+        $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
+        $join_sharing[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = mysharing.id", 'how' => 'left');
+        $join_sharing[1] = array('table' => 'user', 'in' => "user.id = mysharing.created_by");
+        $join_sharing[2] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
+        $data['takjils'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, user.full_name, user.profile_picture, user.nik, files_upload.full_url, category.category',"",'',$join_sharing);
+        /****** END GET TODAY TAKJIL ******/
+
+
+
         
 
 
