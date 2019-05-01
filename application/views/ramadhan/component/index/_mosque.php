@@ -6,7 +6,7 @@
 
 
 <div style="margin-top: 20px;">
-	<div class="row">
+	<div class="row" style="height: 130px;">
 		<div class="col-md-7">
 			<h3><?=$mosque->name?></h3>
 			<h5 style="margin-top: 10px;"><?=$mosque->location?></h5>
@@ -33,26 +33,38 @@
 				<div class="body_sub_content">
 					<?php foreach($events as $event){?>
 						<div class="broventh_card" style="height: 200px;">
-							<h4 class="news_title"><?=strtoupper($event->category)?></h4>
-							<div style="margin-top: 50px;">
-								<?php if($event->penceramah){?>
-									<div class="petugas_div">
-										<h5>Penceramah:</h5>
-										<h5><b><?=$event->penceramah?></b></h5>
+							<div class="row">
+								<div class="col-md-8">
+									<h4 class="news_title"><?=strtoupper($event->category)?></h4>
+									<div style="margin-top: 20px;">
+										<div class="petugas_div news_title">
+											<?=date("H:i", strtotime($event->start))." - ".date("H:i", strtotime($event->end))?>
+										</div>
+										<?php if($event->penceramah){?>
+											<div class="petugas_div">
+												<h5>Penceramah:</h5>
+												<h5><b><?=$event->penceramah?></b></h5>
+											</div>
+										<?php }?>
+										<?php if($event->imam){?>
+											<div class="petugas_div">
+												<h5>Imam:</h5>
+												<h5><b><?=$event->imam?></b></h5>
+											</div>
+										<?php }?>
+										<?php if($event->muadzin){?>
+											<div class="petugas_div">
+												<h5>Muadzin:</h5>
+												<h5><b><?=$event->muadzin?></b></h5>
+											</div>
+										<?php }?>
 									</div>
-								<?php }?>
-								<?php if($event->imam){?>
-									<div class="petugas_div">
-										<h5>Imam:</h5>
-										<h5><b><?=$event->imam?></b></h5>
+								</div>
+								<div class="col-md-4">
+									<div style="margin-top: -20px;">
+										<img style="height: 220px;" src="<?=base_url()?>assets/img/ramadhan/<?=$event->category?>.jpg">
 									</div>
-								<?php }?>
-								<?php if($event->muadzin){?>
-									<div class="petugas_div">
-										<h5>Muadzin:</h5>
-										<h5><b><?=$event->muadzin?></b></h5>
-									</div>
-								<?php }?>
+								</div>
 							</div>
 						</div>
 					<?php }?>
@@ -77,8 +89,11 @@
 							<div style="padding-top: 10px; text-align: center;">
 								<h4 class="news_title center_text"><?=strtoupper($takjil->title)?></h4>
 							</div>
-							<div class="helper_text right_text" style="margin-top: 15px;">
-								<h6><i>Klik love jika kamu suka takjilnya</i></h6>
+							<div class="helper_text right_text" style="margin-top: 5px;">
+								<h6>
+									<span style=""><i>Klik love jika kamu suka takjilnya</i></span>
+									<span style="font-size: 18px; margin-left: 5px;" class="glyphicon glyphicon-heart-empty"></span>
+								</h6>
 							</div>
 						</div>
 					<?php }?>

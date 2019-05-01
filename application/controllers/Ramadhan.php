@@ -16,16 +16,25 @@ class Ramadhan extends CI_Controller {
         $data['banner'] = $this->load->view('ramadhan/component/banner','',TRUE);
 
         
-        /****** GET RAMADHAN DATA *******/
+        /****** GET HADIST DATA *******/
         
-        //GET HADIST
         $arr_where_hadist = array("category" => "Hadist");
 
         $join_hadist[0] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
         $data['hadists'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_hadist,'mysharing.*, mysharing.id as mysharing_id,category.category',"",'',$join_hadist);
 
-        /************* END of GET RAMADHAN DATA *************/
+        /************* END of GET HADIST DATA *************/
 
+
+
+        /****** GET PERNIK RAMADHAN ******/
+        $arr_where_sharing = array('category_id' => 10);
+
+        $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
+        $join_sharing[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = mysharing.id", 'how' => 'left');
+        $join_sharing[1] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
+        $data['sharings'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, files_upload.full_url, category.category',"",'',$join_sharing);
+        /****** END GET PERNIK RAMADHAN ******/
 
         
 
@@ -77,10 +86,10 @@ class Ramadhan extends CI_Controller {
 
         $files_upload_table_news = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'my sharing' and sub_modul = 'banner') as files_upload";
         $join_sharing[0] = array('table' => $files_upload_table_news, 'in' => "files_upload.ownership_id = mysharing.id", 'how' => 'left');
-        $join_sharing[1] = array('table' => 'user', 'in' => "user.id = mysharing.created_by");
-        $join_sharing[2] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
-        $data['takjils'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, user.full_name, user.profile_picture, user.nik, files_upload.full_url, category.category',"",'',$join_sharing);
+        $join_sharing[1] = array('table' => 'category', 'in' => "mysharing.category_id = category.id",'how' => 'left');
+        $data['takjils'] = $this->mfiles_upload->get_db_join('id','desc','mysharing',$arr_where_sharing,'mysharing.*, mysharing.id as mysharing_id, files_upload.full_url, category.category',"",'',$join_sharing);
         /****** END GET TODAY TAKJIL ******/
+
 
 
 

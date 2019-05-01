@@ -25,7 +25,7 @@
         <meta name="msapplication-TileImage" content="<?=base_url()?>assets/img/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         
-        <link rel="stylesheet" href="<?=base_url()?>assets/template/css/bootstrap.min.css">
+        <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/manual.css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/animate.css" type="text/css">
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/owlcarousel/owl.carousel.min.css">
