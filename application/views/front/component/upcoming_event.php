@@ -10,9 +10,9 @@
             </div>
 
             <?php if($events){foreach($events as $event){?>
-                <div class="col-md-6">
+                <div class="col-md-6 events_column">
                     <div class="events-line">
-                        <div class="col-md-2 col-sm-2 col-xs-3 height100">
+                        <div class="col-md-2 col-sm-2 col-xs-3 height100 events_column">
                             <div class="events-title text-center">
                                 <p>
                                     <a href="#"><?=date("d",strtotime($event->start))?>
@@ -21,7 +21,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-10 col-sm-10 col-xs-9 pl">
+                        <div class="col-md-10 col-sm-10 col-xs-9 pl events_column">
                             <h6>
                                 <a href="features.html#event-1" class="white"> <?=$event->title?> </a>
                             </h6>

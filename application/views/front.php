@@ -71,6 +71,9 @@
         <script src="<?=base_url()?>assets/template/js/scrollBar.js"></script>
         
         <script src="<?=base_url()?>assets/template/js/myScript.js"></script>
+        <script src="<?=base_url()?>assets/js/hijricalendar-kuwaiti.js"></script>
+        <script src="<?=base_url()?>assets/js/jquery.diyslider.min.js"></script>
+        
 
         <?php }?>
 

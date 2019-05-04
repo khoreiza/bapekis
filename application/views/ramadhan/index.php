@@ -2,6 +2,9 @@
 	.no_banner_page{
 		padding-top: 130px;
 	}
+	.title_sub_content .col-md-2{
+		max-width: 67.5px;
+	}
 </style>
 
 <!--=============================== Banner ==========================-->
@@ -12,23 +15,45 @@
 	<div class="component_part">
 		<div class="component_part_content">
 			<div class="row">
-				<div class="col-md-6 broventh_left_content">
-					<div style="height: 180px;">
+				<div class="col-md-6">
+					<?=$prayer_schedule_view?>
+				</div>
+				<div class="col-md-6">
+					<div style="text-align: right;">
+						<select class="" onchange="get_mosque_show_data()" id="mosque_id">
+							<?php foreach($mosques as $mosque){?>
+								<option value="<?=$mosque->id?>"><?=$mosque->name?></option>
+							<?php }?>
+						</select>
 					</div>
+					<div id="mosque_info_div"></div>
+				</div>
+			</div>
 
+
+			<div class="row">
+				<div class="col-md-6 col-md-push-6 broventh_right_content">
+					<div id="mosque_content_div">
+					</div>
+					<div id="event_section_div">
+						<?=$event_view?>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-md-pull-6 broventh_left_content">
 					<div style="margin-top: 60px;">
-						<div class="sub_menu_title_div">
+						<div class="title_sub_content">
 							<div class="row">
-								<div class="col-md-2">
-									<img src="<?=base_url()?>assets/img/general/book border.png" style="height:40px;">
+								<div class="col-md-2 col-xs-3">
+									<img src="<?=base_url()?>assets/img/submenu/quran-rehal.png" style="height:40px;">
 								</div>
-								<div class="col-md-10">
+								<div class="col-md-10 col-xs-9">
 									<div class="part_subtitle">Hadist & Ayat Al Qur'an</div>
 									<div class="part_description"></div>
 								</div>
 							</div>
 						</div>
-						<div class="sub_menu_body_div">
+						<div class="body_sub_content">
 							<?php foreach($hadists as $hadist){?>
 								<div>
 									<?=$hadist->description?>
@@ -39,25 +64,25 @@
 					</div>
 
 					<div style="margin-top: 60px;">
-						<div class="sub_menu_title_div">
+						<div class="title_sub_content">
 							<div class="row">
-								<div class="col-md-2">
-									<img src="<?=base_url()?>assets/img/general/Logo ketupat.png" style="height:40px;">
+								<div class="col-md-2 col-xs-3">
+									<img src="<?=base_url()?>assets/img/submenu/raya-rosary.png" style="height:40px;">
 								</div>
-								<div class="col-md-10">
+								<div class="col-md-10 col-xs-9">
 									<div class="part_subtitle">Pernik Ramadhan</div>
 									<div class="part_description"></div>
 								</div>
 							</div>
 						</div>
-						<div class="sub_menu_body_div">
+						<div class="body_sub_content">
 							<?php foreach($sharings as $sharing){?>
 								<div id="mysharing_<?=$sharing->mysharing_id?>" class="col-md-4">
 									<div class="">
 										<div class="mysharing_member">
-						                    <div style="height: 299px; overflow: hidden; ">
+						                    <div style="height: 199px; overflow: hidden; ">
 						                        
-						                        <div style="height: 270px; overflow: hidden;">
+						                        <div style="height: 170px; overflow: hidden;">
 						                            <?php if($sharing->full_url){?>
 						                                <div style="width: 100%; height: 105px; overflow: hidden; padding: 0px; margin-top: -10p">
 						                                    <img id="<?=$sharing->id?>_banner_sharing" style="height: 100%;" src="<?=base_url().$sharing->full_url?>">
@@ -83,17 +108,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 broventh_right_content">
-					<div style="text-align: right;">
-						<select class="" onchange="get_mosque_show_data()" id="mosque_id">
-							<?php foreach($mosques as $mosque){?>
-								<option value="<?=$mosque->id?>"><?=$mosque->name?></option>
-							<?php }?>
-						</select>
-					</div>
-					<div id="mosque_data_content_div">
-					</div>
-				</div>
+
+				
 			</div>
 		</div>
 	</div>
@@ -117,7 +133,8 @@
 	        cache: false,
 	        success: function(resp){
 	            if(resp.status==1){
-	                $("#mosque_data_content_div").html(resp.mosque_content);
+	                $("#mosque_content_div").html(resp.mosque_content);
+	                $("#mosque_info_div").html(resp.mosque_info);
 	                $("#loading_panel").hide();
 	            }else{}
 	        }
