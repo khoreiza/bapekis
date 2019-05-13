@@ -1,4 +1,51 @@
 
+/******** DETAIL FUNCTION **********/
+
+function open_detail_content(menu,id){
+    $(".loading_panel").show();
+    $.ajax({
+        type: "GET",
+        url: config.base+"detail/"+menu+"_show",
+        data: {id: id},
+        dataType: 'json',
+        cache: false,
+        success: function(resp){
+            $(".loading_panel").hide();
+
+            if(resp.status==1){
+                show_popup_modal(resp.html);
+            }
+        },
+        error: function() {
+            $(".loading_panel").hide();
+        }
+    });
+}
+
+
+/******** FEEDBACK FUNCTION **********/
+
+function open_feedback_form(id){
+    $(".loading_panel").show();
+    $.ajax({
+        type: "GET",
+        url: config.base+"detail/feedback_form",
+        data: {id: id},
+        dataType: 'json',
+        cache: false,
+        success: function(resp){
+            $(".loading_panel").hide();
+            if(resp.status==1){
+                show_popup_modal(resp.html);
+            }
+        },
+        error: function() {
+            $(".loading_panel").hide();
+        }
+    });
+}
+
+
 /******** SHARING SESSION **********/
 
 function show_sharing_form(id, mosque_id){

@@ -44,6 +44,29 @@
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/css-fontello/fontello-embedded.css" type="text/css"/>
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/css-fontello/fontello-ie7.css" type="text/css"/>
         <link rel="stylesheet" href="<?=base_url()?>assets/template/css/css-fontello/fontello-ie7-codes.css" type="text/css"/>
+
+
+
+        <link href="<?php echo base_url();?>assets/css/datepicker.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/datepicker3.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/bootstrap-timepicker.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/iosCheckbox.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/bootstrap-select.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/ajax-bootstrap-select.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/jquery.autocomplete.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/jquery.lightbox-0.5.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/jquery.webui-popover.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/bootstrap-horizon.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/jquery-confirm.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/animate.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/lightgallery.min.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/summernote/dist/summernote.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/export-amchart/export.css" rel="stylesheet"/>
+        <link href="<?php echo base_url();?>assets/css/jquery.videocontrols.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/css/croppie.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/css/notification.css" rel="stylesheet">
+        <link href="<?php echo base_url();?>assets/css/justifiedGallery.min.css" rel="stylesheet">
+
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="assets/js/respond.min.js"></script>
@@ -64,20 +87,129 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="<?=base_url()?>assets/template/js/bootstrap.min.js"></script>
 
-        <?php if($this->uri->segment(1) != "admin"){?>
+       
                
         <script src="<?=base_url()?>assets/template/js/jquery.spincrement.js"></script>
         <script src="<?=base_url()?>assets/template/js/owl.carousel.min.js"></script>
-        <script src="<?=base_url()?>assets/template/js/scrollBar.js"></script>
         
         <script src="<?=base_url()?>assets/template/js/myScript.js"></script>
         <script src="<?=base_url()?>assets/js/hijricalendar-kuwaiti.js"></script>
-        <script src="<?=base_url()?>assets/js/jquery.diyslider.min.js"></script>
+        
         
 
-        <?php }?>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.formatCurrency-1.4.0.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.form.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/application.js?$$REVISION$$"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.file-input.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap-timepicker.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.tokeninput.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/blur.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.jqdock.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap-select.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/ajax-bootstrap-select.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.autocomplete.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.lightbox-0.5.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.webui-popover.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-confirm.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/lightgallery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/lg-fullscreen.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/lg-thumbnail.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/summernote/dist/summernote.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/sticky-scroll/theia-sticky-sidebar.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.price_format.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.videocontrols.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/croppie.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/qrcode.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/html2json.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/htmlparser.js"></script>
 
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment-timezone.min.js"></script>
+        
+
+        
+        <!--DATA TABLES-->
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/dataTables.buttons.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/jszip.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/buttons.print.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/pdfmake.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/vfs_fonts.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/DataTables/DataTables-1.10.9/js/buttons.html5.js"></script>
+
+        <!-- AmCharts -->
+        <script src="<?php echo base_url();?>assets/js/amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>assets/js/amcharts/pie.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>assets/js/amcharts/serial.js" type="text/javascript"></script>
+        <script src="<?php echo base_url();?>assets/export-amchart/export.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/amcharts/gauge.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/grafik.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/html2canvas.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/rgbcolor.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/StackBlur.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/canvg.js"></script>
+
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.timeago.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.justifiedGallery.min.js"></script>
+
+        <script src="<?=base_url()?>assets/js/jquery.diyslider.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url();?>assets/js/application.js"></script>
+
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip(); 
+
+                // Bootstrap Datepicker Defaults
+                $.fn.datepicker.defaults.autoclose = true;
+
+                $(document).ready(function() {
+                    $("#lightgallery").lightGallery({
+                        selector: '.item'
+                    }); 
+                });
+            });
+
+            function open_feedback_form(id){
+                $(".loading_panel").show();
+                $.ajax({
+                    type: "GET",
+                    url: config.base+"detail/feedback_form",
+                    data: {id: id},
+                    dataType: 'json',
+                    cache: false,
+                    success: function(resp){
+                        $(".loading_panel").hide();
+                        if(resp.status==1){
+                            show_popup_modal(resp.html);
+                        }
+                    },
+                    error: function() {
+                        $(".loading_panel").hide();
+                    }
+                });
+            }
+
+        </script>
+
+
+        <div id="modal_finder"></div>
+
+
+        <div id="loading_panel" class="center_text loading_panel" style="display:none; padding:5px; z-index:99999999999999 !important; position:fixed; width:100%; background-color:white; margin-top:10%">
+            <div>Loading Data . . .</div>
+        </div>
 
 
 

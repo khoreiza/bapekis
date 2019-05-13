@@ -452,7 +452,7 @@ function get_file_ext_office($ext){
 	if($ext == ".doc" || $ext == ".docx"){$img = "word";}
     elseif($ext == ".xls" || $ext == ".xlsx"){$img = "xls";}
     elseif($ext == ".ppt" || $ext == ".pptx"){$img = "ppt";}
-    elseif($ext == ".png" || $ext == ".jpg"){$img = "images";}
+    elseif($ext == ".png" || $ext == ".jpg" || $ext == ".jpeg"){$img = "images";}
     elseif($ext == ".pdf"){$img = "pdf";}
     else{$img = "file";}
     return $img." - office.png";
@@ -570,6 +570,7 @@ function get_code_sub_modul($sub_modul){
   if($sub_modul=='market'){return 'Market Outlook';}
   elseif(($sub_modul=='compliance')){return 'Legal & Compliance News';}
   elseif(($sub_modul=='hr')){return 'Human Resources';}
+  else return $sub_modul;
 }
 
 function get_pct_tgt_realz($realz, $target, $data){

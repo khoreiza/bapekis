@@ -14,7 +14,7 @@
 			<div class="col-sm-4 col-sm-offset-1">
 				<select id="category" class="selectpicker" name="category_id" data-live-search="true" data-width="100%">
 	                <?php foreach($categories as $categ){?>
-	                    <option <?=($calendar && $calendar->category == $categ->category) ? "selected" : ""?> value="<?=$categ->id?>"><?=$categ->category?></option>
+	                    <option <?=($calendar && $calendar->category_id == $categ->id) ? "selected" : ""?> value="<?=$categ->id?>"><?=$categ->category?></option>
 	                <?php }?>
 	            </select>
 			</div>
@@ -32,11 +32,24 @@
 				<input type="text" class="form-control-minimalist" id="location" name="location" placeholder="Location" value="<?=$loc;?>">
 			</div>
 		</div>
-		<div class="form-group row">
-			<div class="col-sm-2 col-sm-offset-1">
-				<input type="file" name="img[]" multiple class="btn btn-default">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<input type="file" name="img[]" multiple class="btn btn-default">
+					<p class="help-block helper_text" style="margin-bottom: 0px; font-size: 12px;">Event Banner or Poster</p>
+					<?php if(isset($photo) && $photo){?>
+		                <div style="margin-top: 10px;" class="file_<?php echo $photo->id?>">
+		                <span><img style="height:100px" src="<?php echo base_url().$photo->full_url?>"></span>
+		                <?php if(($user['id'] == $photo->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
+		                <a onclick="delete_files_upload(<?php echo $photo->id?>,'file_form')">
+		                    <span class="glyphicon glyphicon-trash" style="color:#c9302c"></span>
+		                </a>
+		                <?php }?>
+		                </div>
+		            <?php }?>
+				</div>
 			</div>
-			<label class="col-sm-2 control-label input-md" style="text-align: left">Photo Banner</label>
+			
 		</div>
 		<hr>
 	</div> 
@@ -52,7 +65,7 @@
 				<small style="color:grey">format: mm/dd/YYYY</small>
 			</div>
 			<div class="col-sm-2">
-				<?php $start_time="8:00"; if($calendar){if($calendar->start){$start_time = date("h:i", strtotime($calendar->start));}}?>
+				<?php $start_time="8:00"; if($calendar){if($calendar->start){$start_time = date("H:i", strtotime($calendar->start));}}?>
 				<input type="text" class="form-control-minimalist time" id="start_time" name="start_time" placeholder="hh:mm" value="<?php echo $start_time?>">
 				<small style="color:grey">format: hh:mm</small>
 			</div>
@@ -63,7 +76,7 @@
 				<small style="color:grey">format: mm/dd/YYYY</small>
 			</div>
 			<div class="col-sm-2">
-				<?php $end_time="17:00"; if($calendar){if($calendar->end){$end_time = date("h:i", strtotime($calendar->end));}}?>
+				<?php $end_time="17:00"; if($calendar){if($calendar->end){$end_time = date("H:i", strtotime($calendar->end));}}?>
 				<input type="text" class="form-control-minimalist time" id="end_time" name="end_time" placeholder="hh:mm" value="<?php echo $end_time?>">
 				<small style="color:grey">format: hh:mm</small>
 			</div>
@@ -109,9 +122,9 @@
                 <label class="col-sm-2 control-label input-md">Attachment</label>
                 <div class="col-sm-10">
                     <input type="file" name="attachment[]" id="attachment" multiple class="btn btn-default">
-                    <?php if(isset($mysharing['attachment'])){?>
+                    <?php if(isset($attach)){?>
                     <div style="margin-top:20px; max-width:80%">
-                        <?php foreach($mysharing['attachment'] as $file){?>
+                        <?php foreach($attach as $file){?>
                             <div class="file_<?php echo $file->id?>">
                                 <div style="float:left; width:80%; overflow:hidden; padding-right:10px;">
                                     <span><img style="height:18px" src="<?=get_ext_office($file->ext)?>"></span>
@@ -134,16 +147,16 @@
                 <label class="col-sm-2 control-label input-md">Photo Gallery</label>
                 <div class="col-sm-10">
                     <input type="file" name="photo[]" id="photo" multiple class="btn btn-default">
-                    <?php if(isset($mysharing['img'])){?>
+                    <?php if($galleries){?>
                     <div style="margin-top:20px; max-width:80%">
-                        <?php foreach($mysharing['img'] as $file){?>
+                        <?php foreach($galleries as $file){?>
                             <div class="file_<?php echo $file->id?>">
                                 <div style="float:left; width:80%; overflow:hidden; padding-right:10px;">
                                     <span><img style="height:18px" src="<?php echo base_url().$file->full_url ?>"></span>
                                     <?php echo $file->title?>
                                 </div>
                                 <div style="float:right; padding-right:10px;">
-                                    <?php if(($user['id'] == $file->user_id) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
+                                    <?php if(($user['id'] == $file->created_by) || is_user_role($user,"SYSTEM ADMINISTRATOR")){?>
                                         <a onclick="delete_files_upload(<?php echo $file->id?>,'file_form')">
                                             <span class="glyphicon glyphicon-trash" style="color:#c9302c"></span>
                                         </a>

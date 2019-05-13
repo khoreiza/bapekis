@@ -416,6 +416,8 @@ iframe{
     padding-top: 30px;
 }
 
+
+
 .navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle,
 .navbar-default .navbar-toggle:hover {
@@ -1653,6 +1655,9 @@ a.white:active {
         padding-right: 15px;
         border-color: transparent;
         box-shadow: none;
+        background-color: #777;
+        opacity: 0.9;
+        border-radius: 10px;
     }
 
     .navbar-nav > li {

@@ -1,4 +1,9 @@
-<footer class="black">
+<style type="text/css">
+    .c-5{
+        background-color: #aaa;
+    }
+</style>
+<footer class="footer_black">
     <div class="footer-container">
         <div class="container">
             <div class="row">
@@ -27,6 +32,9 @@
                                 </li>
                                 <li><a href="https://www.twitter.com/mandiribapekis" class="circle_sosmed c-1"><i
                                         class="fa fa-twitter"></i></a>
+                                </li>
+                                <li><a onclick="open_feedback_form('')" class="circle_sosmed c-5"><i
+                                        class="fa fa-comment"></i></a>
                                 </li>
                             </ul>
                         </div> <!-- footer-social-link -->

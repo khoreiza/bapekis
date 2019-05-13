@@ -82,7 +82,7 @@ class Calendar extends CI_Controller {
 
             //$this->db->where('(use_booking is NULL OR use_booking = 0)');
 
-			$files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'photo' and sub_modul = 'calendar') as files_upload";
+			$files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'calendar' and sub_modul = 'banner') as files_upload";
         	$join_sharing[0] = array('table' => $files_upload_table_sharing, 'in' => "files_upload.ownership_id = calendar.id", 'how' => 'left');
        		$join_sharing[1] = array('table' => 'user', 'in' => "user.id = calendar.created_by");
         	$data['events'] = $this->mfiles_upload->get_db_join('start','asc','calendar',$arr_where,'calendar.*, user.full_name, user.profile_picture, user.nik, files_upload.full_url',"",'calendar.id',$join_sharing);
@@ -122,7 +122,7 @@ class Calendar extends CI_Controller {
 
             //$this->db->where('(use_booking is NULL OR use_booking = 0)');
 
-            $files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'photo' and sub_modul = 'calendar') as files_upload";
+            $files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'calendar' and sub_modul = 'banner') as files_upload";
             $join_sharing[0] = array('table' => $files_upload_table_sharing, 'in' => "files_upload.ownership_id = calendar.id", 'how' => 'left');
             $join_sharing[1] = array('table' => 'user', 'in' => "user.id = calendar.created_by");
             
@@ -175,7 +175,7 @@ class Calendar extends CI_Controller {
         /****** GET EVENT FROM ID ******/
         $arr_where = array("calendar.id" => $id);
 
-        $files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'photo' and sub_modul = 'calendar') as files_upload";
+        $files_upload_table_sharing = "(SELECT `files_upload`.full_url,ownership_id from files_upload where modul = 'calendar' and sub_modul = 'banner') as files_upload";
         $join_sharing[0] = array('table' => $files_upload_table_sharing, 'in' => "files_upload.ownership_id = calendar.id", 'how' => 'left');
         $join_sharing[1] = array('table' => 'user', 'in' => "user.id = calendar.created_by");
         $event = $this->mfiles_upload->get_db_join('start','asc','calendar',$arr_where,'calendar.*, user.full_name, user.profile_picture, user.nik, files_upload.full_url',"",'calendar.id',$join_sharing);
@@ -249,17 +249,19 @@ class Calendar extends CI_Controller {
             $data['mosque'] = $this->mfiles_upload->get_db('id','asc','mosque',array('id' => $data['ownership_id']),'','')[0];
         }
 
-		/*$join[0] = array('table' => 'cbdirectorate','in' => 'cbdirectorate.id = cbgroup.cbdirectorate_id');
-    	$data['arr_group'] = $this->mfiles_upload->get_db_join("group_name asc, sort",'asc','cbgroup',array('directorate' => $user['directorate']),"cbgroup.*","","",$join);
-
-    	$data['arr_position'] = $this->mfiles_upload->get_db_group_by("priority",'asc','user',array('directorate' => $user['directorate']),"","","position");
-        */
-
         $data['categories'] = $this->mfiles_upload->get_db('category','asc','category',array('menu' => 'calendar'),'','');
 
 		$data['calendar'] = "";
 		if($id){
 			$data['calendar'] = $this->mcalendar->get_calendar_by_id($id);
+
+            //GET BANNER
+            $photo = $this->mfiles_upload->get_files_upload_by_ownership_id('calendar','banner',$id);
+            if($photo) $data['photo']=$photo[0];
+
+            //GET ATTAACHMENT PHOTO GALLERY
+            $data['attach']=$this->mfiles_upload->get_files_upload_by_ownership_id('calendar','event',$id);
+            $data['galleries']=$this->mfiles_upload->get_files_upload_by_ownership_id('calendar','gallery',$id);
 		}
 
 		
@@ -282,26 +284,6 @@ class Calendar extends CI_Controller {
         $arr = array('title','category_id','description','location','modul','ownership_id','imam','muadzin','penceramah','judul_ceramah');
         $program = $this->mfiles_upload->get_form_element($arr);
 
-        //$user_dir = $this->mfiles_upload->get_db("id",'asc','cbdirectorate',array('directorate' => $user['directorate']),'','');
-        //$program['directorate_id'] = $user_dir[0]->id;
-        
-		/*$program['group_allowed'] = "";
-		if($this->input->post('group_allowed')){
-            foreach($this->input->post('group_allowed') as $ga){
-                if(!$program['group_allowed']) $program['group_allowed'] = ";";
-
-                $program['group_allowed'] = $program['group_allowed'].$ga.";";
-            }
-        }
-        
-        $program['position_allowed'] = "";
-		if($this->input->post('position_allowed')){
-            foreach($this->input->post('position_allowed') as $pa){
-                if(!$program['position_allowed']) $program['position_allowed'] = ";";
-                $program['position_allowed'] = $program['position_allowed'].$pa.";";
-            }    
-        }*/
-        
         
         if($this->input->post('start')){$start = DateTime::createFromFormat('m/d/Y', $this->input->post('start'));
     		$program['start'] = $start->format('Y-m-d')." ".$this->input->post('start_time').":00";
@@ -315,35 +297,21 @@ class Calendar extends CI_Controller {
         $program['updated_at'] = date("Y-m-d H:i");
 
 
-        /****** UPDATES PARAMETER ******
-        $updates['directorate_id'] = $program['directorate_id'];
-        $updates['group_allowed'] = $program['group_allowed'];
-        $updates['position_allowed'] = $program['position_allowed'];
-        */
         if($id){
         	$cal_id = $id;
 			if(!$this->mcalendar->update_calendar($program,$id)){
 				redirect('calendar');
-            	//$update_id = $this->mfiles_upload->get_db("id","desc","updates",array('ownership_id' => $id, 'sub_modul' => "Calendar of Event"),"","")[0]->id;
-            	//$this->mupdates->update($updates,$update_id);
 			}
         }
         else{
         	$program['created_by'] = $user['id'];
         	$program['created_at'] = date("Y-m-d H:i");
         	$cal_id = $this->mcalendar->insert_calendar($program);
-        	
-            /*INSERT UPDATES*
-            $updates['user_id'] = $user['id'];
-            $updates['date'] = date("Y-m-d H:i:s");
-            $updates['modul'] = "Internal Information";
-            $updates['sub_modul'] = "Calendar of Event";
-            $updates['ownership_id'] = $cal_id;
-            $this->mupdates->insert($updates);
-            /*END OF INSERT UPDATES*/
 			
             if(!$cal_id){redirect('calendar/input_calendar/');}
         }
+
+
 		
 		/************ Upload Attachment *************/
 		$path = "calendar/".$cal_id."/files/";
@@ -367,7 +335,7 @@ class Calendar extends CI_Controller {
         //$path = "calendar/".$cal_id."/banner/";
         if(isset($_FILES['img']) && !($_FILES['img']['error'] == UPLOAD_ERR_NO_FILE)){
             /*Upload */ 
-            $file = $this->mfiles_upload->upload_files("img",$path,'photo','calendar',$cal_id,true,true);
+            $file = $this->mfiles_upload->upload_files("img",$path,'calendar','banner',$cal_id,true,true);
         }
         /************ End of Upload Attachment *************/
 

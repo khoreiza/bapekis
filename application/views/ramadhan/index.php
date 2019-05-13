@@ -15,10 +15,10 @@
 	<div class="component_part">
 		<div class="component_part_content">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6" style="margin-bottom: 20px">
 					<?=$prayer_schedule_view?>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6" style="margin-bottom: 20px">
 					<div style="text-align: right;">
 						<select class="" onchange="get_mosque_show_data()" id="mosque_id">
 							<?php foreach($mosques as $mosque){?>
@@ -56,7 +56,16 @@
 						<div class="body_sub_content">
 							<?php foreach($hadists as $hadist){?>
 								<div>
-									<?=$hadist->description?>
+									<h4 class="news_title"><?=$hadist->title?></h4>
+									<div class="right_text" style="margin-top: 20px; font-size: 26px;">
+										<p><font face="Arial"><?=$hadist->arabic?></font></p>
+									</div>
+									<h5>
+										<?=$hadist->meaning?>
+									</h5>
+									<div class="right_text helper_text" style="margin-top: 15px;">
+										<h6><?=$hadist->source?></h6>
+									</div>
 								</div>
 								<hr>
 							<?php }?>
@@ -85,13 +94,15 @@
 						                        <div style="height: 170px; overflow: hidden;">
 						                            <?php if($sharing->full_url){?>
 						                                <div style="width: 100%; height: 105px; overflow: hidden; padding: 0px; margin-top: -10p">
-						                                    <img id="<?=$sharing->id?>_banner_sharing" style="height: 100%;" src="<?=base_url().$sharing->full_url?>">
+						                                    <img id="<?=$sharing->id?>_banner_sharing" style="width: 100%;" src="<?=base_url().$sharing->full_url?>">
 						                                </div>
 						                            <?php }?>
 						                            <div style="margin-top: 10px;">
 						                                <div class="helper_text right_text" style="font-size: 10px;"><?=date('j M y', strtotime($sharing->date))?></div>
 						                                <?php if($sharing->full_url){?>
-						                                    <h5 class="news_title" style="margin-top: 5px;"><a onclick="show_mysharing_detail(<?php echo $sharing->mysharing_id?>);"><?= get_long_text_real($sharing->title,106)?></a></h5>
+						                                    <a onclick="open_detail_content('sharing',<?=$sharing->mysharing_id?>);">
+						                                    	<h5 class="news_title" style="margin-top: 5px;"><?= get_long_text_real($sharing->title,106)?></h5>
+						                                    </a>
 						                                <?php }else{?>
 						                                    <h3 class="news_title" style="margin-top: 10px;"><a onclick="show_mysharing_detail(<?php echo $sharing->mysharing_id?>);"><?= get_long_text_real($sharing->title,120)?></a></h3>
 						                                    <div style="margin-top: 10px">
@@ -120,6 +131,21 @@
 	get_mosque_show_data();
 
 
+	function love_takjil(takjil_id){
+		$.ajax({
+	        type: "GET",
+	        url: config.base+"Ramadhan/love_takjil",
+	        data: {takjil_id: takjil_id},
+	        dataType: 'json',
+	        cache: false,
+	        success: function(resp){
+	            if(resp.status==1){
+	                $("#love_is_in_the_air_"+takjil_id).html("<span class='glyphicon glyphicon-heart love-love-takjil' style='color:#c94964''></span>");
+	            }else{}
+	        }
+	    });
+	}
+	
 
 	function get_mosque_show_data(){
 	    var mosque_id = $("#mosque_id").val();

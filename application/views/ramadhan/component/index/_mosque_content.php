@@ -2,13 +2,16 @@
 	.petugas_div{
 		margin-top: 6px;
 	}
+	.love-love-takjil{
+		font-size: 18px; margin-left: 5px;
+	}
 </style>
 
 
 <div>
 	<div style="margin-top: 60px;">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6" style="margin-bottom: 20px">
 				<div class="row title_sub_content">
 					<div class="col-md-3  col-xs-3">
 						<img src="<?=base_url()?>assets/img/submenu/islamic-pray.png" style="height:40px;">
@@ -50,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6" style="margin-bottom: 20px">
 				<div class="row title_sub_content">
 					<div class="col-md-3 col-xs-3">
 						<img src="<?=base_url()?>assets/img/submenu/islamic-ramadan.png" style="height:40px;">
@@ -66,15 +69,24 @@
 							<?php foreach($takjils as $takjil){?>
 								<div class="broventh_card" style="height: 200px;">
 									<div style="height: 120px; overflow: hidden;">
-										<img src="<?=base_url().$takjil->full_url?>" style="width: 100%;">
+										<img src="<?=base_url().$takjil->full_url?>" style="width: 100%; margin-top: -50px;">
 									</div>
 									<div style="padding-top: 10px; text-align: center;">
-										<h5 class="news_title center_text"><?=strtoupper($takjil->title)?></h5>
+										<a onclick="open_detail_content('sharing',<?=$takjil->id?>);">
+											<h5 class="news_title center_text"><?=strtoupper($takjil->title)?></h5>
+										</a>
 									</div>
 									<div class="helper_text right_text" style="margin-top: 5px;">
 										<h6 style="font-size: 10px;">
 											<span style=""><i>Klik love jika kamu suka takjilnya</i></span>
-											<span style="font-size: 18px; margin-left: 5px;" class="glyphicon glyphicon-heart-empty"></span>
+												
+											<a onclick="open_feedback_form('')">
+												<span style="color: #999" class="glyphicon glyphicon-comment love-love-takjil"></span>
+											</a>
+											<a onclick="love_takjil(<?=$takjil->id?>)" id="love_is_in_the_air_<?=$takjil->id?>">
+												<span style="color: #999" class="glyphicon glyphicon-heart-empty love-love-takjil"></span>
+											</a>
+
 										</h6>
 									</div>
 								</div>
@@ -99,7 +111,7 @@
 	//$(".slider").diyslider("move", "forth");
 	setInterval(function(){
 	    $(".slider_event").diyslider("move", "forth");
-	}, 3500);
+	}, 5000);
 
 
 	$(".slider_takjil").diyslider({
@@ -111,5 +123,5 @@
 	//$(".slider").diyslider("move", "forth");
 	setInterval(function(){
 	    $(".slider_takjil").diyslider("move", "forth");
-	}, 3500);
+	}, 5000);
 </script>

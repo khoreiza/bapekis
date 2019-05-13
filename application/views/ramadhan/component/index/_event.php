@@ -12,7 +12,7 @@
     </div>
     <div class="body_sub_content">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" style="margin-bottom: 20px">
                 <div style="border: 5px solid #003366; padding: 10px;">
                     <div class="big_event">
                         <div class="row">
@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-md-8">
                                 <h4 class="news_title" style="">
-                                    <a href="<?=base_url()?>calendar/show/<?=$big_event->id?>"><?=$big_event->title?></a>
+                                    <a onclick="open_detail_content('event',<?=$big_event->calendar_id?>);"><?=$big_event->title?></a>
                                 </h4>
                                 <h5 style="margin-top: 10px;"><?=$big_event->location?></h5>
                                 <h6 style="margin-top: 3px;"><?=date("j M",strtotime($big_event->start))?><?=(date('Y-m-d',strtotime($big_event->start)) != date('Y-m-d',strtotime($big_event->end))) ? " - ".date("j M",strtotime($big_event->end)) : ""?>, <?=date("H:i",strtotime($big_event->start));?> - <?=date("H:i",strtotime($big_event->end));?></h6>
@@ -34,7 +34,7 @@
                             <div class="col-md-6">
                                 <div class="broventh_card">
                                     <h5 class="news_title" style="">
-                                        <a href="<?=base_url()?>calendar/show/<?=$event->id?>"><?=$event->title?></a>
+                                        <a onclick="open_detail_content('event',<?=$event->calendar_id?>);"><?=$event->title?></a>
                                     </h5>
                                     <div class="small_text">
                                         <div><?=date("j M",strtotime($event->start))?><?=(date('Y-m-d',strtotime($event->start)) != date('Y-m-d',strtotime($event->end))) ? " - ".date("j M",strtotime($event->end)) : ""?>
@@ -46,14 +46,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-bottom: 20px">
                 <div class="broventh_card" style="padding: 10px 5px;">
                     <div class="row">
                         <div class="col-md-3">
                             <img src="<?=base_url()?>assets/img/submenu/adhan-call.png" style="height:32px;">
                         </div>
                         <div class="col-md-9">
-                            <h5 class="news_title">Lomba Ramadhan</h5>
+                            <h5 class="news_title"><a href="<?=base_url()?>ramadhan/lomba">Lomba Ramadhan</a></h5>
                             <div style="margin-top: 5px;" class="small_text helper_text">MTQ, Adzan, Ucapan Hari Raya</div>
                         </div>
                     </div>

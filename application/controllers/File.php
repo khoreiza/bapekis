@@ -49,7 +49,7 @@ class File extends CI_Controller {
         if($id){
             $file = $this->mfiles_upload->get_detil_files_by_id($id);
             $arr_where = array("sub_modul" => get_code_sub_modul($file->modul), "subsub_modul" => $file->sub_modul);
-            $this->mupdates->delete_with_ownership_id_where($arr_where,$id);
+            //$this->mupdates->delete_with_ownership_id_where($arr_where,$id);
             $this->mfiles_upload->delete_with_files($id);
             
         }

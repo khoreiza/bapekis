@@ -157,6 +157,12 @@
     
     <body>
         <div id="modal_finder"></div>
+        
+        <div id="loading_panel" class="center_text loading_panel" style="display:none; padding:5px; z-index:99999999999999 !important; position:fixed; width:100%; background-color:white; margin-top:10%">
+            <div>Loading Data . . .</div>
+        </div>
+        
+
         <div class="page" style="height: 100%;">
             <!--=============================== Header ===========================-->
             <div id="header">

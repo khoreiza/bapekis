@@ -198,7 +198,7 @@
         $(".date").datepicker({
             autoclose: true,
             todayHighlight: true,
-            format: 'd M yy',
+            format: 'j M yy',
             dateFormat:"mm/dd/yy"
         });
     });

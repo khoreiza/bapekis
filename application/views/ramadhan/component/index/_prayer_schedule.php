@@ -10,7 +10,7 @@
 <div style="min-height: 180px;">
     <h1 style="color:#b89914">
         <script type="text/javascript">
-            document.write(writeIslamicDate());
+            document.write(writeIslamicDate(-1));
         </script>
     </h1>
     <h3 style="margin-top: 10px;"><?=date('j M Y')?></h3>

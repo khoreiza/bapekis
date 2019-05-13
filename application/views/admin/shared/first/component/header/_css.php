@@ -686,6 +686,35 @@
 	}
 	/********** End Form Custom Section ************/
 
+	@media screen and (max-width: 998px) {
+		.navbar-default .navbar-collapse {
+	        padding-right: 15px;
+	        border-color: transparent;
+	        box-shadow: none;
+	        background-color: #777;
+	        opacity: 0.9;
+	        border-radius: 10px;
+	    }
+	    .component_part{
+	    	padding: 40px 20px !important;
+	    }
+	}
+
+
+
+	/********** FOOTER ***********/
+	.footer_black {
+	    background-color: #777 !important;
+	    color: white;
+	}
+
+	.footer-container {
+	    position: relative;
+	    padding: 136px 0 84px;
+	    color: #fff;
+	    font-size: 14px;
+	}
+
 	/************************************ END CBIC NEW BROVENTH CSS ************************************/
 
 </style>
